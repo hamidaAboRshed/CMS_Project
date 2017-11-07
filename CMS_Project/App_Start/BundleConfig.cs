@@ -38,6 +38,15 @@ namespace CMS_Project
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+
+            //bundles.Add(new StyleBundle("~/Content/Website/css").Include(
+            //    "~/Content/WebSite/vendor/bootstrap/ltr/css/bootstrap.min.css",
+            //    "~/Content/WebSite/css/one-page-wonder.css"));
+
+            //bundles.Add(new ScriptBundle("~/Content/Website/js").Include(
+            //            "~/Content/WebSite/vendor/jquery/jquery.min.js",
+            //            "~/Content/WebSite/vendor/bootstrap/rtl/js/bootstrap-arabic.min.js"));
         }
     }
 }

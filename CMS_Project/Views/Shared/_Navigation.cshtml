@@ -1,0 +1,29 @@
+﻿@using CMS_Project.Models;
+@{
+    var db = new CMSDataContext();
+    IList<MenuItem> Items=new List<MenuItem>();
+    //if (db.MenuItems > 0 ) { 
+    //    Items = db.MenuItems.ToArray();
+    //}
+}
+
+<div class="container">
+    <a class="navbar-brand" href="#">Web Site Title</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            @for (int i = 0; i < Items.Count; i++)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        @Items[i].Name
+                    </a>
+                </li>
+            }
+            
+        </ul>
+
+    </div>
+</div>
