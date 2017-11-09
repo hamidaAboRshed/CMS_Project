@@ -16,5 +16,10 @@ namespace CMS_Project.Controllers
             return View();
         }
 
+        public ActionResult CatView()
+        {
+            return View();
+        }
+
     }
 }
