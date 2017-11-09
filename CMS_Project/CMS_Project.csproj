@@ -128,6 +128,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ITEMController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,9 +141,18 @@
     <Compile Include="Migrations\201711072108002_CMS-Migrations.Designer.cs">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711092328528_itm.cs" />
+    <Compile Include="Migrations\201711092328528_itm.Designer.cs">
+      <DependentUpon>201711092328528_itm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711092341370_itm2.cs" />
+    <Compile Include="Migrations\201711092341370_itm2.Designer.cs">
+      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
+    <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1361,6 +1371,11 @@
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\ContentSite\Category.cshtml" />
     <Content Include="Views\Home\CatView.cshtml" />
+    <Content Include="Views\ITEM\Index.cshtml" />
+    <Content Include="Views\ITEM\Details.cshtml" />
+    <Content Include="Views\ITEM\Create.cshtml" />
+    <Content Include="Views\ITEM\Edit.cshtml" />
+    <Content Include="Views\ITEM\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1372,6 +1387,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711072108002_CMS-Migrations.resx">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711092328528_itm.resx">
+      <DependentUpon>201711092328528_itm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711092341370_itm2.resx">
+      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
