@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CMS_Project.Models;
+using System.Text;
+using System.IO;
 
 namespace CMS_Project.Controllers
 {
@@ -37,6 +39,7 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Create
 
+       //[HttpPost]
         public ActionResult Create()
         {
             return View();
@@ -49,11 +52,29 @@ namespace CMS_Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Category category)
         {
-            if (ModelState.IsValid)
-            {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+         if (ModelState.IsValid)
+           {
+               if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+               {
+                   FileInfo fi = new FileInfo(category.ImageFile.FileName);
+                   if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
+                   {
+                       TempData["Errormsg"] = "Image File Extension is Not valid";
+                   }
+                   else
+                   {
+                       string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                       string extension = Path.GetExtension(category.ImageFile.FileName);
+                       fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                       category.Image = "~/Content/images/" + fileName;
+                       fileName = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                       category.ImageFile.SaveAs(fileName);
+                   }
+               }
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
 
             return View(category);
