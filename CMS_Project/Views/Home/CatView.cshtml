@@ -16,9 +16,10 @@
         </div>
 
         <div class="row">
-            @if(cat.Count()>0)
-            @for (int i = 0; i < cat.Count(); i++)
+            @if (cat.Count() > 0)
             {
+                for (int i = 0; i < cat.Count(); i++)
+                {
                 <div class="col-md-4">
                     <article class="article-post">
                         <a href="#">
@@ -34,6 +35,7 @@
                         </a>
                     </article>
                 </div>
+                }
             }
 
         </div>
