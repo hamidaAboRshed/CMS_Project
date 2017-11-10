@@ -15,5 +15,7 @@ namespace CMS_Project.Models
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<ITEM> ITEMs { get; set; }
+
     }
 }
