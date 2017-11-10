@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CMS_Project.Models;
+using System.Text;
+using System.IO;
 
 namespace CMS_Project.Controllers
 {
@@ -49,8 +51,26 @@ namespace CMS_Project.Controllers
         [ValidateInput(false)]
         public ActionResult Create(ITEM item)
         {
+
             if (ModelState.IsValid)
             {
+                if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(item.ImageFile.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG" )
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                    }
+                    else
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(item.ImageFile.FileName);
+                        string extension = Path.GetExtension(item.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        item.Image = "~/Content/images/Item/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/images/Item/"), fileName);
+                        item.ImageFile.SaveAs(fileName);
+                    }
+                }
                 db.ITEMs.Add(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -58,6 +78,7 @@ namespace CMS_Project.Controllers
 
             return View(item);
         }
+
 
         //
         // GET: /ITEM/Edit/5
