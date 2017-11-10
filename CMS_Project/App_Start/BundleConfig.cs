@@ -42,7 +42,39 @@ namespace CMS_Project
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
+            bundles.Add(new StyleBundle("~/Bundle/Website/GlobalStyles").Include(
+                "~/Content/WebSite/assets/plugins/font-awesome/css/font-awesome.css",
+                "~/Content/WebSite/assets/plugins/bootstrap/css/bootstrap.css"
+                ));
 
+            bundles.Add(new StyleBundle("~/Bundle/Website/PageLevelPluginStyles").Include(
+                "~/Content/WebSite/assets/pages/css/animate.css",
+                "~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox.css",
+                "~/Content/WebSite/assets/plugins/owl.carousel/assets/owl.carousel.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Bundle/Website/ThemeStyles").Include(
+                "~/Content/WebSite/assets/pages/css/components.css",
+                "~/Content/WebSite/assets/pages/css/slider.css",
+                "~/Content/WebSite/assets/corporate/css/style.css",
+                "~/Content/WebSite/assets/corporate/css/style-responsive.css",
+                "~/Content/WebSite/assets/corporate/css/themes/red.css",
+                "~/Content/WebSite/assets/corporate/css/custom.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/Bundle/Website/CorePlugins").Include(
+                "~/Content/WebSite/assets/plugins/jquery.min.js",
+                "~/Content/WebSite/assets/plugins/jquery-migrate.min.js",
+                "~/Content/WebSite/assets/plugins/bootstrap/js/bootstrap.min.js",
+                "~/Content/WebSite/assets/corporate/scripts/back-to-top.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/Bundle/Website/PageLevelJavascripts").Include(
+                "~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox.pack.js",
+                "~/Content/WebSite/assets/plugins/owl.carousel/owl.carousel.min.js",
+                "~/Content/WebSite/assets/corporate/scripts/layout.js",
+                "~/Content/WebSite/assets/pages/scripts/bs-carousel.js"
+                ));
             //bundles.Add(new StyleBundle("~/Content/Website/css").Include(
             //    "~/Content/WebSite/vendor/bootstrap/ltr/css/bootstrap.min.css",
             //    "~/Content/WebSite/css/one-page-wonder.css"));
