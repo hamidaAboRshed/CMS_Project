@@ -7,38 +7,42 @@
 
 }
 
-<section class="latest-articles has-padding alternate-bg" id="articles">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <h4>Categories</h4>
+   <div class="container">
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+        <!-- BEGIN CONTENT -->
+        <div class="col-md-12 col-sm-12">
+            <div class="content-page">
+                <div class="filter-v1">
+                    <div class="row mix-grid thumbnails">
+                      
+                          @if (cat.Count() > 0)
+                        {
+                            for (int i = 0; i < cat.Count(); i++)
+                            {
+                                <div class="col-md-4 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
+                                    <div class="mix-inner">
+
+                                        <img src="@Url.Content(cat[i].Image)" alt="Image" width="250px" height="250px" />
+
+                                                <!--<img alt="" src="assets/pages/img/works/img1.jpg" class="img-responsive">-->
+                                                <div class="mix-details">
+                                                    <h2>@cat[i].Name</h2>
+                                                    <p>@cat[i].Description</p>
+                                                </div>
+                                        <!--<h4>Cascusamus et iusto odio</h4>-->
+                                        <!--<p>At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores.</p>-->
+                                        <a class="mix-link"><i class="fa fa-link"></i></a>
+                                        <a data-rel="fancybox-button" title="Project Name" href="assets/pages/img/works/img1.jpg" class="mix-preview fancybox-button"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                   </div>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-            @if (cat.Count() > 0) { 
-            for (int i = 0; i < cat.Count(); i++)
-            {
-                <div class="col-md-4">
-                    <article class="article-post">
-                        <a href="#">
-                            <img src="@Url.Content(cat[i].Image)" alt="Image" width="250px" height="250px" />
-                            
-                            <figure>
-                                <figcaption>
-                                    <h2>@cat[i].Name</h2>
-                                    <p>@cat[i].Description</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </article>
-                </div>
-            }
-            }
-
-        </div>
-        <div class="row is-centered">
-            <a href="#intro" class="btn secondary view-more">View more</a>
-        </div>
+      <!-- END CONTENT -->
     </div>
-</section>
+   
