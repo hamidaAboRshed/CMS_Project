@@ -17,5 +17,7 @@ namespace CMS_Project.Models
 
         public DbSet<ITEM> ITEMs { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
     }
 }
