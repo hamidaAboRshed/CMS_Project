@@ -43,6 +43,7 @@ namespace CMS_Project
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
             bundles.Add(new StyleBundle("~/Bundle/Website/GlobalStyles").Include(
+                "~/Content/WebSite/assets/corporate/css/fonts.googleapis.css",
                 "~/Content/WebSite/assets/plugins/font-awesome/css/font-awesome.css",
                 "~/Content/WebSite/assets/plugins/bootstrap/css/bootstrap.css"
                 ));
@@ -57,6 +58,7 @@ namespace CMS_Project
                 "~/Content/WebSite/assets/pages/css/components.css",
                 "~/Content/WebSite/assets/pages/css/slider.css",
                 "~/Content/WebSite/assets/corporate/css/style.css",
+                "~/Content/WebSite/assets/pages/css/portfolio.css",
                 "~/Content/WebSite/assets/corporate/css/style-responsive.css",
                 "~/Content/WebSite/assets/corporate/css/themes/red.css",
                 "~/Content/WebSite/assets/corporate/css/custom.css"
@@ -71,9 +73,11 @@ namespace CMS_Project
 
             bundles.Add(new ScriptBundle("~/Bundle/Website/PageLevelJavascripts").Include(
                 "~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox.pack.js",
-                "~/Content/WebSite/assets/plugins/owl.carousel/owl.carousel.min.js",
+                //"~/Content/WebSite/assets/plugins/owl.carousel/owl.carousel.min.js",
                 "~/Content/WebSite/assets/corporate/scripts/layout.js",
-                "~/Content/WebSite/assets/pages/scripts/bs-carousel.js"
+                //"~/Content/WebSite/assets/plugins/jquery-mixitup/jquery.mixitup.min.js",
+                "~/Content/WebSite/assets/pages/scripts/portfolio.js"//,
+                //"~/Content/WebSite/assets/pages/scripts/bs-carousel.js"
                 ));
             //bundles.Add(new StyleBundle("~/Content/Website/css").Include(
             //    "~/Content/WebSite/vendor/bootstrap/ltr/css/bootstrap.min.css",

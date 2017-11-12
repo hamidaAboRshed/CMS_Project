@@ -36,13 +36,17 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    @*<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">*@
     <!-- Fonts END -->
     <!-- Global styles START -->
     @Styles.Render("~/Bundle/Website/GlobalStyles")
     @Styles.Render("~/Bundle/Website/PageLevelPluginStyles")
     @Styles.Render("~/Bundle/Website/ThemeStyles")
-    
+    <style>
+        .dropdown-submenu:hover > .dropdown-menu{
+  display:block !important;
+}
+    </style>
 </head>
 <!-- Head END -->
 <!-- Body BEGIN -->
@@ -74,7 +78,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="index.html"><img src="assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd"></a>
+            <a class="site-logo" href="index.html"><img src="~/Content/WebSite/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd"></a>
 
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -85,84 +89,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
     <!-- Header END -->
-    <!-- BEGIN SLIDER -->
-    <div class="page-slider margin-bottom-40">
-        <div id="carousel-example-generic" class="carousel slide carousel-slider">
-            <!-- Indicators -->
-            <ol class="carousel-indicators carousel-indicators-frontend">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <!-- First slide -->
-                <div class="item carousel-item-eight active">
-                    <div class="container">
-                        <div class="carousel-position-six text-uppercase text-center">
-                            <h2 class="margin-bottom-20 animate-delay carousel-title-v5" data-animation="animated fadeInDown">
-                                Expore the power <br />
-                                <span class="carousel-title-normal">of Metronic</span>
-                            </h2>
-                            <p class="carousel-subtitle-v5 border-top-bottom margin-bottom-30" data-animation="animated fadeInDown">This is what you were looking for</p>
-                            <a class="carousel-btn-green" href="#" data-animation="animated fadeInUp">Purchase Now!</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Second slide -->
-                <div class="item carousel-item-nine">
-                    <div class="container">
-                        <div class="carousel-position-six">
-                            <h2 class="animate-delay carousel-title-v6 text-uppercase" data-animation="animated fadeInDown">
-                                Need a website design?
-                            </h2>
-                            <p class="carousel-subtitle-v6 text-uppercase" data-animation="animated fadeInDown">
-                                This is what you were looking for
-                            </p>
-                            <p class="carousel-subtitle-v7 margin-bottom-30" data-animation="animated fadeInDown">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-                                Sed est nunc, sagittis at consectetur id.
-                            </p>
-                            <a class="carousel-btn-green" href="#" data-animation="animated fadeInUp">Purchase Now!</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Third slide -->
-                <div class="item carousel-item-ten">
-                    <div class="container">
-                        <div class="carousel-position-six">
-                            <h2 class="animate-delay carousel-title-v6 text-uppercase" data-animation="animated fadeInDown">
-                                Powerful &amp; Clean
-                            </h2>
-                            <p class="carousel-subtitle-v6 text-uppercase" data-animation="animated fadeInDown">
-                                Responsive Website &amp; Admin Theme
-                            </p>
-                            <p class="carousel-subtitle-v7 margin-bottom-30" data-animation="animated fadeInDown">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-                                Sed est nunc, sagittis at consectetur id.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control carousel-control-shop carousel-control-frontend" href="#carousel-example-generic" role="button" data-slide="prev">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </a>
-            <a class="right carousel-control carousel-control-shop carousel-control-frontend" href="#carousel-example-generic" role="button" data-slide="next">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-        </div>
-    </div>
-    <!-- END SLIDER -->
-
-    <div class="main">
+   
+    
         @RenderBody()
-    </div>
+    
     <!-- BEGIN PRE-FOOTER -->
     <div class="pre-footer">
         <div class="container">
@@ -263,27 +193,34 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
     <!-- END FOOTER -->
+    @*<script src="~/Content/WebSite/assets/plugins/jquery.min.js" type="text/javascript"></script>*@
+    @*@Scripts.Render("~/Bundle/Website/CorePlugins")
+    @Scripts.Render("~/Bundle/Website/PageLevelJavascripts")*@
 
-    @Scripts.Render("~/Bundle/Website/CorePlugins")
-    @Scripts.Render("~/Bundle/Website/PageLevelJavascripts")
-
-    @*<!-- Load javascripts at bottom, this will reduce page load time -->
+        <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>
     <![endif]-->
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <script src="~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="~/Content/WebSite/assets/plugins/jquery-mixitup/jquery.mixitup.min.js" type="text/javascript"></script>
+        <script src="~/Content/WebSite/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
 
-    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
-    <script type="text/javascript">*@
+    <script src="~/Content/WebSite/assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/pages/scripts/portfolio.js" type="text/javascript"></script>*
+    <!--<script src="~/Content/WebSite/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/WebSite/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    -->
+    <script type="text/javascript">
         jQuery(document).ready(function () {
             Layout.init();
             Layout.initOWL();
