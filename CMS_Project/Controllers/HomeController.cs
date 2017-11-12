@@ -26,5 +26,13 @@ namespace CMS_Project.Controllers
             return View();
         }
 
+        public ActionResult ViewItem()
+        {
+           
+            return View();
+        }
+
+     
+
     }
 }

@@ -3,7 +3,7 @@ namespace CMS_Project.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class itm : DbMigration
+    public partial class t : DbMigration
     {
         public override void Up()
         {
@@ -14,6 +14,8 @@ namespace CMS_Project.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Content = c.String(),
+                        Image = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             

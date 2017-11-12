@@ -141,17 +141,9 @@
     <Compile Include="Migrations\201711072108002_CMS-Migrations.Designer.cs">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711092328528_itm.cs" />
-    <Compile Include="Migrations\201711092328528_itm.Designer.cs">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711092341370_itm2.cs" />
-    <Compile Include="Migrations\201711092341370_itm2.Designer.cs">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711102052321_m.cs" />
-    <Compile Include="Migrations\201711102052321_m.Designer.cs">
-      <DependentUpon>201711102052321_m.cs</DependentUpon>
+    <Compile Include="Migrations\201711111636386_t.cs" />
+    <Compile Include="Migrations\201711111636386_t.Designer.cs">
+      <DependentUpon>201711111636386_t.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1791,6 +1783,7 @@
     <Content Include="Views\ITEM\Create.cshtml" />
     <Content Include="Views\ITEM\Edit.cshtml" />
     <Content Include="Views\ITEM\Delete.cshtml" />
+    <Content Include="Views\Home\ViewItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Cat\" />
@@ -1806,14 +1799,8 @@
     <EmbeddedResource Include="Migrations\201711072108002_CMS-Migrations.resx">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092328528_itm.resx">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092341370_itm2.resx">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711102052321_m.resx">
-      <DependentUpon>201711102052321_m.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711111636386_t.resx">
+      <DependentUpon>201711111636386_t.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
