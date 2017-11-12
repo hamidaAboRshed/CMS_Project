@@ -654,6 +654,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\WebSite\assets\corporate\css\custom.css" />
+    <Content Include="Content\WebSite\assets\corporate\css\fonts.googleapis.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style-responsive.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style.css" />
     <Content Include="Content\WebSite\assets\corporate\css\themes\blue.css" />
