@@ -31,6 +31,24 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+
+        <div >
+            @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
+                    "Select Type",
+                    new {  @style = "width: 175px;"})
+
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.Parent)
+        </div>
+        <div>
+           @Html.DropDownListFor(model => model.Parent, Model.collection, "Select")
+        </div>*@
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Visible)
         </div>
         <div class="editor-field">

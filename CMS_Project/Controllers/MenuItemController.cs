@@ -37,8 +37,19 @@ namespace CMS_Project.Controllers
         //
         // GET: /MenuItem/Create
 
+
         public ActionResult Create()
         {
+            
+            //var men = db.MenuItems.ToList();
+            //SelectList list = new SelectList(men, "ID", "Name",1);
+            //ViewBag.menulist = list;
+            //var menuitem = new MenuItem();
+           // ViewBag.ActionStatus = new SelectList(men, "ID", "Name", menuitem.ID);
+
+            /*var menuitem = new MenuItem();
+            var men = db.MenuItems.ToList();
+            menuitem.collection = new SelectList(men, "ID", "Name");*/
             return View();
         }
 

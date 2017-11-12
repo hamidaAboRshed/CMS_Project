@@ -141,17 +141,17 @@
     <Compile Include="Migrations\201711072108002_CMS-Migrations.Designer.cs">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711092328528_itm.cs" />
-    <Compile Include="Migrations\201711092328528_itm.Designer.cs">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
+    <Compile Include="Migrations\201711111406590_r.cs" />
+    <Compile Include="Migrations\201711111406590_r.Designer.cs">
+      <DependentUpon>201711111406590_r.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711092341370_itm2.cs" />
-    <Compile Include="Migrations\201711092341370_itm2.Designer.cs">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
+    <Compile Include="Migrations\201711112119481_r2.cs" />
+    <Compile Include="Migrations\201711112119481_r2.Designer.cs">
+      <DependentUpon>201711112119481_r2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711102052321_m.cs" />
-    <Compile Include="Migrations\201711102052321_m.Designer.cs">
-      <DependentUpon>201711102052321_m.cs</DependentUpon>
+    <Compile Include="Migrations\201711121124076_r3.cs" />
+    <Compile Include="Migrations\201711121124076_r3.Designer.cs">
+      <DependentUpon>201711121124076_r3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1792,10 +1792,7 @@
     <Content Include="Views\ITEM\Edit.cshtml" />
     <Content Include="Views\ITEM\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\images\Cat\" />
-    <Folder Include="Content\images\Item\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -1806,14 +1803,14 @@
     <EmbeddedResource Include="Migrations\201711072108002_CMS-Migrations.resx">
       <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092328528_itm.resx">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711111406590_r.resx">
+      <DependentUpon>201711111406590_r.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092341370_itm2.resx">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711112119481_r2.resx">
+      <DependentUpon>201711112119481_r2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711102052321_m.resx">
-      <DependentUpon>201711102052321_m.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711121124076_r3.resx">
+      <DependentUpon>201711121124076_r3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
