@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201711111636386_t.Designer.cs">
       <DependentUpon>201711111636386_t.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711131523412_tt.cs" />
+    <Compile Include="Migrations\201711131523412_tt.Designer.cs">
+      <DependentUpon>201711131523412_tt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
@@ -1784,6 +1788,7 @@
     <Content Include="Views\ITEM\Edit.cshtml" />
     <Content Include="Views\ITEM\Delete.cshtml" />
     <Content Include="Views\Home\ViewItem.cshtml" />
+    <Content Include="Views\Home\ItemPerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Cat\" />
@@ -1801,6 +1806,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711111636386_t.resx">
       <DependentUpon>201711111636386_t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131523412_tt.resx">
+      <DependentUpon>201711131523412_tt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
