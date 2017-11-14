@@ -26,6 +26,11 @@ namespace CMS_Project.Models
             .WithMany(g => g.ItemsList)
             .HasForeignKey<int>(s => s.Cat_ID); 
            // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+         
+            modelBuilder.Entity<MenuItem>().
+            HasOptional(e => e.Parent).
+            WithMany().
+            HasForeignKey(m => m.Parent_Id);
         }
     }
 }
