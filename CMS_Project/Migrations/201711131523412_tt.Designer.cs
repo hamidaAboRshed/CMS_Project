@@ -5,13 +5,13 @@ namespace CMS_Project.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class tt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(tt));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711061952277_InitialCreate"; }
+            get { return "201711131523412_tt"; }
         }
         
         string IMigrationMetadata.Source

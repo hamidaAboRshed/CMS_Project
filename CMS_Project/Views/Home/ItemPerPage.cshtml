@@ -1,0 +1,93 @@
+﻿@using CMS_Project.Models;
+@model  CMS_Project.Models.ITEM
+      
+@{
+    ViewBag.Title = "ItemPerPage";
+
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    
+    
+}
+
+<section class="corporate">
+
+    <div class="main">
+        <div class="container">
+            @*<ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="javascript:;">Blog</a></li>
+                <li class="active">Blog Item</li>
+            </ul>*@
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <h1>@ViewBag.Title</h1>
+                    <div class="content-page">
+                        <div class="row">
+                            <!-- BEGIN LEFT SIDEBAR -->
+
+
+                            <div class="col-md-9 col-sm-9 blog-item">
+                                <div class="blog-item-img">
+                                    <!-- BEGIN CAROUSEL -->
+
+
+                                    <div class="carousel-inner">
+
+
+                                        <div class="item active">
+                                            <img src="@Url.Content(Model.Image)" alt="">
+                                        </div>
+                                    </div>
+
+                                    <!-- Carousel nav -->
+                                    <!-- END CAROUSEL -->
+                                </div>
+                                <h2><a href="javascript:;"></a>@Model.Title</h2>
+                               
+                                  
+                                @Html.DisplayTextFor(modelItem => Model.Content)
+                                <ul class="blog-info">
+                                    <li><i class="fa fa-user"></i> By admin</li>
+
+                                </ul>
+
+                            </div>
+ 
+    
+    
+    
+                            <!-- END LEFT SIDEBAR -->
+                            <!-- BEGIN RIGHT SIDEBAR -->
+                            <div class="col-md-3 col-sm-3 blog-sidebar">
+                                <!-- CATEGORIES START -->
+                                <h2 class="no-top-space">Categories</h2>
+                                <ul class="nav sidebar-categories margin-bottom-40">
+                                    <li><a href="javascript:;">London (18)</a></li>
+                                    <li><a href="javascript:;">Moscow (5)</a></li>
+                                    <li class="active"><a href="javascript:;">Paris (12)</a></li>
+                                    <li><a href="javascript:;">Berlin (7)</a></li>
+                                    <li><a href="javascript:;">Istanbul (3)</a></li>
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            <!-- END BLOG TAGS -->
+                        </div>
+                        <!-- END RIGHT SIDEBAR -->
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+    
+
+
+</section>

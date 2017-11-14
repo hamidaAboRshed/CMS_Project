@@ -1,0 +1,133 @@
+﻿@using CMS_Project.Models;
+@{
+    ViewBag.Title = "ViewPerPage";
+
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    var db = new CMSDataContext();
+    var item = db.ITEMs.ToArray();
+
+}
+<section class="corporate">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel hidden-sm">
+        <div class="color-mode-icons icon-color"></div>
+        <div class="color-mode-icons icon-color-close"></div>
+        <div class="color-mode">
+            <p>THEME COLOR</p>
+            <ul class="inline">
+                <li class="color-red current color-default" data-style="red"></li>
+                <li class="color-blue" data-style="blue"></li>
+                <li class="color-green" data-style="green"></li>
+                <li class="color-orange" data-style="orange"></li>
+                <li class="color-gray" data-style="gray"></li>
+                <li class="color-turquoise" data-style="turquoise"></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER -->
+    <!-- BEGIN TOP BAR -->
+    
+    <!-- END TOP BAR -->
+    <!-- BEGIN HEADER -->
+    
+
+    <div class="main">
+        <div class="container">
+            @*<ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="javascript:;">Blog</a></li>
+                <li class="active">Blog Page</li>
+            </ul>*@
+            <!-- BEGIN SIDEBAR & CONTENT -->
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <h1>Blog Page</h1>
+                    <div class="content-page">
+                        <div class="row">
+                            <!-- BEGIN LEFT SIDEBAR -->
+                            <div class="col-md-9 col-sm-9 blog-posts">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <!-- BEGIN CAROUSEL -->
+                                        <div class="front-carousel">
+                                            <div class="carousel slide" id="myCarousel">
+                                                <!-- Carousel items -->
+                                                <!-- Carousel nav -->
+                                                <a data-slide="prev" href="#myCarousel" class="carousel-control left">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                                <a data-slide="next" href="#myCarousel" class="carousel-control right">
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- END CAROUSEL -->
+                                    </div>
+
+                                </div>
+@if (item.Count() > 0)
+{
+    for (int i = 0; i < item.Count(); i++)
+    {
+                                <hr class="blog-post-sep">
+
+                                <div class="row">
+                                 
+                                    <div class="col-md-4 col-sm-4">
+                                        <img class="img-responsive" alt="Image" src="@Url.Content(item[i].Image)">
+                                    </div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <h2><a href="blog-item.html">@item[i].Title</a></h2>
+                                        
+                                        <p>@item[i].Description</p>
+                                        <a href=@("http://localhost:4743/Home/ItemPerPage/"+item[i].ID) class="more">Read more <i class="icon-angle-right"></i></a>
+                                    </div>
+                                        
+                                          
+                                      
+                                </div>
+                                      }
+                                  }
+                                    
+
+
+                                <hr class="blog-post-sep">
+                                <ul class="pagination">
+                                    <li><a href="javascript:;">Prev</a></li>
+                                    <li><a href="javascript:;">1</a></li>
+                                    <li><a href="javascript:;">2</a></li>
+                                    <li class="active"><a href="javascript:;">3</a></li>
+                                    <li><a href="javascript:;">4</a></li>
+                                    <li><a href="javascript:;">5</a></li>
+                                    <li><a href="javascript:;">Next</a></li>
+                                </ul>
+                            </div>
+                            <!-- END LEFT SIDEBAR -->
+                            <!-- BEGIN RIGHT SIDEBAR -->
+                            <div class="col-md-3 col-sm-3 blog-sidebar">
+                                <!-- CATEGORIES START -->
+                                <h2 class="no-top-space">Categories</h2>
+                                <ul class="nav sidebar-categories margin-bottom-40">
+                                    <li><a href="javascript:;">London (18)</a></li>
+                                    <li><a href="javascript:;">Moscow (5)</a></li>
+                                    <li class="active"><a href="javascript:;">Paris (12)</a></li>
+                                    <li><a href="javascript:;">Berlin (7)</a></li>
+                                    <li><a href="javascript:;">Istanbul (3)</a></li>
+                                </ul>
+
+                            </div>
+                            <!-- END RIGHT SIDEBAR -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <!-- END SIDEBAR & CONTENT -->
+        </div>
+    </div>
+
+    
+    
+</section>
+
