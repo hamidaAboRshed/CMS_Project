@@ -144,10 +144,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CMS_DB.mdf" />
-    <Content Include="App_Data\CMS_DB_log.ldf">
-      <DependentUpon>CMS_DB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\Admin\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
@@ -1784,6 +1780,7 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\images\Cat\" />
     <Folder Include="Content\images\Item\" />
   </ItemGroup>
