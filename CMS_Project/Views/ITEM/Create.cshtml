@@ -12,7 +12,7 @@
 
     <fieldset>
         <legend>ITEM</legend>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
@@ -44,7 +44,7 @@
             @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-
+            @Html.HiddenFor(model => model.Cat_ID, new { @value=@ViewData["Cat_Id"], name = "hiddenname" })
         <p>
             <input type="submit" value="Create" />
         </p>

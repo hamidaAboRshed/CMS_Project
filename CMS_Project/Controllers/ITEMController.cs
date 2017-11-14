@@ -12,15 +12,24 @@ namespace CMS_Project.Controllers
     public class ITEMController : Controller
     {
         private CMSDataContext db = new CMSDataContext();
-
         //
         // GET: /ITEM/
 
-        public ActionResult Index()
+       /* public ActionResult Index()
         {
             return View(db.ITEMs.ToList());
+        }*/
+        
+        public ActionResult Index(int id=0)
+        {
+            {
+                var item = (from d in db.ITEMs
+                           where d.ID == id
+                           select d).ToList();
+                ViewBag.CatId = id;
+                return View(item);
+            }
         }
-
         //
         // GET: /ITEM/Details/5
 
@@ -37,8 +46,9 @@ namespace CMS_Project.Controllers
         //
         // GET: /ITEM/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
+            ViewData["Cat_Id"] = id;
             return View();
         }
 
@@ -47,13 +57,13 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(ITEM item)
+        public ActionResult Create(ITEM item,string hiddenname)
         {
             if (ModelState.IsValid)
             {
                 db.ITEMs.Add(item);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",item.Cat_ID);
             }
 
             return View(item);

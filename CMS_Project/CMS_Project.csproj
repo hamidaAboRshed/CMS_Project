@@ -134,22 +134,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711061952277_InitialCreate.cs" />
-    <Compile Include="Migrations\201711061952277_InitialCreate.Designer.cs">
-      <DependentUpon>201711061952277_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711072108002_CMS-Migrations.cs" />
-    <Compile Include="Migrations\201711072108002_CMS-Migrations.Designer.cs">
-      <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711092328528_itm.cs" />
-    <Compile Include="Migrations\201711092328528_itm.Designer.cs">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711092341370_itm2.cs" />
-    <Compile Include="Migrations\201711092341370_itm2.Designer.cs">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
@@ -1799,20 +1783,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711061952277_InitialCreate.resx">
-      <DependentUpon>201711061952277_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711072108002_CMS-Migrations.resx">
-      <DependentUpon>201711072108002_CMS-Migrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092328528_itm.resx">
-      <DependentUpon>201711092328528_itm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711092341370_itm2.resx">
-      <DependentUpon>201711092341370_itm2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

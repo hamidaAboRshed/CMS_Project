@@ -17,5 +17,7 @@ namespace CMS_Project.Models
         public string Description { set; get; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { set; get; }
+
+        public virtual ICollection<ITEM> ItemsList { set; get; }
     }
 }

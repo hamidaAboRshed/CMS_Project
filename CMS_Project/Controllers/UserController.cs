@@ -154,5 +154,11 @@ namespace CMS_Project.Controllers
             }
             return isValid;
         }
+
+        public void logout()
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~");
+        }
     }
 }

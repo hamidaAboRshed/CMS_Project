@@ -19,5 +19,13 @@ namespace CMS_Project.Models
 
         public DbSet<User> Users { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ITEM>()
+            .HasRequired<Category>(s => s.CurrentCategory)
+            .WithMany(g => g.ItemsList)
+            .HasForeignKey<int>(s => s.Cat_ID); 
+           // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }
