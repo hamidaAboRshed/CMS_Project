@@ -34,9 +34,9 @@
 
                                             <img alt="" src="@Url.Content(cat[i].Image)" class="img-responsive">
                                             <div class="mix-details">
-                                                <h2>@cat[i].Name</h2>
-                                                <p>@cat[i].Description</p>
-                                            </div>
+                                                <a href=@("http://localhost:4743/Home/ItemsPerCat/"+cat[i].ID)>@cat[i].Name </a>
+                                                    <p>@cat[i].Description</p>
+</div>
                                             <!--<h4>Cascusamus et iusto odio</h4>-->
                                             <!--<p>At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores.</p>-->
                                             <a class="mix-link"><i class="fa fa-link"></i></a>

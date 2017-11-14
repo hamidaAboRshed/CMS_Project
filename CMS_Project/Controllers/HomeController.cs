@@ -28,9 +28,17 @@ namespace CMS_Project.Controllers
 
         public ActionResult ViewItem()
         {
-           
-            return View();
+           var item = db.ITEMs.ToList();
+            return View(item);
         }
+
+        public ActionResult ItemsPerCat(int id=0)
+        {
+            var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
+            return View("viewItem",item);
+        }
+
+
 
         public ActionResult ItemPerPage(int ID = 0)
         {
