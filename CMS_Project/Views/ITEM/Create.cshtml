@@ -43,7 +43,7 @@
             @Html.TextAreaFor(model => model.Description, 5, 30, null)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-            @Html.HiddenFor(model => model.Cat_ID, new { @value=@ViewData["Cat_Id"], name = "hiddenname" })
+            @Html.HiddenFor(model => model.Cat_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
         <p>
             <input type="submit" value="Create" />
         </p>

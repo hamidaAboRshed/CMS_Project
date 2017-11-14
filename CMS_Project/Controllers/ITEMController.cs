@@ -25,9 +25,7 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id=0)
         {
             {
-                var item = (from d in db.ITEMs
-                           where d.ID == id
-                           select d).ToList();
+                List<ITEM> item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
                 ViewBag.CatId = id;
                 return View(item);
             }
@@ -50,7 +48,8 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create(int id=0)
         {
-            ViewData["Cat_Id"] = id;
+            //ViewData["Cat_Id"] = id;
+            ViewBag.CatID = id;
             return View();
         }
 
@@ -83,7 +82,8 @@ namespace CMS_Project.Controllers
                 }
                 db.ITEMs.Add(item);
                 db.SaveChanges();
-                return RedirectToAction("Index",item.Cat_ID);
+                int CatID = item.Cat_ID;
+                return RedirectToAction("Index", "ITEM", new { id = CatID });
             }
 
             return View(item);
