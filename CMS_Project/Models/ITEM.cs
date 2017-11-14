@@ -10,7 +10,7 @@ namespace CMS_Project.Models
 {
     public class ITEM
     {
-
+        [Key]
         public int ID { set; get; }
         public string Title { set; get; }
         [DataType(DataType.Html)]
@@ -21,5 +21,8 @@ namespace CMS_Project.Models
         [NotMapped]
         public HttpPostedFileBase ImageFile { set; get; }
 
+        public int Cat_ID { get; set; }
+
+        public virtual Category CurrentCategory { get; set; } 
     }
 }
