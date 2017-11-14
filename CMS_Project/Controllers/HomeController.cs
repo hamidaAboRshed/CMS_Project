@@ -32,7 +32,22 @@ namespace CMS_Project.Controllers
             return View();
         }
 
-     
+        public ActionResult ItemPerPage(int ID = 0)
+        {
 
+
+            ITEM item = db.ITEMs.Find(ID);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
+        }
+           
+        
+
+
+
+        public string Title { get; set; }
     }
 }

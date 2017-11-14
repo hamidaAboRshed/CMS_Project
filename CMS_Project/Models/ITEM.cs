@@ -13,6 +13,7 @@ namespace CMS_Project.Models
         [Key]
         public int ID { set; get; }
         public string Title { set; get; }
+        [DataType(DataType.Html)]
         public string Content { set; get; }
         [DisplayName("Upload File")]
         public string Image { set; get; }
