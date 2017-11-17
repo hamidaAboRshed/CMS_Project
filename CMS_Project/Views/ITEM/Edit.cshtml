@@ -8,7 +8,7 @@
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false)
 
     <fieldset>
         <legend>ITEM</legend>
@@ -46,7 +46,7 @@
             @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-
+            @Html.HiddenFor(model => model.Cat_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -54,7 +54,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "ITEM", new { id = ViewBag.CatID }, null)
 </div>
 
 @section Scripts {
