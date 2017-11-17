@@ -19,6 +19,7 @@ else
 <fieldset>
     <legend>ITEM</legend>
 
+    <legend></legend>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Title)
     </div>
@@ -45,6 +46,9 @@ else
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Cat_ID)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Cat_ID)

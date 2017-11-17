@@ -53,8 +53,6 @@
             <b>Select Cetegory</b>
         </div>
         <div class="form-group">
-            @*@if(ViewBag.categorylist !=null)
-            { *@
             @Html.DropDownListFor(model => model.CatId, ViewBag.categorylist as SelectList, "Select Category", new { @style = "width: 175px;" })
 
         </div>

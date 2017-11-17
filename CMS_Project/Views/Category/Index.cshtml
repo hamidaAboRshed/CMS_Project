@@ -4,8 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -16,7 +14,6 @@
             <div class="panel-heading">
                 DataTables Advanced Tables
             </div>
-
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
@@ -40,8 +37,6 @@
         </div>
     </div>
 </div>
-
-
 @foreach (var item in Model)
 {
     <tr class="odd gradeX">
@@ -62,5 +57,5 @@
         </td>
     </tr>
 }
+    </table>
 
-</table>
