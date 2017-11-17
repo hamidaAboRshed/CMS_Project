@@ -4,14 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<!--<h2>Create</h2>-->
 
 @using (Html.BeginForm("Create", "ITEM", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ITEM</legend>
+        <!--<legend>ITEM</legend>-->
         
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
