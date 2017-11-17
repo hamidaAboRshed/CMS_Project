@@ -19,25 +19,20 @@ namespace CMS_Project.Controllers
         }
 
         [HttpGet]
-        public ActionResult CatView()
+        public ActionResult ListOfCategory()
         {
            // Category cat = new Category();
             //cat = db.Categories.Where(x => x.ID == id).FirstOrDefault();
-            return View();
+            return View("CatView");
         }
 
-        public ActionResult ViewItem()
-        {
-           var item = db.ITEMs.ToList();
-            return View(item);
-        }
-
-        public ActionResult ItemsPerCat(int id=0)
+        public ActionResult ListOfItem(int id=0)
         {
             var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
-            return View("viewItem",item);
+            return View("viewItem", item);
         }
-
+           
+       
 
 
         public ActionResult ItemPerPage(int ID = 0)
