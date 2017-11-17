@@ -1778,6 +1778,7 @@
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\Home\ViewItem.cshtml" />
     <Content Include="Views\Home\ItemPerPage.cshtml" />
+    <Content Include="Views\Home\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
