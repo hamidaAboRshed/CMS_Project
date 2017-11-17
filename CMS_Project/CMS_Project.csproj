@@ -134,10 +134,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711131523412_tt.cs" />
-    <Compile Include="Migrations\201711131523412_tt.Designer.cs">
-      <DependentUpon>201711131523412_tt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
@@ -148,10 +144,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CMS_DB.mdf" />
-    <Content Include="App_Data\CMS_DB_log.ldf">
-      <DependentUpon>CMS_DB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\Admin\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
@@ -1731,6 +1723,7 @@
     <Content Include="Scripts\ckeditor\skins\moono-lisa\images\refresh.png" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1787,16 +1780,12 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\images\Cat\" />
     <Folder Include="Content\images\Item\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711131523412_tt.resx">
-      <DependentUpon>201711131523412_tt.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

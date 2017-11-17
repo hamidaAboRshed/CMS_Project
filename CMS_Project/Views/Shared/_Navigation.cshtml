@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
     
-    function AddToList(itmName, itmID,PerentID,isSubMenu) {
+    function AddToList(itmName, itmID,PerentID,isSubMenu,Type) {
         debugger;
         var ParentItm = document.getElementById("Parent_" + PerentID);
         
@@ -25,7 +25,9 @@
             div.innerHTML += '<ul class="dropdown-menu" id="Parent_' + PerentID + '"></ul>';
             ParentItm = document.getElementById("Parent_" + PerentID);
         }
-        ParentItm.innerHTML += '<li id="itm_'+itmID+'"><a href="#">'+itmName+'</a></li>';
+        var link='@Url.Action("-1","Home")';
+        link=link.replace("-1",Type);
+        ParentItm.innerHTML += '<li id="itm_'+itmID+'"><a href="'+link+'">'+itmName+'</a></li>';
     }
 </script>
 
@@ -38,7 +40,7 @@
                 if (Items[i].Parent == null)
                 {
                     <li class="" id="itm_@Items[i].ID">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        <a class="dropdown-toggle" href="@Url.Action(Items[i].Type.ToString(),"Home")">
                             @Items[i].Name
                         </a>
                     </li>
@@ -50,7 +52,7 @@
                     {
                         sub = 1;
                     }
-                    <script type="text/javascript">AddToList("@Items[i].Name",@Items[i].ID,@Items[i].Parent.ID,@sub);</script>
+                    <script type="text/javascript">AddToList("@Items[i].Name",@Items[i].ID,@Items[i].Parent.ID,@sub,"@Items[i].Type");</script>
 
                 }
             }

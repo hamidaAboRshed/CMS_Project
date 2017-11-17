@@ -39,9 +39,21 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create()
         {
+            var men = db.MenuItems.ToList();
+            ViewBag.parentlist = new SelectList(men, "ID", "Name");
+
+
+            List<Category> categorylist = db.Categories.ToList();
+            ViewBag.categorylist = new SelectList(categorylist, "ID", "Name");
             return View();
         }
 
+        public JsonResult getItem(int categoryId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<ITEM> listitem = db.ITEMs.Where(x => x.Cat_ID == categoryId).ToList();
+            return Json(listitem, JsonRequestBehavior.AllowGet);
+        }
         //
         // POST: /MenuItem/Create
 
