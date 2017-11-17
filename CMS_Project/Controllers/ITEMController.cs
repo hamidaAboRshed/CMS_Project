@@ -33,9 +33,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /ITEM/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0,int CatId=0)
         {
             ITEM item = db.ITEMs.Find(id);
+            ViewBag.CatID = CatId;
             if (item == null)
             {
                 return HttpNotFound();
@@ -48,7 +49,6 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create(int id=0)
         {
-            //ViewData["Cat_Id"] = id;
             ViewBag.CatID = id;
             return View();
         }
@@ -93,9 +93,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /ITEM/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0,int CatId =0)
         {
             ITEM item = db.ITEMs.Find(id);
+            ViewBag.CatID = CatId;
             if (item == null)
             {
                 return HttpNotFound();
@@ -108,13 +109,15 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ITEM item)
+        [ValidateInput(false)]
+        public ActionResult Edit(ITEM item, string hiddenname)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int CatID = item.Cat_ID;
+                return RedirectToAction("Index", new { id = CatID });
             }
             return View(item);
         }
@@ -122,9 +125,11 @@ namespace CMS_Project.Controllers
         //
         // GET: /ITEM/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0,int CatId=0)
         {
             ITEM item = db.ITEMs.Find(id);
+            ViewBag.CatID = CatId;
+            ViewBag.flag=false;
             if (item == null)
             {
                 return HttpNotFound();
@@ -140,9 +145,22 @@ namespace CMS_Project.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ITEM item = db.ITEMs.Find(id);
-            db.ITEMs.Remove(item);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            MenuItem MItem = db.MenuItems.SingleOrDefault(x => x.ItemId == id);
+            if (MItem != null)
+            {
+                ViewBag.error= "This Item has reference from MenuItem, So You can not delete it";
+                ViewBag.flag = true;
+                ViewBag.CatID =item.Cat_ID;
+                return View("Delete",item);
+            }
+            else
+            {  
+                int CatID = item.Cat_ID;
+                db.ITEMs.Remove(item);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = CatID });
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

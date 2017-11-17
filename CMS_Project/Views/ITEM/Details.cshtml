@@ -38,6 +38,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, CatId = ViewBag.CatId },null) |
+    @Html.ActionLink("Back to List", "Index", "ITEM", new { id = ViewBag.CatID }, null)
 </p>

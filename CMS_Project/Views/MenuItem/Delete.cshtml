@@ -11,21 +11,48 @@
 
     <legend></legend>
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+        @*@Html.DisplayNameFor(model => model.Name)*@
+        <b>Name :</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
-
+    <br />
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Order)
+        @*@Html.DisplayNameFor(model => model.Order)*@
+        <b>Order :</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Order)
     </div>
-
+    <br />
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Visible)
+        @* @Html.DisplayNameFor(model => model.Type)*@
+        <b>Type :</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+    <br />
+    <div class="display-label">
+        @*@Html.DisplayNameFor(model => model.Parent_Id)*@
+        <b>Parent ID :</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parent_Id)
+    </div>
+    <br />
+    <div class="display-label">
+        @*@Html.DisplayNameFor(model => model.ItemId)*@
+        <b>Item ID :</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemId)
+    </div>
+    <br />
+    <div class="display-label">
+        @*@Html.DisplayNameFor(model => model.Visible)*@
+        <b>Visible :</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Visible)
