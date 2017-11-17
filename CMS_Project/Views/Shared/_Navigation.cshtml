@@ -25,7 +25,8 @@
             div.innerHTML += '<ul class="dropdown-menu" id="Parent_' + PerentID + '"></ul>';
             ParentItm = document.getElementById("Parent_" + PerentID);
         }
-        var link='@Url.Action("-1", "Home", new { id = "-2" })';
+        debugger;
+        var link='@Url.Action("-1", "Home", new { id = -2 })';
         link=link.replace("-1",Type);
         link=link.replace("-2",linkedItm);
         ParentItm.innerHTML += '<li id="itm_'+itmID+'"><a href="'+link+'">'+itmName+'</a></li>';
@@ -58,7 +59,7 @@
                     {
                         sub = 1;
                     }
-                    <script type="text/javascript">AddToList("@Items[i].Name",@Items[i].ID,@Items[i].Parent.ID,@sub,"@Items[i].Type,@linkedItem");</script>
+                    <script type="text/javascript">AddToList("@Items[i].Name",@Items[i].ID,@Items[i].Parent.ID,@sub,"@Items[i].Type",@linkedItem);</script>
 
                 }
             }
