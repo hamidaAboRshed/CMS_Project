@@ -11,6 +11,12 @@
     <!-- MetisMenu CSS -->
     <link href="~/Content/Admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="~/Content/Admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="~/Content/Admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Timeline CSS -->
     <link href="~/Content/Admin/dist/css/timeline.css" rel="stylesheet">
 
@@ -23,10 +29,7 @@
     <!-- Custom Fonts -->
     <link href="~/Content/Admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
-    @Scripts.Render("~/bundles/ckeditor")
+    
 
 
 </head>
@@ -42,8 +45,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">CMS Admin</a>
             </div>
+            <ul class="nav navbar-top-links navbar-right">
+               
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            
             @if (User.Identity.IsAuthenticated)
             {
                 <h4 style="text-align:right;">@User.Identity.Name @Html.ActionLink("log out", "logout", "User")</h4>
@@ -63,103 +91,24 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="@Url.Action("index","MenuItem")"><i class="fa fa-dashboard fa-fw"></i> Menu Item</a>
                         </li>
+                        
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="@Url.Action("index","Category")"><i class="fa fa-table fa-fw"></i> Category</a>
                         </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
+                       
+                            </ul>  
                 </div>
-                <!-- /.sidebar-collapse -->
             </div>
             </nav>
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">@ViewBag.Title</h1>
                 </div>
-                <!-- /.col-lg-12 -->
+                
             </div>
             <div class="row">
                 @RenderBody()
@@ -167,10 +116,6 @@
             </div>
         </div>
                 
-
-                @Scripts.Render("~/bundles/jquery")
-                @RenderSection("scripts", required: false)
-
                 <!-- jQuery -->
                 <script src="~/Content/Admin/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -180,14 +125,28 @@
                 <!-- Metis Menu Plugin JavaScript -->
                 <script src="~/Content/Admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
+                <!-- DataTables JavaScript -->
+                <script src="~/Content/Admin/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+                <script src="~/Content/Admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+                   
+                <!-- Custom Theme JavaScript -->
+                <script src="~/Content/Admin/dist/js/sb-admin-2.js"></script>
+                  
                 <!-- Morris Charts JavaScript -->
                 <script src="~/Content/Admin/bower_components/raphael/raphael-min.js"></script>
                 <script src="~/Content/Admin/bower_components/morrisjs/morris.min.js"></script>
                 <script src="~/Content/Admin/js/morris-data.js"></script>
-
-                <!-- Custom Theme JavaScript -->
-                <script src="~/Content/Admin/dist/js/sb-admin-2.js"></script>
-
+         
+       @RenderSection("Scripts",required: false)
+   
+    @Scripts.Render("~/bundles/ckeditor")
+  <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 
 </body>
 </html>

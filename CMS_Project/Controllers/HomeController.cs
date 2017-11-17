@@ -26,11 +26,14 @@ namespace CMS_Project.Controllers
             return View("CatView");
         }
 
-        public ActionResult ListOfItem()
+        public ActionResult ListOfItem(int id=0)
         {
-           
-            return View("ViewItem");
+            var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
+            return View("viewItem", item);
         }
+           
+       
+
 
         public ActionResult ItemPerPage(int ID = 0)
         {
