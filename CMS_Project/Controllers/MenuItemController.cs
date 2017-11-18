@@ -77,6 +77,11 @@ namespace CMS_Project.Controllers
         public ActionResult Edit(int id = 0)
         {
             MenuItem menuitem = db.MenuItems.Find(id);
+            var men = db.MenuItems.ToList();
+            ViewBag.parentlist = new SelectList(men, "ID", "Name");
+
+            List<Category> categorylist = db.Categories.ToList();
+            ViewBag.categorylist = new SelectList(categorylist, "ID", "Name");
             if (menuitem == null)
             {
                 return HttpNotFound();

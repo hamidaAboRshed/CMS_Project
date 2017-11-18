@@ -19,7 +19,7 @@ namespace CMS_Project.Controllers
         }
 
         [HttpGet]
-        public ActionResult ListOfCategory()
+        public ActionResult ListOfCategory(int id=0)
         {
            // Category cat = new Category();
             //cat = db.Categories.Where(x => x.ID == id).FirstOrDefault();
@@ -42,7 +42,7 @@ namespace CMS_Project.Controllers
             ITEM item = db.ITEMs.Find(ID);
             if (item == null)
             {
-                return HttpNotFound();
+                return View("PageNotFound");
             }
             return View(item);
         }

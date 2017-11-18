@@ -29,7 +29,54 @@
             @Html.EditorFor(model => model.Order)
             @Html.ValidationMessageFor(model => model.Order)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
+                    "Select Type",
+                    new { @style = "width: 175px;" })
+            
+        </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Parent)
+        </div>
+        <div class="editor-field">
+           @Html.DropDownListFor(model => model.Parent_Id, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
+        </div>
+
+        <br />
+
+        <div >
+            <b>Select Cetegory</b>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CatId, ViewBag.categorylist as SelectList, "Select Category", new { @style = "width: 175px;" })
+        </div>
+
+        <br />
+
+        <div >
+            <b>Select Items</b>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ItemId, new SelectList(" "), "Select Item", new { @style = "width: 175px;" })
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#CatId").change(function () {
+                    $.get("/MenuItem/getItem", { categoryId: $("#CatId").val() }, function (data) {
+                        $("#ItemId").empty();
+                        $.each(data, function (index, row) {
+                            $("#ItemId").append("<option value='" + row.ID + "'>" + row.Title + "</option>")
+                        });
+                    });
+                })
+            });
+        </script> 
         <div class="editor-label">
             @Html.LabelFor(model => model.Visible)
         </div>

@@ -21,7 +21,7 @@
                                     @Html.DisplayNameFor(model => model.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Name)
                                 </th>
                             </tr>
                             <tr>
@@ -42,9 +42,12 @@
                             </tr>
                         </thead>
                     </table>
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Visible)
+    </div>
     </div>
 
 </fieldset>
