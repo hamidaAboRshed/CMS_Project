@@ -4,7 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "ITEM", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(false)
 
@@ -33,8 +34,7 @@
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Image)
-            @Html.ValidationMessageFor(model => model.Image)
+            <input type="file" name="ImageFile" required />
         </div>
 
         <div class="editor-label">
