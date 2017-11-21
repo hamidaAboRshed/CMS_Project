@@ -47,11 +47,31 @@ namespace CMS_Project
                 "~/Content/WebSite/assets/plugins/font-awesome/css/font-awesome.css",
                 "~/Content/WebSite/assets/plugins/bootstrap/css/bootstrap.css"
                 ));
+            bundles.Add(new StyleBundle("~/Bundle/Website/GlobalStyles-ar").Include(
+          
+               "~/Content/WebSite/assets/plugins/bootstrap/css/bootstrap-ar.css"
+               ));
+
 
             bundles.Add(new StyleBundle("~/Bundle/Website/PageLevelPluginStyles").Include(
                 "~/Content/WebSite/assets/pages/css/animate.css",
                 "~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox.css",
                 "~/Content/WebSite/assets/plugins/owl.carousel/assets/owl.carousel.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Bundle/Website/PageLevelPluginStyles-ar").Include(
+            
+              "~/Content/WebSite/assets/plugins/fancybox/source/jquery.fancybox-ar.css",
+              "~/Content/WebSite/assets/plugins/owl.carousel/assets/owl.carousel-ar.css"
+              ));
+
+            bundles.Add(new StyleBundle("~/Bundle/Website/ThemeStyles-ar").Include(
+                "~/Content/WebSite/assets/pages/css/component-ar.css",
+                "~/Content/WebSite/assets/pages/css/slider-ar.css",
+                "~/Content/WebSite/assets/corporate/css/style-ar.css",
+                "~/Content/WebSite/assets/pages/css/portfolio-ar.css",
+                "~/Content/WebSite/assets/corporate/css/style-responsive-ar.css"               
+                
                 ));
 
             bundles.Add(new StyleBundle("~/Bundle/Website/ThemeStyles").Include(
