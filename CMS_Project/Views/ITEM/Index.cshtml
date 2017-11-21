@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CMS_Project.Models.ITEM>
+﻿@model IEnumerable<CMS_Project.Models.item_lang>
 
 @{
     ViewBag.Title = "Index";
@@ -56,9 +56,10 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID, CatId = ViewBag.CatId }, null) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ID, CatId = ViewBag.CatId }, null) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID, CatId = ViewBag.CatId }, null)
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.item_ID, CatId = ViewBag.CatId }, null)|
+                                    @Html.ActionLink("Translate", "Translate", new { id = item.item_ID, CatId = ViewBag.CatId }, null)
                                 </td>
                             </tr>
                         }

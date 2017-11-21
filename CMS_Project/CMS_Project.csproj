@@ -1787,6 +1787,7 @@
     <Content Include="Views\Home\ViewItem.cshtml" />
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
+    <Content Include="Views\ITEM\Translate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
