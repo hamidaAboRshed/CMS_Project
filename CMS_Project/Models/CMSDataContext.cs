@@ -32,8 +32,8 @@ namespace CMS_Project.Models
          
             ////////////////////////
 
-            modelBuilder.Entity<Category_lang>()
-        .HasKey(bc => new { bc.category_ID, bc.Lang_ID });
+           // modelBuilder.Entity<Category_lang>()
+          //.HasKey(bc => new { bc.category_ID, bc.Lang_ID });
 
             modelBuilder.Entity<Category_lang>()
                 .HasRequired<Category>(bc => bc.category)
@@ -47,8 +47,8 @@ namespace CMS_Project.Models
 
             //////////////////////
 
-            modelBuilder.Entity<item_lang>()
-        .HasKey(bc => new { bc.item_ID, bc.Lang_ID });
+            //modelBuilder.Entity<item_lang>()
+        //.HasKey(bc => new { bc.item_ID, bc.Lang_ID });
 
             modelBuilder.Entity<item_lang>()
                 .HasRequired<ITEM>(bc => bc.item)
@@ -62,8 +62,8 @@ namespace CMS_Project.Models
 
             //////////////////////
 
-            modelBuilder.Entity<MenuItem_lang>()
-        .HasKey(bc => new { bc.Menuitem_ID, bc.Lang_ID });
+            //modelBuilder.Entity<MenuItem_lang>()
+        //.HasKey(bc => new { bc.Menuitem_ID, bc.Lang_ID });
 
             modelBuilder.Entity<MenuItem_lang>()
                 .HasRequired<MenuItem>(bc => bc.Menuitem)

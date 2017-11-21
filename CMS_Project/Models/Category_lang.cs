@@ -9,6 +9,7 @@ namespace CMS_Project.Models
 { 
     public class Category_lang 
     {
+        public int ID { set; get; }
         public string Name { set; get; }
         [DisplayName("Upload File")]
         public string Image { set; get; } 

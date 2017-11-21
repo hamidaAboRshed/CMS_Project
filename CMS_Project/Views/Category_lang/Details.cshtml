@@ -1,0 +1,50 @@
+﻿@model CMS_Project.Models.Category_lang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Category_lang</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Lang.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Lang.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.category.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.category.ID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
