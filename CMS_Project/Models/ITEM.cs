@@ -12,7 +12,7 @@ namespace CMS_Project.Models
     {
         [Key]
         public int ID { set; get; }
-         
+          
         public int Cat_ID { get; set; }
 
         public virtual Category CurrentCategory { get; set; } 

@@ -1,4 +1,4 @@
-﻿@model CMS_Project.Models.Category
+﻿@model CMS_Project.Models.Category_lang
 
 @{
     ViewBag.Title = "Edit";
@@ -10,9 +10,10 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Category</legend>
+        <legend>Category</legend> 
 
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.category_ID)
+        @Html.HiddenFor(model => model.Lang_ID)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)

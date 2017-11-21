@@ -8,9 +8,10 @@ using System.Web;
 namespace CMS_Project.Models
 { 
     public class Category
-    {
+    { 
         public int ID { set; get; }
         public Category Parent { set; get; }
+        public int? Parent_Id { set; get; }
         public virtual ICollection<ITEM> ItemsList { set; get; }
     }
 } 

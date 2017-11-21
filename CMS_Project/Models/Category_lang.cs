@@ -7,7 +7,7 @@ using System.Web;
 
 namespace CMS_Project.Models
 { 
-    public class Category_lang
+    public class Category_lang 
     {
         public string Name { set; get; }
         [DisplayName("Upload File")]

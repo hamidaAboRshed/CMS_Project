@@ -138,6 +138,10 @@
     <Compile Include="Migrations\201711201730186_yy.Designer.cs">
       <DependentUpon>201711201730186_yy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711202227025_xx.cs" />
+    <Compile Include="Migrations\201711202227025_xx.Designer.cs">
+      <DependentUpon>201711202227025_xx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
@@ -1799,6 +1803,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711201730186_yy.resx">
       <DependentUpon>201711201730186_yy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711202227025_xx.resx">
+      <DependentUpon>201711202227025_xx.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

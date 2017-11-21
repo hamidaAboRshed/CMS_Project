@@ -58,7 +58,7 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(ITEM item,string hiddenname)
+        public ActionResult Create(item_lang item,string hiddenname)
         {
 
             if (ModelState.IsValid)
@@ -80,9 +80,9 @@ namespace CMS_Project.Controllers
                         item.ImageFile.SaveAs(fileName);
                     }
                 }
-                db.ITEMs.Add(item);
+                db.item_lang.Add(item);
                 db.SaveChanges();
-                int CatID = item.Cat_ID;
+                int CatID = item.item.Cat_ID;
                 return RedirectToAction("Index", "ITEM", new { id = CatID });
             }
 
@@ -110,7 +110,7 @@ namespace CMS_Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit(ITEM item, string hiddenname)
+        public ActionResult Edit(item_lang item, string hiddenname)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +133,7 @@ namespace CMS_Project.Controllers
                 }
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
-                int CatID = item.Cat_ID;
+                int CatID = item.item.Cat_ID;
                 return RedirectToAction("Index", new { id = CatID });
             }
             return View(item);

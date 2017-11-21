@@ -26,9 +26,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int idLan = 0, int idCat = 0)
         {
-            Category category = db.Categories.Find(id);
+            //Category category = db.Categories.Find(id);
+            var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -50,11 +51,12 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Category_lang category)
         {
-
+            Category origin = new Category();
          if (ModelState.IsValid)
            {
+               origin.ID = (int)category.category_ID;
                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                {
                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
@@ -72,7 +74,9 @@ namespace CMS_Project.Controllers
                        category.ImageFile.SaveAs(fileName);
                    }
                }
-                    db.Categories.Add(category);
+                    db.Categories.Add(origin);
+                    db.SaveChanges();
+                    db.Category_lang.Add(category);
                     db.SaveChanges();
                     return RedirectToAction("Index");
             }
@@ -83,9 +87,9 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int idLan = 0,int idCat=0)
         {
-            Category category = db.Categories.Find(id);
+            var category = db.Category_lang.Where(x=>x.Lang_ID==idLan && x.category_ID==idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -98,7 +102,7 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(Category_lang category)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +138,7 @@ namespace CMS_Project.Controllers
             Category category = db.Categories.Find(id);
             if (category == null)
             {
-                return HttpNotFound();
+                return HttpNotFound(); 
             }
             return View(category);
         }

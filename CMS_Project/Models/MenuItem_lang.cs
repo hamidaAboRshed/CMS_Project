@@ -11,7 +11,7 @@ namespace CMS_Project.Models
         public MenuItem Menuitem { set; get; } 
         public int? Menuitem_ID { set; get; }
         public Language Lang {set; get;}
-        public int? Lang_ID { set; get; }
+        public int? Lang_ID { set; get; } 
        
     } 
 }
