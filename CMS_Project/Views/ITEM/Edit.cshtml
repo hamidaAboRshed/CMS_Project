@@ -1,7 +1,7 @@
 ﻿@model CMS_Project.Models.ITEM
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit ITEM";
 }
 
 @using (Html.BeginForm()) {
@@ -9,8 +9,7 @@
     @Html.ValidationSummary(false)
 
     <fieldset>
-        <legend>ITEM</legend>
-
+     
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">
