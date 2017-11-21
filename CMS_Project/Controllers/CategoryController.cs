@@ -102,6 +102,23 @@ namespace CMS_Project.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                    }
+                    else
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                        string extension = Path.GetExtension(category.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        category.Image = "~/Content/images/Cat/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
+                        category.ImageFile.SaveAs(fileName);
+                    }
+                }
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
