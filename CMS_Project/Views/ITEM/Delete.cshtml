@@ -4,7 +4,6 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 @{if (@ViewBag.error != null)
 {
     <h3 style="color :red;">@ViewBag.error</h3>
@@ -15,12 +14,9 @@ else
 }
 }
 
-
 <fieldset>
-    <!--<legend>ITEM</legend>-->
 
     <legend></legend>
-
 
     <div class="row">
         <div class="col-lg-12">
@@ -67,10 +63,10 @@ else
     </div>
     </div>
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.item.Cat_ID)
+        @Html.DisplayNameFor(model => model.Cat_ID)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.item.Cat_ID)
+        @Html.DisplayFor(model => model.Cat_ID)
     </div>
 
 

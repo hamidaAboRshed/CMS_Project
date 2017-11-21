@@ -1,7 +1,7 @@
 ﻿@model CMS_Project.Models.item_lang
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit ITEM";
 }
 
 @using (Html.BeginForm("Edit", "ITEM", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -10,7 +10,6 @@
     @Html.ValidationSummary(false)
 
     <fieldset>
-        <legend>ITEM</legend>
 
         @Html.HiddenFor(model => model.item_ID)
 
