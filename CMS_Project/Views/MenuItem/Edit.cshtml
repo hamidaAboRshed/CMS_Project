@@ -1,7 +1,7 @@
 ﻿@model CMS_Project.Models.MenuItem
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit MenuItem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +10,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>MenuItem</legend>
+        <!--<legend>MenuItem</legend>-->
 
         @Html.HiddenFor(model => model.ID)
 

@@ -20,15 +20,16 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Category_lang.ToList());
         }
 
         //
         // GET: /Category/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id=0)
         {
-            Category category = db.Categories.Find(id);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -42,6 +43,8 @@ namespace CMS_Project.Controllers
        //[HttpPost]
         public ActionResult Create()
         {
+            List<Language> langlist = db.Language.ToList();
+            ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             return View();
         }
 
@@ -50,11 +53,12 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Category_lang category)
         {
-
+            Category origin = new Category();
          if (ModelState.IsValid)
            {
+               //origin.ID = category.ID;
                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                {
                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
@@ -72,7 +76,10 @@ namespace CMS_Project.Controllers
                        category.ImageFile.SaveAs(fileName);
                    }
                }
-                    db.Categories.Add(category);
+                    db.Categories.Add(origin);
+                    db.SaveChanges();
+                     category.category_ID=origin.ID ;
+                    db.Category_lang.Add(category);
                     db.SaveChanges();
                     return RedirectToAction("Index");
             }
@@ -83,9 +90,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id=0)
         {
-            Category category = db.Categories.Find(id);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x=>x.Lang_ID==idLan && x.category_ID==idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -98,7 +106,7 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(Category_lang category)
         {
             if (ModelState.IsValid)
             {
@@ -129,12 +137,13 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id=0)
         {
-            Category category = db.Categories.Find(id);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
             if (category == null)
             {
-                return HttpNotFound();
+                return HttpNotFound(); 
             }
             return View(category);
         }
@@ -144,10 +153,11 @@ namespace CMS_Project.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id=0)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
+            //db.Category_lang.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

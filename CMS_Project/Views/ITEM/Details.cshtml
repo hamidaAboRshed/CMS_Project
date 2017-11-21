@@ -1,10 +1,10 @@
-﻿@model CMS_Project.Models.ITEM
+﻿@model CMS_Project.Models.item_lang
 
 @{
     ViewBag.Title = "Details";
 }
 
-<fieldset>
+@*<fieldset>
     <legend>ITEM</legend>
 
 
@@ -52,8 +52,8 @@
             </div>
         </div>
     </div>
-</fieldset>
+</fieldset>*@
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, CatId = ViewBag.CatId },null) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.item_ID, CatId = ViewBag.CatId },null) |
     @Html.ActionLink("Back to List", "Index", "ITEM", new { id = ViewBag.CatID }, null)
 </p>

@@ -25,7 +25,7 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id=0)
         {
             {
-                List<ITEM> item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
+                List<item_lang> item = db.item_langs.Where(x => x.item.Cat_ID == id).ToList();
                 ViewBag.CatId = id;
                 return View(item);
             }
@@ -35,7 +35,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Details(int id = 0,int CatId=0)
         {
-            ITEM item = db.ITEMs.Find(id);
+            var item = db.item_langs.Where(x => x.item_ID == id);
             ViewBag.CatID = CatId;
             if (item == null)
             {
@@ -58,11 +58,13 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(ITEM item,string hiddenname)
+        public ActionResult Create(item_lang item,string hiddenname)
         {
-
+            ITEM origin = new ITEM();
             if (ModelState.IsValid)
             {
+                origin.ID =(int) item.item_ID;
+                origin.Cat_ID = item.item.Cat_ID;
                 if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
                 {
                     FileInfo fi = new FileInfo(item.ImageFile.FileName);
@@ -80,9 +82,11 @@ namespace CMS_Project.Controllers
                         item.ImageFile.SaveAs(fileName);
                     }
                 }
-                db.ITEMs.Add(item);
+                db.ITEMs.Add(origin);
                 db.SaveChanges();
-                int CatID = item.Cat_ID;
+                db.item_langs.Add(item);
+                db.SaveChanges(); 
+                int CatID = item.item.Cat_ID;
                 return RedirectToAction("Index", "ITEM", new { id = CatID });
             }
 
@@ -95,7 +99,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Edit(int id = 0,int CatId =0)
         {
-            ITEM item = db.ITEMs.Find(id);
+            var item = db.item_langs.Where(x => x.item_ID == id);
             ViewBag.CatID = CatId;
             if (item == null)
             {
@@ -110,7 +114,7 @@ namespace CMS_Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit(ITEM item, string hiddenname)
+        public ActionResult Edit(item_lang item, string hiddenname)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +137,52 @@ namespace CMS_Project.Controllers
                 }
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
-                int CatID = item.Cat_ID;
+                int CatID = item.item.Cat_ID;
+                return RedirectToAction("Index", new { id = CatID });
+            }
+            return View(item);
+        }
+
+        //
+        // GET: /ITEM/Translate/5
+
+        public ActionResult Translate(int id = 0, int CatId = 0)
+        {
+            ViewBag.item_ID = id;
+            ViewBag.CatID = CatId;
+            return View();
+        }
+
+        //
+        // POST: /ITEM/Translate/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Translate(item_lang item, string hiddenname)
+        {
+            if (ModelState.IsValid)
+            {
+                if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(item.ImageFile.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                    }
+                    else
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(item.ImageFile.FileName);
+                        string extension = Path.GetExtension(item.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        item.Image = "~/Content/images/Item/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/images/Item/"), fileName);
+                        item.ImageFile.SaveAs(fileName);
+                    }
+                }
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+                int CatID = item.item.Cat_ID;
                 return RedirectToAction("Index", new { id = CatID });
             }
             return View(item);
@@ -144,7 +193,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Delete(int id = 0,int CatId=0)
         {
-            ITEM item = db.ITEMs.Find(id);
+            var item = db.item_langs.Where(x => x.item_ID == id); 
             ViewBag.CatID = CatId;
             ViewBag.flag=false;
             if (item == null)
@@ -161,6 +210,7 @@ namespace CMS_Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var item_lan = db.item_langs.Where(x => x.item_ID == id); 
             ITEM item = db.ITEMs.Find(id);
             MenuItem MItem = db.MenuItems.SingleOrDefault(x => x.ItemId == id);
             if (MItem != null)
@@ -173,6 +223,8 @@ namespace CMS_Project.Controllers
             else
             {  
                 int CatID = item.Cat_ID;
+                db.item_langs.Remove((item_lang)item_lan);
+                db.SaveChanges();
                 db.ITEMs.Remove(item);
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = CatID });

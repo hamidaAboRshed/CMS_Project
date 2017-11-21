@@ -4,19 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<!--<h2>Create Category</h2>-->
-@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <!--<legend>Category</legend>--> 
         <div>
             <b>Select Language</b>
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Lang_ID, ViewBag.langlist as SelectList, "Select Language", new { @style = "width: 175px;" })
+            @Html.DropDownListFor(model => model.Lang_ID, ViewBag.Lang_ID as SelectList, "Select Language", new { @style = "width: 175px;" })
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -29,16 +28,33 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.Image)
         </div>
-
         <div class="editor-field">
-            <input type="file" name="ImageFile" required />
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
         </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description, 5, 30, null)
+            @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Lang_ID, "Lang")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Lang_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.Lang_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.category_ID, "category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("category_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.category_ID)
         </div>
 
         <p>

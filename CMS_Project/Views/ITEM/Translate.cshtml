@@ -1,7 +1,7 @@
 ﻿@model CMS_Project.Models.item_lang
 
 @{
-    ViewBag.Title = "Edit ITEM";
+    ViewBag.Title = "Edit";
 }
 
 @using (Html.BeginForm("Edit", "ITEM", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -10,8 +10,8 @@
     @Html.ValidationSummary(false)
 
     <fieldset>
-
-        @Html.HiddenFor(model => model.item_ID)
+        <legend>ITEM</legend>
+        @Html.HiddenFor(model => model.item_ID, new { @Value = ViewBag.item_ID, name = "hiddenname" })
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -43,7 +43,7 @@
             @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-            @Html.HiddenFor(model => model.item.Cat_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
+        @Html.HiddenFor(model => model.item.Cat_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
         <p>
             <input type="submit" value="Save" />
         </p>

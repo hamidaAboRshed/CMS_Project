@@ -127,19 +127,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\Category_langController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711201730186_yy.cs" />
+    <Compile Include="Migrations\201711201730186_yy.Designer.cs">
+      <DependentUpon>201711201730186_yy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711202227025_xx.cs" />
+    <Compile Include="Migrations\201711202227025_xx.Designer.cs">
+      <DependentUpon>201711202227025_xx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
     <Compile Include="Models\ITEM.cs" />
+    <Compile Include="Models\item_lang.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemType.cs" />
+    <Compile Include="Models\MenuItem_lang.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1787,6 +1801,17 @@
     <Content Include="Views\Home\ViewItem.cshtml" />
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
+    <Content Include="Views\ITEM\Translate.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Language\Details.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\Delete.cshtml" />
+    <Content Include="Views\Category_lang\Index.cshtml" />
+    <Content Include="Views\Category_lang\Details.cshtml" />
+    <Content Include="Views\Category_lang\Create.cshtml" />
+    <Content Include="Views\Category_lang\Edit.cshtml" />
+    <Content Include="Views\Category_lang\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1795,6 +1820,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711201730186_yy.resx">
+      <DependentUpon>201711201730186_yy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711202227025_xx.resx">
+      <DependentUpon>201711202227025_xx.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
