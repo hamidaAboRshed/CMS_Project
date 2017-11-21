@@ -5,97 +5,85 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--<h2>Create</h2>-->
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-   @* <fieldset>
-        <!--<legend>MenuItem</legend>-->
+    <fieldset>
+        <div class="col-md-4">
+            
+            <div class="form-group">
+                <input class="form-control" placeholder="Name" name="name" type="text" autofocus>
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="Order" name="Order" type="text" autofocus>
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Type)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Order)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Order)
-            @Html.ValidationMessageFor(model => model.Order)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Type)
-        </div>
-
-        <div>
-            @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
+            <div>
+                @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
                     "Select Type",
                     new { @style = "width: 175px;" })
 
-        </div>
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Parent)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.Parent_Id, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Parent)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Parent_Id, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
+            </div>
 
-        <br />
-        <div>
-            <b>Select Cetegory</b>
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(model => model.CatId, ViewBag.categorylist as SelectList, "Select Category", new { @style = "width: 175px;" })
+            <br />
+            <div>
+                <b>Select Cetegory</b>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.CatId, ViewBag.categorylist as SelectList, "Select Category", new { @style = "width: 175px;" })
 
-        </div>
+            </div>
 
-
-
-        <div>
-            <b>Select Items</b>
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(model => model.ItemId, new SelectList(" "), "Select Item", new { @style = "width: 175px;" })
-        </div>
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#CatId").change(function () {
-                    $.get("/MenuItem/getItem", { categoryId: $("#CatId").val() }, function (data) {
-                        $("#ItemId").empty();
-                        $.each(data, function (index, row) {
-                            $("#ItemId").append("<option value='" + row.ID + "'>" + row.Title + "</option>")
+            <div>
+                <b>Select Items</b>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ItemId, new SelectList(" "), "Select Item", new { @style = "width: 175px;" })
+            </div>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#CatId").change(function () {
+                        $.get("/MenuItem/getItem", { categoryId: $("#CatId").val() }, function (data) {
+                            $("#ItemId").empty();
+                            $.each(data, function (index, row) {
+                                $("#ItemId").append("<option value='" + row.ID + "'>" + row.Title + "</option>")
+                            });
                         });
-                    });
-                })
-            });
-        </script> 
+                    })
+                });
+            </script>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Visible)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Visible)
-            @Html.ValidationMessageFor(model => model.Visible)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Visible)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Visible)
+                @Html.ValidationMessageFor(model => model.Visible)
+            </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>*@
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="create" />
+            </p>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+</fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

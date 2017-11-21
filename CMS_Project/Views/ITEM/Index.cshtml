@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CMS_Project.Models.ITEM>
+﻿@model IEnumerable<CMS_Project.Models.item_lang>
 
 @{
     ViewBag.Title = "Index";
@@ -9,7 +9,7 @@
     @Html.ActionLink("Create New", "Create", "ITEM", new { id = ViewBag.CatId }, null)
 </p>
 
-@*<div class="row">
+<div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -35,11 +35,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
                         @foreach (var item in Model)
                         {
                             <tr class="odd gradeX">
@@ -56,11 +52,16 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID, CatId = ViewBag.CatId }, null) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ID, CatId = ViewBag.CatId }, null) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID, CatId = ViewBag.CatId }, null)
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.item_ID, CatId = ViewBag.CatId }, null)|
+                                    @Html.ActionLink("Translate", "Translate", new { id = item.item_ID, CatId = ViewBag.CatId }, null)
                                 </td>
                             </tr>
                         }
-</table>*@
-
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

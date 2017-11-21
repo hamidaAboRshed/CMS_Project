@@ -1,17 +1,15 @@
 ﻿@model CMS_Project.Models.User
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit User";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>User</legend>
+        <!--<legend>User</legend>-->
 
         @Html.HiddenFor(model => model.ID)
 
