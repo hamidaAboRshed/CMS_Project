@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CMS_Project.Models;
+using System.IO;
 
 namespace CMS_Project.Controllers
 {
@@ -38,8 +39,9 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category_lang/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.CatID = id;
             ViewBag.Lang_ID = new SelectList(db.Language, "ID", "Name");
             return View();
         }
@@ -49,16 +51,34 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category_lang category_lang)
+        public ActionResult Create(Category_lang category,string hiddenname)
         {
             if (ModelState.IsValid)
             {
-                db.Category_lang.Add(category_lang);
+                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                    }
+                    else
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                        string extension = Path.GetExtension(category.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        category.Image = "~/Content/images/Cat/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
+                        category.ImageFile.SaveAs(fileName);
+                    }
+                }
+                //category.category_ID
+                db.Category_lang.Add(category);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Category");
             }
 
-            return View(category_lang);
+            return View(category);
         }
 
         //

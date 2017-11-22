@@ -27,6 +27,12 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.category.Parent_Id)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.temp, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
+        </div>
+        <div class="editor-label">
             @Html.LabelFor(model => model.Image)
         </div>
 

@@ -20,7 +20,16 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Category_lang.ToList());
+            
+            //var tuple = new Tuple<Category, Category_lang>(new Category(), new Category_lang());
+            //return View(tuple);
+            //return View(db.Category_lang.ToList());
+            var Category = db.Categories.ToList();
+            var Category_lang = db.Category_lang.ToList();
+            var allModels = new Tuple<List<Category>,
+              List<Category_lang>>
+              (Category, Category_lang) { };
+            return View(allModels);
         }
 
         //
@@ -43,6 +52,9 @@ namespace CMS_Project.Controllers
        //[HttpPost]
         public ActionResult Create()
         {
+            var men = db.Category_lang.ToList();
+            ViewBag.parentlist = new SelectList(men, "category_ID", "Name");
+
             List<Language> langlist = db.Language.ToList();
             ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             return View();
@@ -76,6 +88,7 @@ namespace CMS_Project.Controllers
                        category.ImageFile.SaveAs(fileName);
                    }
                }
+                   origin.Parent_Id = category.temp;
                     db.Categories.Add(origin);
                     db.SaveChanges();
                      category.category_ID=origin.ID ;
