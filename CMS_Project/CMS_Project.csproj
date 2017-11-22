@@ -654,6 +654,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\WebSite\assets\corporate\css\custom.css" />
+    <Content Include="Content\WebSite\assets\corporate\css\Style-ar.css" />
+    <Content Include="Content\WebSite\assets\corporate\css\style-responsive-ar.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style-responsive.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style.css" />
     <Content Include="Content\WebSite\assets\corporate\css\themes\blue.css" />
@@ -710,9 +712,12 @@
     <Content Include="Content\WebSite\assets\corporate\scripts\back-to-top.js" />
     <Content Include="Content\WebSite\assets\corporate\scripts\layout.js" />
     <Content Include="Content\WebSite\assets\pages\css\animate.css" />
+    <Content Include="Content\WebSite\assets\pages\css\component-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\components.css" />
     <Content Include="Content\WebSite\assets\pages\css\gallery.css" />
+    <Content Include="Content\WebSite\assets\pages\css\portfolio-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\portfolio.css" />
+    <Content Include="Content\WebSite\assets\pages\css\slider-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\slider.css" />
     <Content Include="Content\WebSite\assets\pages\css\style-shop.css" />
     <Content Include="Content\WebSite\assets\pages\img\brands\canon.jpg" />
@@ -904,6 +909,7 @@
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.js" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.min.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.min.js" />
+    <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap.css" />
@@ -940,6 +946,7 @@
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-media.js" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.facbox-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.js" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.pack.js" />
@@ -960,6 +967,7 @@
     <Content Include="Content\WebSite\assets\plugins\jquery.parallax.js" />
     <Content Include="Content\WebSite\assets\plugins\jquery.scrollTo.min.js" />
     <Content Include="Content\WebSite\assets\plugins\moment.min.js" />
+    <Content Include="Content\WebSite\assets\plugins\owl.carousel\assets\owl.carousel-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\assets\owl.carousel.css" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\owl.carousel.js" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\owl.carousel.min.js" />

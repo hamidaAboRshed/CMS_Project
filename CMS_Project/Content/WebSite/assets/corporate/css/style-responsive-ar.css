@@ -1,0 +1,70 @@
+﻿@media (max-width:1200px) {
+    .content-form-page .control-label{padding-right:30px;}
+    .content-form-page .col-md-offset-4{margin-right:15px;}
+    .content-form-page .pull-right{float:right !important;}
+}
+@media (min-width:1025px) and (max-width:1205px) {
+    .header .header-navigation{float:right !important;}
+    .header .header-navigation > ul > li{margin-left:27px;}
+    .header-navigation > ul > li.dropdown:hover > a:after{margin-right:10px;}
+    .dropdown-fix-right .dropdown-menu{right:0;left:auto;}
+    .header .header-navigation li.menu-search{margin-right:-20px;}
+    .header .header-navigation li.menu-search span.sep{margin-left:26px;}
+}
+@media (max-width:1024px) {
+    .header-navigation > ul > li > a > i.fa-angle-down{float:left;}
+    .header-navigation .dropdown-menu li{margin-right:20px;}
+    .dropdown-megamenu .header-navigation-content{margin-right:-20px;}
+    .dropdown-megamenu .header-navigation-content h4{margin:0 10px 0 -10px;}
+    .header-navigation-content-ext .col-md-6{margin-right:10px;}
+    .header-navigation-content-ext .col-md-6 h4{margin-right:0;padding-right:0;}
+    .header .nav-brands li{margin-right:0;}
+    .nav-catalogue .dropdown-menu > li{margin-right:0;}
+    .header-navigation .search-box{left:auto;right:0;}
+    .header-navigation .search-box:after{left:auto;right:0;}
+}
+@media (max-width:992px) {
+    .shop-index-carousel{margin-right:0;margin-left:10px;}
+    .brands .container{padding-left:25px;}
+    .new-arrivals___removed{margin-right:15px;padding-right:0;}
+    .steps-block-col{margin:0 15px 20px 25px;}
+    .steps-block-col:last-child{margin-left:25px;}
+    .steps-block .steps-block-col div{margin-right:0;margin-left:0;}
+    .sidebar-products h3,.sidebar-products .price{margin-right:0;}
+    .recent-work .owl-carousel{margin-right:-10px;}
+    .our-clients .owl-carousel{margin-right:-2px;}
+    .recent-work .owl-buttons,.our-clients .owl-buttons{right:-3px;}
+    .our-clients .owl-buttons{right:-10px;}
+}
+@media (max-width:767px) {
+    .pre-header .pull-right{float:right !important;}
+    .pre-header .pull-right li:first-child{padding-right:0;}
+    .footer .list-inline > li{padding-right:0;margin-left:5px;}
+    .form-info{border-right:none;padding-right:0;}
+    .sidebar-products .item{float:right;}
+    .list-view-sorting{margin-right:0;margin-left:0;}
+    .list-view-sorting .col-md-10{padding-left:0;}
+    .pagination{float:right !important;}
+    .pagination > li{margin-right:0;margin-left:5px;}
+    .front-steps-wrapper{margin-right:-10px;margin-left:-10px;}
+    .front-steps-wrapper .front-step-col{padding-right:15px;padding-left:15px;}
+}
+@media (max-width:480px) {
+    .pre-header .col-md-6{float:right;}
+    .pre-header .additional-nav{float:left;text-align:left;}
+    .top-cart-block{float:right;}
+    .top-cart-content-wrapper{right:0;left:auto;}
+    .top-cart-content:after{right:15px;}
+    .shopping-cart-page .btn-default{float:left;}
+    .checkout-page .btn-default{margin-left:0 !important;}
+    .list-view-sorting .pull-right{float:right !important;margin:0 0 10px 30px;}
+}
+@media (max-width:390px) {
+    .steps-block .fa-truck, .steps-block .fa-gift, .steps-block .fa-phone{float:right;margin-left:11px;}
+    .mix-block .tab-content .col-md-3{padding-left:15px;}
+}
+@media (max-width:320px) {
+    .site-logo{margin-left:0;}
+    .price-availability-block .availability{clear:right;float:right;}
+}
+

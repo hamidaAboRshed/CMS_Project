@@ -1,0 +1,5 @@
+﻿
+.owl-carousel .owl-item{float:right;}
+.owl-carousel.owl-rtl{direction:ltr;}
+.owl-carousel.owl-rtl .owl-item{float:left;}
+.owl-carousel .owl-video-play-icon{right:50%;margin-right:-40px;}
