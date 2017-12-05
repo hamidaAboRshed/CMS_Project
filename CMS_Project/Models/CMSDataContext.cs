@@ -22,6 +22,12 @@ namespace CMS_Project.Models
         public DbSet<item_lang> item_lang { get; set; }
         public DbSet<Category_lang> Category_lang { get; set; }
         public DbSet<MenuItem_lang> MenuItem_lang { get; set; }
+        public DbSet<Field> Field { get; set; }
+        public DbSet<Custom_Cat> Custom_Cat { get; set; }
+        public DbSet<Custom_Item> Custom_Item { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Permession> Permession { get; set; }
+        public DbSet<Role_Per> Role_Per { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ITEM>()
@@ -84,6 +90,46 @@ namespace CMS_Project.Models
             HasOptional(e => e.Parent).
             WithMany().
             HasForeignKey(m => m.Parent_Id);
+
+            /////////////////
+            modelBuilder.Entity<Field>().
+            HasOptional(e => e.ItemLang).
+            WithMany().
+            HasForeignKey(m => m.ItemId);
+
+            modelBuilder.Entity<Custom_Cat>().
+            HasOptional(e => e.CategoryLang).
+            WithMany().
+            HasForeignKey(m => m.Cat_ID);
+
+            modelBuilder.Entity<Custom_Cat>().
+            HasOptional(e => e.Field).
+            WithMany().
+            HasForeignKey(m => m.Field_ID);
+
+            modelBuilder.Entity<Custom_Item>().
+            HasOptional(e => e.ItemLang).
+            WithMany().
+            HasForeignKey(m => m.ItemID);
+
+            modelBuilder.Entity<Role_Per>().
+            HasOptional(e => e.Role).
+            WithMany().
+            HasForeignKey(m => m.Role_ID);
+
+            modelBuilder.Entity<Role_Per>().
+            HasOptional(e => e.Permession).
+            WithMany().
+            HasForeignKey(m => m.Per_ID);
+
+            modelBuilder.Entity<User>().
+            HasOptional(e => e.Role).
+            WithMany().
+            HasForeignKey(m => m.Role_ID);
+
+
+
+
         }
     }
 }

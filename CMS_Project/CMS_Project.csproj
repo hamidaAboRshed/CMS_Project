@@ -148,12 +148,18 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
+    <Compile Include="Models\Custom_Cat.cs" />
+    <Compile Include="Models\Custom_Item.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\item_lang.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemType.cs" />
     <Compile Include="Models\MenuItem_lang.cs" />
+    <Compile Include="Models\Permession.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Role_Per.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
