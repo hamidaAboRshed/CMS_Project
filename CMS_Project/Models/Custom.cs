@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CMS_Project.Models
 {
-    public class Custom_Cat
+    public class Custom
     {
         public int ID { set; get; }
         public string Cust_Name { set; get; }

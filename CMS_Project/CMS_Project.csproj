@@ -144,12 +144,15 @@
     <Compile Include="Migrations\201711202227025_xx.Designer.cs">
       <DependentUpon>201711202227025_xx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712061146433_qq.cs" />
+    <Compile Include="Migrations\201712061146433_qq.Designer.cs">
+      <DependentUpon>201712061146433_qq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
-    <Compile Include="Models\Custom_Cat.cs" />
-    <Compile Include="Models\Custom_Item.cs" />
+    <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\item_lang.cs" />
@@ -1833,6 +1836,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711202227025_xx.resx">
       <DependentUpon>201711202227025_xx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061146433_qq.resx">
+      <DependentUpon>201712061146433_qq.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
