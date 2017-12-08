@@ -20,7 +20,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Category_lang.ToList());
         }
 
         //

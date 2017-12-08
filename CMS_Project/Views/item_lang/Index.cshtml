@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CMS_Project.Models.item_lang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "item_lang", new { id = ViewBag.CatId }, null)
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lang.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item.ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lang.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.item.ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+            @Html.ActionLink("Details", "Details", new { id = item.item_ID, CatId = ViewBag.CatId }, null) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.item_ID, CatId = ViewBag.CatId }, null)|
+            @Html.ActionLink("Translate", "Translate", new { id = item.item_ID, CatId = ViewBag.CatId }, null)
+        </td>
+    </tr>
+}
+
+</table>

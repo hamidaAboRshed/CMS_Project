@@ -10,6 +10,7 @@ namespace CMS_Project.Models
 {
     public class item_lang 
     {
+        public int ID { set; get; }
         public String Title { set; get; }
         [DataType(DataType.Html)]
         public string Content { set; get; }

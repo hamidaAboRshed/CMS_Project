@@ -129,6 +129,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
+    <Compile Include="Controllers\item_langController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1792,6 +1793,11 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
+    <Content Include="Views\item_lang\Index.cshtml" />
+    <Content Include="Views\item_lang\Details.cshtml" />
+    <Content Include="Views\item_lang\Create.cshtml" />
+    <Content Include="Views\item_lang\Edit.cshtml" />
+    <Content Include="Views\item_lang\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
