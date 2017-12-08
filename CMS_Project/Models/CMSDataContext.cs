@@ -22,6 +22,11 @@ namespace CMS_Project.Models
         public DbSet<item_lang> item_lang { get; set; }
         public DbSet<Category_lang> Category_lang { get; set; }
         public DbSet<MenuItem_lang> MenuItem_lang { get; set; }
+        public DbSet<Field> Field { get; set; }
+        public DbSet<Custom> Custom_Cat { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Permession> Permession { get; set; }
+        public DbSet<Role_Per> Role_Per { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ITEM>()
@@ -30,7 +35,10 @@ namespace CMS_Project.Models
             .HasForeignKey<int>(s => s.Cat_ID); 
            // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
          
-            ///////////////////////
+            ////////////////////////
+
+           // modelBuilder.Entity<Category_lang>()
+          //.HasKey(bc => new { bc.category_ID, bc.Lang_ID });
 
             modelBuilder.Entity<Category_lang>()
                 .HasRequired<Category>(bc => bc.category)
@@ -44,6 +52,9 @@ namespace CMS_Project.Models
 
             //////////////////////
 
+            //modelBuilder.Entity<item_lang>()
+        //.HasKey(bc => new { bc.item_ID, bc.Lang_ID });
+
             modelBuilder.Entity<item_lang>()
                 .HasRequired<ITEM>(bc => bc.item)
                 .WithMany()
@@ -55,6 +66,9 @@ namespace CMS_Project.Models
                 .HasForeignKey(bc => bc.Lang_ID);
 
             //////////////////////
+
+            //modelBuilder.Entity<MenuItem_lang>()
+        //.HasKey(bc => new { bc.Menuitem_ID, bc.Lang_ID });
 
             modelBuilder.Entity<MenuItem_lang>()
                 .HasRequired<MenuItem>(bc => bc.Menuitem)
@@ -75,6 +89,42 @@ namespace CMS_Project.Models
             HasOptional(e => e.Parent).
             WithMany().
             HasForeignKey(m => m.Parent_Id);
+
+            /////////////////
+            modelBuilder.Entity<Field>().
+            HasOptional(e => e.ItemLang).
+            WithMany().
+            HasForeignKey(m => m.ItemId);
+
+            modelBuilder.Entity<Custom>().
+            HasOptional(e => e.CategoryLang).
+            WithMany().
+            HasForeignKey(m => m.Cat_ID);
+
+            modelBuilder.Entity<Custom>().
+            HasOptional(e => e.Field).
+            WithMany().
+            HasForeignKey(m => m.Field_ID);
+
+
+            modelBuilder.Entity<Role_Per>().
+            HasOptional(e => e.Role).
+            WithMany().
+            HasForeignKey(m => m.Role_ID);
+
+            modelBuilder.Entity<Role_Per>().
+            HasOptional(e => e.Permession).
+            WithMany().
+            HasForeignKey(m => m.Per_ID);
+
+            modelBuilder.Entity<User>().
+            HasOptional(e => e.Role).
+            WithMany().
+            HasForeignKey(m => m.Role_ID);
+
+
+
+
         }
     }
 }

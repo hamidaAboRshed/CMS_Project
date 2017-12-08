@@ -25,7 +25,7 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id=0)
         {
             {
-                List<item_lang> item = db.item_lang.Where(x=>x.item.Cat_ID==id).ToList();
+                List<item_lang> item = db.item_langs.Where(x => x.item.Cat_ID == id).ToList();
                 ViewBag.CatId = id;
                 return View(item);
             }
@@ -194,7 +194,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Delete(int id = 0,int CatId=0)
         {
-            item_lang item = db.item_lang.Find(id); 
+            var item = db.item_langs.Where(x => x.item_ID == id); 
             ViewBag.CatID = CatId;
             ViewBag.flag=false;
             if (item == null)

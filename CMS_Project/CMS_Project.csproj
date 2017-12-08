@@ -127,8 +127,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\Category_langController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\item_langController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -143,16 +145,25 @@
     <Compile Include="Migrations\201711202227025_xx.Designer.cs">
       <DependentUpon>201711202227025_xx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712061146433_qq.cs" />
+    <Compile Include="Migrations\201712061146433_qq.Designer.cs">
+      <DependentUpon>201712061146433_qq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
+    <Compile Include="Models\Custom.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\item_lang.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemType.cs" />
     <Compile Include="Models\MenuItem_lang.cs" />
+    <Compile Include="Models\Permession.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Role_Per.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -653,6 +664,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\WebSite\assets\corporate\css\custom.css" />
+    <Content Include="Content\WebSite\assets\corporate\css\Style-ar.css" />
+    <Content Include="Content\WebSite\assets\corporate\css\style-responsive-ar.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style-responsive.css" />
     <Content Include="Content\WebSite\assets\corporate\css\style.css" />
     <Content Include="Content\WebSite\assets\corporate\css\themes\blue.css" />
@@ -709,9 +722,12 @@
     <Content Include="Content\WebSite\assets\corporate\scripts\back-to-top.js" />
     <Content Include="Content\WebSite\assets\corporate\scripts\layout.js" />
     <Content Include="Content\WebSite\assets\pages\css\animate.css" />
+    <Content Include="Content\WebSite\assets\pages\css\component-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\components.css" />
     <Content Include="Content\WebSite\assets\pages\css\gallery.css" />
+    <Content Include="Content\WebSite\assets\pages\css\portfolio-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\portfolio.css" />
+    <Content Include="Content\WebSite\assets\pages\css\slider-ar.css" />
     <Content Include="Content\WebSite\assets\pages\css\slider.css" />
     <Content Include="Content\WebSite\assets\pages\css\style-shop.css" />
     <Content Include="Content\WebSite\assets\pages\img\brands\canon.jpg" />
@@ -903,6 +919,7 @@
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.js" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.min.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap-touchspin\bootstrap.touchspin.min.js" />
+    <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\WebSite\assets\plugins\bootstrap\css\bootstrap.css" />
@@ -939,6 +956,7 @@
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-media.js" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.facbox-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.css" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.js" />
     <Content Include="Content\WebSite\assets\plugins\fancybox\source\jquery.fancybox.pack.js" />
@@ -959,6 +977,7 @@
     <Content Include="Content\WebSite\assets\plugins\jquery.parallax.js" />
     <Content Include="Content\WebSite\assets\plugins\jquery.scrollTo.min.js" />
     <Content Include="Content\WebSite\assets\plugins\moment.min.js" />
+    <Content Include="Content\WebSite\assets\plugins\owl.carousel\assets\owl.carousel-ar.css" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\assets\owl.carousel.css" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\owl.carousel.js" />
     <Content Include="Content\WebSite\assets\plugins\owl.carousel\owl.carousel.min.js" />
@@ -1793,11 +1812,6 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
-    <Content Include="Views\item_lang\Index.cshtml" />
-    <Content Include="Views\item_lang\Details.cshtml" />
-    <Content Include="Views\item_lang\Create.cshtml" />
-    <Content Include="Views\item_lang\Edit.cshtml" />
-    <Content Include="Views\item_lang\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1813,6 +1827,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711202227025_xx.resx">
       <DependentUpon>201711202227025_xx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061146433_qq.resx">
+      <DependentUpon>201712061146433_qq.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

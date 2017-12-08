@@ -5,15 +5,12 @@ using System.Web;
 
 namespace CMS_Project.Models
 {
-    public class User
+    public class Role_Per
     {
         public int ID { set; get; }
-        public string username { set; get; }
-        public string password { set; get; }
-        public string fullname { set; get; }
-        public string email { set; get; }
-        public bool active { set; get; }
         public Role Role { set; get; }
         public int? Role_ID { set; get; }
+        public Permession Permession { set; get; }
+        public int? Per_ID { set; get; }
     }
 }

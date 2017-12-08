@@ -20,16 +20,25 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Category_lang.ToList());
+            
+            //var tuple = new Tuple<Category, Category_lang>(new Category(), new Category_lang());
+            //return View(tuple);
+            //return View(db.Category_lang.ToList());
+            var Category = db.Categories.ToList();
+            var Category_lang = db.Category_lang.ToList();
+            var allModels = new Tuple<List<Category>,
+              List<Category_lang>>
+              (Category, Category_lang) { };
+            return View(allModels);
         }
 
         //
         // GET: /Category/Details/5
 
-        public ActionResult Details(int idLan = 0, int idCat = 0)
+        public ActionResult Details(int id=0)
         {
-            //Category category = db.Categories.Find(id);
-            var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -43,6 +52,11 @@ namespace CMS_Project.Controllers
        //[HttpPost]
         public ActionResult Create()
         {
+            var men = db.Category_lang.ToList();
+            ViewBag.parentlist = new SelectList(men, "category_ID", "Name");
+
+            List<Language> langlist = db.Language.ToList();
+            ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             return View();
         }
 
@@ -56,7 +70,7 @@ namespace CMS_Project.Controllers
             Category origin = new Category();
          if (ModelState.IsValid)
            {
-               origin.ID = (int)category.category_ID;
+               //origin.ID = category.ID;
                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                {
                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
@@ -74,8 +88,10 @@ namespace CMS_Project.Controllers
                        category.ImageFile.SaveAs(fileName);
                    }
                }
+                   origin.Parent_Id = category.temp;
                     db.Categories.Add(origin);
                     db.SaveChanges();
+                     category.category_ID=origin.ID ;
                     db.Category_lang.Add(category);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -87,9 +103,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Edit/5
 
-        public ActionResult Edit(int idLan = 0,int idCat=0)
+        public ActionResult Edit(int id=0)
         {
-            var category = db.Category_lang.Where(x=>x.Lang_ID==idLan && x.category_ID==idCat);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x=>x.Lang_ID==idLan && x.category_ID==idCat);
             if (category == null)
             {
                 return HttpNotFound();
@@ -133,9 +150,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id=0)
         {
-            Category category = db.Categories.Find(id);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
             if (category == null)
             {
                 return HttpNotFound(); 
@@ -148,10 +166,11 @@ namespace CMS_Project.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id=0)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Category_lang category = db.Category_lang.Find(id);
+            //var category = db.Category_lang.Where(x => x.Lang_ID == idLan && x.category_ID == idCat);
+            //db.Category_lang.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
