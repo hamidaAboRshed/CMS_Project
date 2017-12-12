@@ -158,7 +158,7 @@ namespace CMS_Project.Controllers
         public void logout()
         {
             FormsAuthentication.SignOut();
-            Response.Redirect("~");
+            Response.Redirect("login");
         }
     }
 }

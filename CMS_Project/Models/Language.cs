@@ -9,5 +9,6 @@ namespace CMS_Project.Models
     { 
         public int ID { set; get; }
         public string Name { set; get; }
+        public bool Default { set; get; }
     }
 }  

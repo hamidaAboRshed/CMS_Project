@@ -1,69 +1,84 @@
-﻿@model CMS_Project.Models.item_lang
-
-@{
-    ViewBag.Title = "Create";
+﻿@{
+    ViewBag.Title = "Create Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<fieldset>
+    <div class="col-md-4">
 
 
-@using (Html.BeginForm("Create", "ITEM", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+        <div class="editor-field">
+            @Html.DropDownList("Lang_ID", ViewBag.langlist as SelectList, "Select Language", new { @class = "form-control" })
+        </div>
 
-    <fieldset>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel-body">
-                        <form role="form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Title" name="Title" type="text" autofocus>
+        <br />
+
+        <div class="form-group">
+            <input class="form-control" placeholder="Title" id="Title" type="text" autofocus>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
+            @Html.TextArea("Content", new { @class = "ckeditor" })
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Content)
+        <br />
+        <div class="form-group">
+            <input class="form-control" placeholder="Image" id="Image" type="text" autofocus>
         </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
-            @Html.ValidationMessageFor(model => model.Content)
+        <div class="form-group">
+            <input class="form-control" placeholder="Description" id="Description" type="text" autofocus>
         </div>
+        @Html.Hidden("Cat_ID", new { @Value = ViewBag.CatID, name = "hiddenname" })
 
-                                <div class="form-group">
-                                    <input class="form-control" name="ImageFile" type="file" value="" required>
-                                </div>
+        <br />
 
-                                <!--<div class="editor-label">
-            @Html.LabelFor(model => model.Image)
-        </div>
-        <div class="editor-field">
-            <input type="file" name="ImageFile" required />
-                                </div>-->
-        <div class="editor-field">
-                                    <textarea placeholder="Description" name="description" style="width:330px; height:150px"></textarea>
-        </div>
-            @Html.HiddenFor(model => model.item.Cat_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
         <p>
-                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="create" />
+            <input onclick="submit()" class="btn btn-lg btn-success btn-block" id="submit" type="submit" value="Create" />
         </p>
-                                <div>
-                                    @Html.ActionLink("Back to List", "Index", "ITEM", new { id = ViewBag.CatID }, null)
-                                </div>
-    </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
 
-</div>
-    </fieldset>
-}
+</fieldset>
+
+
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        function submit() {
+
+            var LanItems = [];
+            LanItems.push({
+                Lang_ID: $('#Lang_ID').val().trim(),
+                Title: $('#Title').val().trim(),
+                Content: CKEDITOR.instances['Content'].getData(),
+                Image: $('#Image').val().trim(),
+                Description: $('#Description').val().trim()
+                //Image:files[0]
+            });
+            var data = {
+                Cat_ID: $('#Cat_ID').val().trim(),
+                ItemLanguageList: LanItems
+            }
+            $.ajax({
+                url: '/ITEM/CreatePost',
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    //check is successfully save to database
+                    if (d.status == true) {
+                        //will send status from server side
+                        alert('Successfully done.');
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                }
+            });
+        }
+    </script>
 }

@@ -57,7 +57,7 @@ namespace CMS_Project.Models
 
             modelBuilder.Entity<item_lang>()
                 .HasRequired<ITEM>(bc => bc.item)
-                .WithMany()
+                .WithMany(g => g.ItemLanguageList)
                 .HasForeignKey(bc => bc.item_ID);
 
             modelBuilder.Entity<item_lang>()

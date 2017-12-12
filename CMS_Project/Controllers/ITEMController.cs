@@ -25,7 +25,7 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id=0)
         {
             {
-                List<item_lang> item = db.item_langs.Where(x => x.item.Cat_ID == id).ToList();
+                List<item_lang> item = db.item_lang.Where(x => x.item.Cat_ID == id).ToList();
                 ViewBag.CatId = id;
                 return View(item);
             }
@@ -50,6 +50,8 @@ namespace CMS_Project.Controllers
         public ActionResult Create(int id=0)
         {
             ViewBag.CatID = id;
+            List<Language> langlist = db.Language.ToList();
+            ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             return View();
         }
 
@@ -58,16 +60,22 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(item_lang item,string hiddenname)
+        public JsonResult CreatePost(ITEM item,string hiddenname)
         {
-            ITEM origin = new ITEM();
+            bool status = false;
+
             if (ModelState.IsValid)
             {
-                origin.Cat_ID = item.item.Cat_ID;
-                db.ITEMs.Add(origin);
-                db.SaveChanges();
+                ITEM it=new ITEM
+                {
+                    Cat_ID=item.Cat_ID
+                };
 
-                if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
+                foreach(var i in item.ItemLanguageList)
+                {
+                    it.ItemLanguageList.Add(i);
+                }
+               /* if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
                 {
                     FileInfo fi = new FileInfo(item.ImageFile.FileName);
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG" )
@@ -83,15 +91,18 @@ namespace CMS_Project.Controllers
                         fileName = Path.Combine(Server.MapPath("~/Content/images/Item/"), fileName);
                         item.ImageFile.SaveAs(fileName);
                     }
-                }
+                }*/
                 
-                db.item_lang.Add(item);
+                db.ITEMs.Add(it);
                 db.SaveChanges(); 
-                int CatID = item.item.Cat_ID;
-                return RedirectToAction("Index", "ITEM", new { id = CatID });
+                //return RedirectToAction("Index", "ITEM", new { id = CatID });
+                status = true;
             }
-
-            return View(item);
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
         }
 
 
@@ -194,7 +205,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult Delete(int id = 0,int CatId=0)
         {
-            var item = db.item_langs.Where(x => x.item_ID == id); 
+            var item = db.item_lang.Where(x => x.item_ID == id); 
             ViewBag.CatID = CatId;
             ViewBag.flag=false;
             if (item == null)
