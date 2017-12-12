@@ -40,6 +40,8 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create()
         {
+            List<Role> Rolelist = db.Role.ToList();
+            ViewBag.Rolelist = new SelectList(Rolelist, "ID", "Name");
             return View();
         }
 
@@ -66,6 +68,8 @@ namespace CMS_Project.Controllers
         public ActionResult Edit(int id = 0)
         {
             User user = db.Users.Find(id);
+            List<Role> Rolelist = db.Role.ToList();
+            ViewBag.Rolelist = new SelectList(Rolelist, "ID", "Name");
             if (user == null)
             {
                 return HttpNotFound();

@@ -46,6 +46,13 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Role)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Role_ID, ViewBag.Rolelist as SelectList, "Select Role", new { @style = "width: 175px;" })
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.active)
         </div>
         <div class="editor-field">
