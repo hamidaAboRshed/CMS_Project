@@ -70,10 +70,15 @@ namespace CMS_Project.Models
             //modelBuilder.Entity<MenuItem_lang>()
         //.HasKey(bc => new { bc.Menuitem_ID, bc.Lang_ID });
 
+            //modelBuilder.Entity<MenuItem_lang>()
+              //  .HasRequired<MenuItem>(bc => bc.Menuitem)
+              //  .WithMany()
+              //  .HasForeignKey(bc => bc.Menuitem_ID);
+
             modelBuilder.Entity<MenuItem_lang>()
-                .HasRequired<MenuItem>(bc => bc.Menuitem)
-                .WithMany()
-                .HasForeignKey(bc => bc.Menuitem_ID);
+            .HasRequired<MenuItem>(s => s.Menuitem)
+            .WithMany(g => g.MenuItemLanguageList)
+            .HasForeignKey<int>(s => s.Menuitem_ID); 
 
             modelBuilder.Entity<MenuItem_lang>()
                 .HasRequired<Language>(bc => bc.Lang)

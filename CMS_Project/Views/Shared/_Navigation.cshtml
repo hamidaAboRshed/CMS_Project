@@ -1,7 +1,9 @@
 ﻿@using CMS_Project.Models;
 @{
+    var db2 = new CMSDataContext();
     var db = new CMSDataContext();
-    var Items = db.MenuItems.ToArray();
+    var Items = db.MenuItems.Where(x=>x.Visible==true).OrderBy(x=>x.Order).ToList();
+    var LangItem=db2.MenuItem_lang.Where(x=>x.Lang_ID==1).ToList();
     //IList<MenuItem> Items=new List<MenuItem>();
     //if (db.MenuItems > 0 ) {
     //    Items = db.MenuItems.ToArray();
@@ -11,7 +13,6 @@
 <script type="text/javascript">
     
     function AddToList(itmName, itmID,PerentID,isSubMenu,Type,linkedItm) {
-        debugger;
         var ParentItm = document.getElementById("Parent_" + PerentID);
         
         if (!ParentItm) {
@@ -25,7 +26,6 @@
             div.innerHTML += '<ul class="dropdown-menu" id="Parent_' + PerentID + '"></ul>';
             ParentItm = document.getElementById("Parent_" + PerentID);
         }
-        debugger;
         var link='@Url.Action("-1", "Home", new { id = -2 })';
         link=link.replace("-1",Type);
         link=link.replace("-2",linkedItm);
@@ -40,27 +40,35 @@
             for (int i = 0; i < Items.Count(); i++)
             {
                 int linkedItem = Items[i].CatId;
+                var miLang = LangItem.SingleOrDefault(x=>x.Menuitem_ID==Items[i].ID);
+                    //Items.SingleOrDefault(x => x.MenuItemLanguageList == 123);
+                    //db.QuerySingle("SELECT * FROM PRODUCT WHERE Menuitem_ID = @0", Items[i].ID);
+                    //db2.MenuItem_lang.Where(x => x.Menuitem_ID==Items[i].ID).SingleOrDefault();
+                
                 if (@Items[i].Type == @MenuItemType.ItemPerPage)
                 {
                     linkedItem = Convert.ToInt32(Items[i].ItemId);
                 }
-                if (Items[i].Parent == null)
-                {
-                    <li class="" id="itm_@Items[i].ID">
-                        <a class="dropdown-toggle" href="@Url.Action(Items[i].Type.ToString(), "Home", new { id = linkedItem })">
-                            @Items[i].Name
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    int sub=0;
-                    if (Items[i].Parent.Parent != null)
+                if (@miLang != null)
+                { 
+                    if (Items[i].Parent == null)
                     {
-                        sub = 1;
+                        <li class="" id="itm_@Items[i].ID">
+                            <a class="dropdown-toggle" href="@Url.Action(Items[i].Type.ToString(), "Home", new { id = linkedItem })">
+                                @miLang.Name
+                            </a>
+                        </li>
                     }
-                    <script type="text/javascript">AddToList("@Items[i].Name",@Items[i].ID,@Items[i].Parent.ID,@sub,"@Items[i].Type",@linkedItem);</script>
+                    else
+                    {
+                        int sub=0;
+                        if (Items[i].Parent.Parent != null)
+                        {
+                            sub = 1;
+                        }
+                        <script type="text/javascript">AddToList("@miLang.Name",@Items[i].ID,@Items[i].Parent.ID,@sub,"@Items[i].Type",@linkedItem);</script>
 
+                    }
                 }
             }
         }

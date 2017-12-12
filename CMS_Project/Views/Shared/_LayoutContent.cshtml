@@ -42,13 +42,19 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     @Styles.Render("~/Bundle/Website/GlobalStyles")
     @Styles.Render("~/Bundle/Website/PageLevelPluginStyles")
     @Styles.Render("~/Bundle/Website/ThemeStyles")
-    @Styles.Render("~/Bundle/Website/GlobalStyles-ar")
-    @Styles.Render("~/Bundle/Website/PageLevelPluginStyles-ar")
-    @Styles.Render("~/Bundle/Website/ThemeStyles-ar")
     <style>
         .dropdown-submenu:hover > .dropdown-menu{
-  display:block !important;
-}
+          display:block !important;
+          position:relative;
+        }
+        .dropdown-submenu:hover > #Lang{
+            display: block !important;
+            position: relative;
+            top: 14px;
+            margin-right: -113px;
+            border: aliceblue;
+            margin-bottom: -49px;
+        }
     </style>
 </head>
 <!-- Head END -->
@@ -68,10 +74,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- END TOP BAR LEFT PART -->
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
-                    <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="#">Log In</a></li>
-                        <li><a href="#">Registration</a></li>
-                    </ul>
+                    @Html.Partial("~/Views/Shared/_Language.cshtml")
                 </div>
                 <!-- END TOP BAR MENU -->
             </div>

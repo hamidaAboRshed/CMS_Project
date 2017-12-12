@@ -21,6 +21,41 @@ namespace CMS_Project.Controllers
             return View(db.MenuItems.ToList());
         }
 
+        [HttpPost]
+        public JsonResult SaveMItem(MenuItem mi)
+        {
+            bool status = false;
+
+            if (ModelState.IsValid)
+            {
+                MenuItem MenuItm = new MenuItem
+                {
+                    Order = mi.Order,
+                    CatId=mi.CatId,
+                    ItemId=mi.ItemId,
+                    Parent_Id=mi.Parent_Id,
+                    Visible = mi.Visible,
+                    Type = mi.Type
+                };
+                foreach (var i in mi.MenuItemLanguageList)
+                {
+                    //
+                    // i.TotalAmount = 
+                    MenuItm.MenuItemLanguageList.Add(i);
+                }
+                db.MenuItems.Add(MenuItm);
+                db.SaveChanges();
+                status = true;
+
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
+        }
+
+
         //
         // GET: /MenuItem/Details/5
 
@@ -39,19 +74,27 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create()
         {
-            var men = db.MenuItems.ToList();
-            ViewBag.parentlist = new SelectList(men, "ID", "Name");
+            var men = db.MenuItem_lang.ToList();
+            ViewBag.parentlist = new SelectList(men, "Menuitem_ID", "Name");
 
 
-            List<Category> categorylist = db.Categories.ToList();
-            ViewBag.categorylist = new SelectList(categorylist, "ID", "Name");
+            List<Category_lang> categorylist = db.Category_lang.ToList();
+            ViewBag.categorylist = new SelectList(categorylist, "category_ID", "Name");
+
+            List<Language> languagelist = db.Language.ToList();
+            ViewBag.langlist = new SelectList(languagelist, "ID", "Name");
             return View();
         }
 
         public JsonResult getItem(int categoryId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<ITEM> listitem = db.ITEMs.Where(x => x.Cat_ID == categoryId).ToList();
+            List<item_lang> listitem=null;
+            int item = db.ITEMs.Where(x => x.Cat_ID == categoryId).Select(p => p.ID).SingleOrDefault() ;
+            if (item !=null)
+            {
+                listitem = db.item_lang.Where(x => x.item_ID == item).ToList();
+            }
             return Json(listitem, JsonRequestBehavior.AllowGet);
         }
         //
