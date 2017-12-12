@@ -39,10 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -59,9 +65,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -137,17 +140,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711201730186_yy.cs" />
-    <Compile Include="Migrations\201711201730186_yy.Designer.cs">
-      <DependentUpon>201711201730186_yy.cs</DependentUpon>
+    <Compile Include="Migrations\201712111752341_a.cs" />
+    <Compile Include="Migrations\201712111752341_a.Designer.cs">
+      <DependentUpon>201712111752341_a.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711202227025_xx.cs" />
-    <Compile Include="Migrations\201711202227025_xx.Designer.cs">
-      <DependentUpon>201711202227025_xx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712061146433_qq.cs" />
-    <Compile Include="Migrations\201712061146433_qq.Designer.cs">
-      <DependentUpon>201712061146433_qq.cs</DependentUpon>
+    <Compile Include="Migrations\201712112155017_b.cs" />
+    <Compile Include="Migrations\201712112155017_b.Designer.cs">
+      <DependentUpon>201712112155017_b.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1812,6 +1811,7 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
+    <Content Include="Views\Category\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1822,14 +1822,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711201730186_yy.resx">
-      <DependentUpon>201711201730186_yy.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712111752341_a.resx">
+      <DependentUpon>201712111752341_a.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711202227025_xx.resx">
-      <DependentUpon>201711202227025_xx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712061146433_qq.resx">
-      <DependentUpon>201712061146433_qq.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712112155017_b.resx">
+      <DependentUpon>201712112155017_b.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

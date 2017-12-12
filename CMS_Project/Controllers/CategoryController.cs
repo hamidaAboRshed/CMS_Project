@@ -18,6 +18,44 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category/
 
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult SaveMItem(MenuItem mi)
+        {
+            bool status = false;
+
+            //mi.MenuItemLanguageList[0].Lang_ID = 1;
+            if (ModelState.IsValid)
+            {
+                MenuItem MenuItm = new MenuItem
+                {
+                    Order = mi.Order,
+                    ItemId = 1,
+                    Visible = mi.Visible,
+                    Type = mi.Type
+                };
+                foreach (var i in mi.MenuItemLanguageList)
+                {
+                    //
+                    // i.TotalAmount = 
+                    MenuItm.MenuItemLanguageList.Add(i);
+                }
+                db.MenuItems.Add(MenuItm);
+                db.SaveChanges();
+                status = true;
+
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
+        }
+
         public ActionResult Index()
         {
             
@@ -62,16 +100,24 @@ namespace CMS_Project.Controllers
 
         //
         // POST: /Category/Create
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Category_lang category)
+        public JsonResult CreatePost(Category category)
         {
-            Category origin = new Category();
+            bool status = false;
+       
          if (ModelState.IsValid)
            {
-               //origin.ID = category.ID;
-               if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+               Category cat = new Category
+               {
+                   Parent_Id=category.Parent_Id
+               };
+               foreach (var i in category.CategoryLanguageList)
+               {
+                   cat.CategoryLanguageList.Add(i);
+               }
+
+               
+              /* if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                {
                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
@@ -87,17 +133,18 @@ namespace CMS_Project.Controllers
                        fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
                        category.ImageFile.SaveAs(fileName);
                    }
-               }
-                   origin.Parent_Id = category.temp;
-                    db.Categories.Add(origin);
+               }*/
+                   db.Categories.Add(cat);
                     db.SaveChanges();
-                     category.category_ID=origin.ID ;
-                    db.Category_lang.Add(category);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-            }
+                    //return RedirectToAction("Index");
+                    status = true;
 
-            return View(category);
+           }
+         else
+         {
+             status = false;
+         }
+         return new JsonResult { Data = new { status = status } };
         }
 
         //

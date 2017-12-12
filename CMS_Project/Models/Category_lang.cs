@@ -20,7 +20,6 @@ namespace CMS_Project.Models
         public int? Lang_ID { set; get; }
         public Category category { set; get; }
         public int? category_ID { set; get; }
-        public int temp { set; get; }
         
     } 
 }

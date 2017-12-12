@@ -7,6 +7,10 @@ namespace CMS_Project.Models
 {
     public class MenuItem
     {
+        public MenuItem()
+        {
+            MenuItemLanguageList = new List<MenuItem_lang>();
+        }
         public int ID { set; get; }
         public int Order { set; get; }
         public MenuItem Parent { set; get; }
@@ -16,5 +20,6 @@ namespace CMS_Project.Models
         public ITEM Item { set; get; }
         public int? ItemId { set; get; }
         public int CatId { set; get; }
+        public List<MenuItem_lang> MenuItemLanguageList { set; get; }
     }
 } 
