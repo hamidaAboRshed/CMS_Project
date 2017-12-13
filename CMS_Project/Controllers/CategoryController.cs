@@ -64,40 +64,50 @@ namespace CMS_Project.Controllers
         // POST: /Category/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Category_lang category)
+        public JsonResult CreatePost(Category category)
         {
-            Category origin = new Category();
-         if (ModelState.IsValid)
-           {
-               //origin.ID = category.ID;
-               if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
-               {
-                   FileInfo fi = new FileInfo(category.ImageFile.FileName);
-                   if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
-                   {
-                       TempData["Errormsg"] = "Image File Extension is Not valid";
-                   }
-                   else
-                   {
-                       string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
-                       string extension = Path.GetExtension(category.ImageFile.FileName);
-                       fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                       category.Image = "~/Content/images/Cat/" + fileName;
-                       fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
-                       category.ImageFile.SaveAs(fileName);
-                   }
-               }
-                   origin.Parent_Id = category.temp;
-                    db.Categories.Add(origin);
-                    db.SaveChanges();
-                     category.category_ID=origin.ID ;
-                    db.Category_lang.Add(category);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-            }
+            bool status = false;
 
-            return View(category);
+            if (ModelState.IsValid)
+            {
+                Category cat = new Category
+                {
+                    Parent_Id = category.Parent_Id
+                };
+                foreach (var i in category.CategoryLanguageList)
+                {
+                    cat.CategoryLanguageList.Add(i);
+                }
+
+
+                /* if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+                 {
+                     FileInfo fi = new FileInfo(category.ImageFile.FileName);
+                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
+                     {
+                         TempData["Errormsg"] = "Image File Extension is Not valid";
+                     }
+                     else
+                     {
+                         string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                         string extension = Path.GetExtension(category.ImageFile.FileName);
+                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                         category.Image = "~/Content/images/Cat/" + fileName;
+                         fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
+                         category.ImageFile.SaveAs(fileName);
+                     }
+                 }*/
+                db.Categories.Add(cat);
+                db.SaveChanges();
+                //return RedirectToAction("Index");
+                status = true;
+
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
         }
 
         //

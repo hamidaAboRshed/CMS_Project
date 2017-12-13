@@ -42,7 +42,7 @@ namespace CMS_Project.Models
 
             modelBuilder.Entity<Category_lang>()
                 .HasRequired<Category>(bc => bc.category)
-                .WithMany()
+                .WithMany(g => g.CategoryLanguageList)
                 .HasForeignKey(bc => bc.category_ID);
 
             modelBuilder.Entity<Category_lang>()

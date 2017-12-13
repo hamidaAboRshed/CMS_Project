@@ -1,62 +1,86 @@
-﻿@model CMS_Project.Models.Category_lang
-
-@{
-    ViewBag.Title = "Create";
+﻿@{
+    ViewBag.Title = "Create Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--<h2>Create Category</h2>-->
-@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<fieldset>
+    <div class="col-md-4">
 
-    <fieldset>
-        <!--<legend>Category</legend>--> 
-        <div>
-            <b>Select Language</b>
-        </div>
+
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Lang_ID, ViewBag.langlist as SelectList, "Select Language", new { @style = "width: 175px;" })
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.DropDownList("Lang_ID", ViewBag.langlist as SelectList, "Select Language", new { @class = "form-control" })
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.category.Parent_Id)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.temp, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image)
+        <br />
+
+        <div class="form-group">
+            <input class="form-control" placeholder="Name" id="Name" type="text" autofocus>
         </div>
 
         <div class="editor-field">
-            <input type="file" name="ImageFile" required />
+            @Html.DropDownList("Parent_Id", ViewBag.parentlist as SelectList, "Select Parent", new { @class = "form-control" })
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+
+        <br />
+
+        <div class="form-group">
+            <input class="form-control" placeholder="Description" id="Description" type="text" autofocus>
         </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description, 5, 30, null)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
+
+        <input type="file" name="Image" id="Image">
+
+        <br />
 
         <p>
-            <input type="submit" value="Create" />
+            <input onclick="submit()" class="btn btn-lg btn-success btn-block" id="submit" type="submit" value="Create" />
         </p>
-    </fieldset>
-}
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</fieldset>
+
+
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        function submit() {
+
+
+            var LanItems = [];
+            LanItems.push({
+                Lang_ID: $('#Lang_ID').val().trim(),
+                Name: $('#Name').val().trim(),
+                Description: $('#Description').val().trim(),
+                Image: $('#Image').val().trim(),
+                //Image:files[0]
+            });
+            var data = {
+                Parent_Id: $('#Parent_Id').val().trim(),
+                CategoryLanguageList: LanItems
+            }
+
+            $.ajax({
+                url: '/Category/CreatePost',
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "JSON",
+                contentType: "application/json",
+
+                success: function (d) {
+                    //check is successfully save to database
+                    if (d.status == true) {
+                        //will send status from server side
+                        alert('Successfully done.');
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                }
+            });
+        }
+    </script>
 }

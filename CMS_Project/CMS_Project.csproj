@@ -137,9 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712111707333_menuItemLang.cs" />
-    <Compile Include="Migrations\201711202227025_xx.Designer.cs">
-      <DependentUpon>201712111707333_menuItemLang.cs</DependentUpon>
+    <Compile Include="Migrations\201712132120040_x.cs" />
+    <Compile Include="Migrations\201712132120040_x.Designer.cs">
+      <DependentUpon>201712132120040_x.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1815,8 +1815,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712061146433_qq.resx">
-      <DependentUpon>201712111707333_menuItemLang.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712132120040_x.resx">
+      <DependentUpon>201712132120040_x.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
