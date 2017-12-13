@@ -63,7 +63,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="@Url.Action("login","User")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -74,7 +74,7 @@
             
             @if (User.Identity.IsAuthenticated)
             {
-                <h4 style="text-align:right;">@User.Identity.Name @Html.ActionLink("log out", "logout", "User")</h4>
+                <h4 style="text-align:right;">@User.Identity.Name</h4>
             }
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">

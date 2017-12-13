@@ -10,11 +10,16 @@ namespace CMS_Project.Models
 {
     public class ITEM
     {
-        [Key]
+        public ITEM()
+        {
+            ItemLanguageList = new List<item_lang>();
+        }
         public int ID { set; get; }
           
         public int Cat_ID { get; set; }
 
-        public virtual Category CurrentCategory { get; set; } 
+        public virtual Category CurrentCategory { get; set; }
+        public List<item_lang> ItemLanguageList { set; get; }
+
     }
 } 
