@@ -27,15 +27,13 @@
         <div class="form-group">
             <input class="form-control" placeholder="Description" id="Description" type="text" autofocus>
         </div>
-        @Html.Hidden("Cat_ID", new { @Value = ViewBag.CatID, name = "hiddenname" })
-
         <br />
 
         <p>
             <input onclick="submit()" class="btn btn-lg btn-success btn-block" id="submit" type="submit" value="Create" />
         </p>
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", "ITEM", new { id = ViewBag.CatID }, null)        
         </div>
     </div>
 
@@ -55,12 +53,12 @@
                 Title: $('#Title').val().trim(),
                 Content: CKEDITOR.instances['Content'].getData(),
                 Image: $('#Image').val().trim(),
-                Description: $('#Description').val().trim()
+                Description: $('#Description').val().trim(),
                 //Image:files[0]
             });
             var data = {
-                Cat_ID: $('#Cat_ID').val().trim(),
-                ItemLanguageList: LanItems
+                Cat_ID: @ViewBag.CatID,
+                ItemLanguageList: LanItems,
             }
             $.ajax({
                 url: '/ITEM/CreatePost',

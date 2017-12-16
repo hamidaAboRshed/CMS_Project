@@ -25,7 +25,8 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id=0)
         {
             {
-                List<item_lang> item = db.item_lang.Where(x => x.item.Cat_ID == id).ToList();
+                var lang=db.Language.Single(x=>x.Default==true);
+                List<item_lang> item = db.item_lang.Where(x => x.item.Cat_ID == id && x.Lang_ID.Value.Equals(lang.ID)).ToList();
                 ViewBag.CatId = id;
                 return View(item);
             }
@@ -60,7 +61,7 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public JsonResult CreatePost(ITEM item,string hiddenname)
+        public JsonResult CreatePost(ITEM item)
         {
             bool status = false;
 
@@ -95,8 +96,8 @@ namespace CMS_Project.Controllers
                 
                 db.ITEMs.Add(it);
                 db.SaveChanges(); 
-                //return RedirectToAction("Index", "ITEM", new { id = CatID });
                 status = true;
+                //RedirectToAction("Index", "ITEM", new { id = it.Cat_ID });
             }
             else
             {
@@ -109,9 +110,11 @@ namespace CMS_Project.Controllers
         //
         // GET: /ITEM/Edit/5
 
-        public ActionResult Edit(int id = 0,int CatId =0)
+        public ActionResult Edit(int id = 0, int CatId=0)
         {
-            item_lang item = db.item_lang.Find(id); 
+            item_lang item = db.item_lang.Find(id);
+            List<Language> langlist = db.Language.ToList();
+            ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             ViewBag.CatID = CatId;
             if (item == null)
             {
@@ -130,7 +133,7 @@ namespace CMS_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
+               /* if (item.ImageFile != null && item.ImageFile.FileName != null && item.ImageFile.FileName != "")
                 {
                     FileInfo fi = new FileInfo(item.ImageFile.FileName);
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
@@ -146,10 +149,10 @@ namespace CMS_Project.Controllers
                         fileName = Path.Combine(Server.MapPath("~/Content/images/Item/"), fileName);
                         item.ImageFile.SaveAs(fileName);
                     }
-                }
+                }*/
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
-                int CatID = item.item.Cat_ID;
+                int CatID = Convert.ToInt32(TempData["Data"]);
                 return RedirectToAction("Index", new { id = CatID });
             }
             return View(item);

@@ -12,8 +12,8 @@ namespace CMS_Project.Models
         public int ID { set; get; }
         public string Name { set; get; }
         [DisplayName("Upload File")]
-        public string Image { set; get; } 
         public string Description { set; get; }
+        public string Image { set; get; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { set; get; }
         public Language Lang { set; get; }

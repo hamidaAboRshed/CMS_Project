@@ -27,8 +27,11 @@
             <input class="form-control" placeholder="Description" id="Description" type="text" autofocus>
         </div>
 
-        <input type="file" name="Image" id="Image">
+        <div class="form-control">
+            <input type="file" name="ImageFile" id="ImageFile">
+        </div>
 
+        <br />
         <br />
 
         <p>
@@ -48,27 +51,43 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
         function submit() {
+            debugger;
+            var file = $("#ImageFile").get(0).files;
+            //var data = new FormData;
+            var LanItems = new FormData();
+            
 
+            /*LanItems.append("Lang_ID", $('#Lang_ID').val().trim());
+            LanItems.append("Name", $('#Name').val().trim());
+            LanItems.append("Description", $('#Description').val().trim());
+            LanItems.append("ImageFile", file[0]);*/
+            
 
-            var LanItems = [];
+             LanItems = [];
             LanItems.push({
                 Lang_ID: $('#Lang_ID').val().trim(),
                 Name: $('#Name').val().trim(),
                 Description: $('#Description').val().trim(),
-                Image: $('#Image').val().trim(),
-                //Image:files[0]
+                //ImageFile:LanItems.get('ImageFile') // Returns ["Chris", "Bob"]
+                ImageFile: file[0]
+                
             });
             var data = {
                 Parent_Id: $('#Parent_Id').val().trim(),
                 CategoryLanguageList: LanItems
-            }
-
+            };
+            /*data.append("Parent_Id", $('#Parent_Id').val().trim());
+            data.append("ImageFile", file[0]);
+            data.append("CategoryLanguageList[0]", LanItems[0]);*/
             $.ajax({
                 url: '/Category/CreatePost',
                 type: "POST",
                 data: JSON.stringify(data),
                 dataType: "JSON",
                 contentType: "application/json",
+                //data: data,
+                //contentType:false,
+                //processData:false,
 
                 success: function (d) {
                     //check is successfully save to database
