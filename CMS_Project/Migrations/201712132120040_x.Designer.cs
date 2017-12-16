@@ -5,18 +5,18 @@ namespace CMS_Project.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class menuItemLang : IMigrationMetadata
+    public sealed partial class x : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(menuItemLang));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(x));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712111707333_menuItemLang"; }
+            get { return "201712132120040_x"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

@@ -137,9 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712111746589_walaa.cs" />
-    <Compile Include="Migrations\201712111746589_walaa.Designer.cs">
-      <DependentUpon>201712111746589_walaa.cs</DependentUpon>
+    <Compile Include="Migrations\201712132120040_x.cs" />
+    <Compile Include="Migrations\201712132120040_x.Designer.cs">
+      <DependentUpon>201712132120040_x.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1804,6 +1804,7 @@
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
+    <Content Include="Views\Shared\_Language.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1814,8 +1815,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712111746589_walaa.resx">
-      <DependentUpon>201712111746589_walaa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712132120040_x.resx">
+      <DependentUpon>201712132120040_x.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

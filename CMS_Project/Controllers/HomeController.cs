@@ -15,7 +15,17 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index()
         {
+            if (Session["LanguageId"] == null)
+            {
+                Session["LanguageId"] = 1;
+            }
             return View();
+        }
+
+        public void ChangeLanguage(int id)
+        {
+            Session["LanguageId"] = id;
+            Index();
         }
 
         [HttpGet]

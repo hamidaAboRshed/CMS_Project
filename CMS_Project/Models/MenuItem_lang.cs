@@ -10,7 +10,7 @@ namespace CMS_Project.Models
         public int ID { set; get; }
         public string Name { set; get; }
         public MenuItem Menuitem { set; get; } 
-        public int? Menuitem_ID { set; get; }
+        public int Menuitem_ID { set; get; }
         public Language Lang {set; get;}
         public int? Lang_ID { set; get; } 
        

@@ -42,7 +42,7 @@ namespace CMS_Project.Models
 
             modelBuilder.Entity<Category_lang>()
                 .HasRequired<Category>(bc => bc.category)
-                .WithMany()
+                .WithMany(g => g.CategoryLanguageList)
                 .HasForeignKey(bc => bc.category_ID);
 
             modelBuilder.Entity<Category_lang>()
@@ -70,10 +70,15 @@ namespace CMS_Project.Models
             //modelBuilder.Entity<MenuItem_lang>()
         //.HasKey(bc => new { bc.Menuitem_ID, bc.Lang_ID });
 
+            //modelBuilder.Entity<MenuItem_lang>()
+              //  .HasRequired<MenuItem>(bc => bc.Menuitem)
+              //  .WithMany()
+              //  .HasForeignKey(bc => bc.Menuitem_ID);
+
             modelBuilder.Entity<MenuItem_lang>()
-                .HasRequired<MenuItem>(bc => bc.Menuitem)
-                .WithMany()
-                .HasForeignKey(bc => bc.Menuitem_ID);
+            .HasRequired<MenuItem>(s => s.Menuitem)
+            .WithMany(g => g.MenuItemLanguageList)
+            .HasForeignKey<int>(s => s.Menuitem_ID); 
 
             modelBuilder.Entity<MenuItem_lang>()
                 .HasRequired<Language>(bc => bc.Lang)
