@@ -70,17 +70,10 @@ namespace CMS_Project.Controllers
 
             if (ModelState.IsValid)
             {
-                Category cat = new Category
-                {
-                    Parent_Id = category.Parent_Id
-                };
-                foreach (var i in category.CategoryLanguageList)
-                {
-                    cat.CategoryLanguageList.Add(i);
-                }
+                //Category_lang cat_lang = category.CategoryLanguageList[0];
 
 
-                /* if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+               /* if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                  {
                      FileInfo fi = new FileInfo(category.ImageFile.FileName);
                      if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
@@ -97,12 +90,22 @@ namespace CMS_Project.Controllers
                          category.ImageFile.SaveAs(fileName);
                      }
                  }*/
+                 Category cat = new Category
+                 {
+                     Parent_Id = category.Parent_Id
+                 };
+                // cat.CategoryLanguageList.Add(cat_lang);
+                 foreach (var i in category.CategoryLanguageList)
+                 {
+                     cat.CategoryLanguageList.Add(i);
+                 }
+
                 db.Categories.Add(cat);
                 db.SaveChanges();
                 //return RedirectToAction("Index");
                 status = true;
 
-            }
+           }
             else
             {
                 status = false;
@@ -133,7 +136,7 @@ namespace CMS_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+               /* if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
                 {
                     FileInfo fi = new FileInfo(category.ImageFile.FileName);
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
@@ -149,7 +152,7 @@ namespace CMS_Project.Controllers
                         fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
                         category.ImageFile.SaveAs(fileName);
                     }
-                }
+                }*/
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

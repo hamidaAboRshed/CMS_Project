@@ -141,6 +141,26 @@
     <Compile Include="Migrations\201712132120040_x.Designer.cs">
       <DependentUpon>201712132120040_x.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712132303274_Missingtemp.cs" />
+    <Compile Include="Migrations\201712132303274_Missingtemp.Designer.cs">
+      <DependentUpon>201712132303274_Missingtemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712140029460_toto.cs" />
+    <Compile Include="Migrations\201712140029460_toto.Designer.cs">
+      <DependentUpon>201712140029460_toto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151213110_aa.cs" />
+    <Compile Include="Migrations\201712151213110_aa.Designer.cs">
+      <DependentUpon>201712151213110_aa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151622596_ee.cs" />
+    <Compile Include="Migrations\201712151622596_ee.Designer.cs">
+      <DependentUpon>201712151622596_ee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151708371_e1.cs" />
+    <Compile Include="Migrations\201712151708371_e1.Designer.cs">
+      <DependentUpon>201712151708371_e1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
@@ -1817,6 +1837,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712132120040_x.resx">
       <DependentUpon>201712132120040_x.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712132303274_Missingtemp.resx">
+      <DependentUpon>201712132303274_Missingtemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712140029460_toto.resx">
+      <DependentUpon>201712140029460_toto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151213110_aa.resx">
+      <DependentUpon>201712151213110_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151622596_ee.resx">
+      <DependentUpon>201712151622596_ee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151708371_e1.resx">
+      <DependentUpon>201712151708371_e1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
