@@ -50,7 +50,8 @@ namespace CMS_Project.Controllers
         {
             Category_lang category_lang = db.Category_lang.Find(id);
             ViewBag.CatID = category_lang.category_ID;
-            ViewBag.Lang_ID = new SelectList(db.Language, "ID", "Name");
+            
+            ViewBag.Lang_ID = new SelectList(db.Language.Where(x=>x.Default==false), "ID", "Name");
             ViewBag.catlang = id;
             return View(category_lang);
         }
