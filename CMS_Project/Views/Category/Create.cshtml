@@ -1,86 +1,60 @@
-﻿@{
+﻿@model CMS_Project.Models.Category_lang
+
+@{
     ViewBag.Title = "Create Category";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<fieldset>
-    <div class="col-md-4">
+<!--<h2>Create Category</h2>-->
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-4">
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Lang_ID, ViewBag.langlist as SelectList, "Select Language", new { @class = "form-control" })
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Name" id="Name" name="Name" type="text" autofocus>
+            </div>
 
 
-        <div class="editor-field">
-            @Html.DropDownList("Lang_ID", ViewBag.langlist as SelectList, "Select Language", new { @class = "form-control" })
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.temp, ViewBag.parentlist as SelectList, "Select Parent", new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-control">
+                <input type="file" name="ImageFile" id="ImageFile">
+            </div>
+
+            <br />
+
+            <textarea class="form-control"
+                      cols="30"
+                      placeholder="Description"
+                      id="Description"
+                      name="Description"
+                      rows="5"></textarea>
+
+            <br />
+
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Create" />
+            </p>
         </div>
-
-        <br />
-
-        <div class="form-group">
-            <input class="form-control" placeholder="Name" id="Name" type="text" autofocus>
-        </div>
-
-        <div class="editor-field">
-            @Html.DropDownList("Parent_Id", ViewBag.parentlist as SelectList, "Select Parent", new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group">
-            <input class="form-control" placeholder="Description" id="Description" type="text" autofocus>
-        </div>
-
-        <input type="file" name="Image" id="Image">
-
-        <br />
-
-        <p>
-            <input onclick="submit()" class="btn btn-lg btn-success btn-block" id="submit" type="submit" value="Create" />
-        </p>
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    </div>
-
 </fieldset>
+}
 
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-        function submit() {
-
-
-            var LanItems = [];
-            LanItems.push({
-                Lang_ID: $('#Lang_ID').val().trim(),
-                Name: $('#Name').val().trim(),
-                Description: $('#Description').val().trim(),
-                Image: $('#Image').val().trim(),
-                //Image:files[0]
-            });
-            var data = {
-                Parent_Id: $('#Parent_Id').val().trim(),
-                CategoryLanguageList: LanItems
-            }
-
-            $.ajax({
-                url: '/Category/CreatePost',
-                type: "POST",
-                data: JSON.stringify(data),
-                dataType: "JSON",
-                contentType: "application/json",
-
-                success: function (d) {
-                    //check is successfully save to database
-                    if (d.status == true) {
-                        //will send status from server side
-                        alert('Successfully done.');
-                    }
-                    else {
-                        alert('Failed');
-                    }
-                }
-            });
-        }
-    </script>
+    @Scripts.Render("~/bundles/jqueryval")
 }

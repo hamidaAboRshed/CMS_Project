@@ -17,10 +17,12 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category_lang/
 
-        public ActionResult Index()
+        public ActionResult Index(int id=0)
         {
-            var category_lang = db.Category_lang.Include(c => c.Lang).Include(c => c.category);
-            return View(category_lang.ToList());
+            var lang = db.Language.Single(x => x.Default == false);
+            List<Category_lang> category = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
+            ViewBag.Cat_lang = id;
+            return View(category);
         }
 
         //
@@ -41,9 +43,11 @@ namespace CMS_Project.Controllers
 
         public ActionResult Create(int id = 0)
         {
-            ViewBag.CatID = id;
+            Category_lang category_lang = db.Category_lang.Find(id);
+            ViewBag.CatID = category_lang.category_ID;
             ViewBag.Lang_ID = new SelectList(db.Language, "ID", "Name");
-            return View();
+            ViewBag.catlang = id;
+            return View(category_lang);
         }
 
         //
@@ -51,11 +55,12 @@ namespace CMS_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category_lang category,string hiddenname)
+        public ActionResult Create(Category_lang category, string hiddenname)
         {
             if (ModelState.IsValid)
             {
-                if (category.ImageFile != null && category.ImageFile.FileName != null && category.ImageFile.FileName != "")
+                Category_lang cat = db.Category_lang.Find(category.ID);
+                if (category.ImageFile != null )
                 {
                     FileInfo fi = new FileInfo(category.ImageFile.FileName);
                     if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
@@ -72,10 +77,15 @@ namespace CMS_Project.Controllers
                         category.ImageFile.SaveAs(fileName);
                     }
                 }
+                else
+                {
+                    category.Image = cat.Image;
+                }
                 //category.category_ID
                 db.Category_lang.Add(category);
                 db.SaveChanges();
-                return RedirectToAction("Index","Category");
+                int CatId = Convert.ToInt32(TempData["Data"]);
+                return RedirectToAction("Index", "Category_lang", new {  id = CatId });
             }
 
             return View(category);
@@ -84,42 +94,68 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category_lang/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0,int catlang=0)
         {
-            Category_lang category_lang = db.Category_lang.Find(id);
-            if (category_lang == null)
+            Category_lang category = db.Category_lang.Find(id);
+            ViewBag.catlang = catlang;
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Lang_ID = new SelectList(db.Language, "ID", "Name", category_lang.Lang_ID);
-            ViewBag.category_ID = new SelectList(db.Categories, "ID", "ID", category_lang.category_ID);
-            return View(category_lang);
+            return View(category);
         }
 
         //
-        // POST: /Category_lang/Edit/5
+        // POST: /Category/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category_lang category_lang)
+        public ActionResult Edit(Category_lang category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category_lang).State = EntityState.Modified;
+                Category_lang cat = db.Category_lang.Find(category.ID);
+                category.category_ID = cat.category_ID;
+                category.Lang_ID = cat.Lang_ID;
+        
+                if (category.ImageFile != null)
+                {
+                    FileInfo fi = new FileInfo(category.ImageFile.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png" && fi.Extension != ".JPEG" && fi.Extension != ".JPG" && fi.Extension != ".PNG")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is Not valid";
+                    }
+                    else
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                        string extension = Path.GetExtension(category.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        category.Image = "~/Content/images/Cat/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/images/Cat/"), fileName);
+                        category.ImageFile.SaveAs(fileName);
+                    }
+                }
+                else
+                {
+                    category.Image = cat.Image;
+                }
+                //db.Entry(category).State = EntityState.Modified;
+                db.Entry(cat).CurrentValues.SetValues(category);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int CatId = Convert.ToInt32(TempData["Data"]);
+                return RedirectToAction("Index", "Category_lang", new { id = CatId });
             }
-            ViewBag.Lang_ID = new SelectList(db.Language, "ID", "Name", category_lang.Lang_ID);
-            ViewBag.category_ID = new SelectList(db.Categories, "ID", "ID", category_lang.category_ID);
-            return View(category_lang);
+            return View(category);
         }
+
 
         //
         // GET: /Category_lang/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int catlang = 0)
         {
             Category_lang category_lang = db.Category_lang.Find(id);
+            ViewBag.catlang = catlang;
             if (category_lang == null)
             {
                 return HttpNotFound();
@@ -137,7 +173,8 @@ namespace CMS_Project.Controllers
             Category_lang category_lang = db.Category_lang.Find(id);
             db.Category_lang.Remove(category_lang);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            int catlang = Convert.ToInt32(TempData["Data"]);
+            return RedirectToAction("Index", new { id = catlang });
         }
 
         protected override void Dispose(bool disposing)

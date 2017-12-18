@@ -1,0 +1,20 @@
+﻿@using CMS_Project.Models;
+@{
+    var db = new CMSDataContext();
+    var lang = db.Language.ToList();
+}
+<ul class="list-unstyled list-inline pull-right">
+    <li class="dropdown-submenu">
+        Language <i class="fa fa-angle-right"></i>
+        <ul class="dropdown-menu" id="Lang">
+            @if (lang != null)
+            {
+                for (int i = 0; i < lang.Count(); i++)
+                {
+                    <li id=""><a href="@Url.Action("ChangeLanguage", "Home", new { id = lang[i].ID })">@lang[i].Name</a></li>
+                }
+            }
+        </ul>
+    </li>
+</ul>
+ 

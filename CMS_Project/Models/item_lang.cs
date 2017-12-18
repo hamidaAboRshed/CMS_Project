@@ -14,7 +14,6 @@ namespace CMS_Project.Models
         public String Title { set; get; }
         [DataType(DataType.Html)]
         public string Content { set; get; }
-        [DisplayName("Upload File")]
         public string Image { set; get; } 
         public string alt { set; get; }
         public string Description { set; get; }
@@ -24,6 +23,8 @@ namespace CMS_Project.Models
         public int? Lang_ID { set; get; }
         public ITEM item { set; get; }
         public int? item_ID { set; get; }
+        [NotMapped]
+        public int? temp { set; get; }
         
     } 
 }
