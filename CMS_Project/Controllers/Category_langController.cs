@@ -19,8 +19,13 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index(int id=0)
         {
-            var lang = db.Language.Single(x => x.Default == false);
-            List<Category_lang> category = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
+            List<Language> lang = db.Language.Where(x => x.Default == false).ToList();
+            List<Category_lang> category = new List<Category_lang>();
+            foreach (Language obj in lang)
+            {
+                List<Category_lang> CatLang = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(obj.ID)).ToList();
+                category.AddRange(CatLang);
+            }
             ViewBag.Cat_lang = id;
             return View(category);
         }
