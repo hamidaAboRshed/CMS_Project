@@ -1,77 +1,50 @@
 ﻿@model CMS_Project.Models.item_lang
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Item Translate";
 }
 
-<h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "item_lang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false)
 
     <fieldset>
-        <legend>item_lang</legend>
+        <div class="col-md-4">
+            @Html.HiddenFor(model => model.item_ID)
+            @{TempData["Data"] = ViewBag.CatID;}
+            @{TempData["message"] = ViewBag.itemlang;}
 
-        @Html.HiddenFor(model => model.ID)
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Content)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Content)
-            @Html.ValidationMessageFor(model => model.Content)
-        </div>
+            <br />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Image)
-            @Html.ValidationMessageFor(model => model.Image)
-        </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
+            <br />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Lang_ID, "Lang")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("Lang_ID", String.Empty)
-            @Html.ValidationMessageFor(model => model.Lang_ID)
-        </div>
+            <div class="form-control">
+                <input type="file" name="ImageFile" id="ImageFile">
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.item_ID, "item")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("item_ID", String.Empty)
-            @Html.ValidationMessageFor(model => model.item_ID)
-        </div>
+            <br />
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control", style = "height:150px" })
+            <br />
+
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Save" />
+            </p>
+        </div>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

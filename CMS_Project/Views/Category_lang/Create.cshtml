@@ -1,57 +1,49 @@
 ﻿@model CMS_Project.Models.Category_lang
 
 @{
-    ViewBag.Title = "Translate";
+    ViewBag.Title = "Translate Category";
 }
-
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create", "Category_lang", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <div>
-            <b>Select Language</b>
-        </div>
+<fieldset>
+    <div class="col-md-4">
+        @{TempData["Data"] = ViewBag.catlang;}
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Lang_ID, ViewBag.Lang_ID as SelectList, "Select Language", new { @style = "width: 175px;" })
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.DropDownListFor(model => model.Lang_ID, ViewBag.Lang_ID as SelectList, "Select Language", new { @class = "form-control" })
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image)
-        </div>
+        <br />
+
         <div class="editor-field">
-            <input type="file" name="ImageFile" required />
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+        <br/>
+
+        <div class="form-control">
+            <input type="file" name="ImageFile" id="ImageFile">
         </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description, 5, 30, null)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
+
+        <br />
+
+        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", style = "height:150px" })
+
+        <br />
 
         @Html.HiddenFor(model => model.category_ID, new { @Value = ViewBag.CatID, name = "hiddenname" })
 
         <p>
-            <input type="submit" value="Create" />
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Translate" />
         </p>
-    </fieldset>
+    </div>
+</fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -1,13 +1,12 @@
 ﻿@model CMS_Project.Models.Category_lang
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Category Details";
 }
 
 <!--<h2>Details</h2>-->
 
 <fieldset>
-    <legend>Category</legend>
 
     <div class="row">
         <div class="col-lg-12">
@@ -22,7 +21,7 @@
                                 <th>
                                     @Html.DisplayFor(model => model.Name)
                                 </th>
-                                </tr>
+                            </tr>
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Image)
@@ -31,14 +30,14 @@
                                     @Html.DisplayFor(model => model.Image)
                                 </th>
                             </tr>
-                              <tr>
+                            <tr>
                               <th>
                                     @Html.DisplayNameFor(model => model.Description)
                                 </th>
                                 <th>
                                     @Html.DisplayFor(model => model.Description)
                                 </th>
-                            </tr>
+                           </tr>
                         </thead>
                         </table>
                 </div>

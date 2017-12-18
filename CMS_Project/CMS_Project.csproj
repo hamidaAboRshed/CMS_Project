@@ -137,29 +137,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712132120040_x.cs" />
-    <Compile Include="Migrations\201712132120040_x.Designer.cs">
-      <DependentUpon>201712132120040_x.cs</DependentUpon>
+    <Compile Include="Migrations\201712161829052_rt.cs" />
+    <Compile Include="Migrations\201712161829052_rt.Designer.cs">
+      <DependentUpon>201712161829052_rt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712132303274_Missingtemp.cs" />
-    <Compile Include="Migrations\201712132303274_Missingtemp.Designer.cs">
-      <DependentUpon>201712132303274_Missingtemp.cs</DependentUpon>
+    <Compile Include="Migrations\201712171131418_kk.cs" />
+    <Compile Include="Migrations\201712171131418_kk.Designer.cs">
+      <DependentUpon>201712171131418_kk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712140029460_toto.cs" />
-    <Compile Include="Migrations\201712140029460_toto.Designer.cs">
-      <DependentUpon>201712140029460_toto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712151213110_aa.cs" />
-    <Compile Include="Migrations\201712151213110_aa.Designer.cs">
-      <DependentUpon>201712151213110_aa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712151622596_ee.cs" />
-    <Compile Include="Migrations\201712151622596_ee.Designer.cs">
-      <DependentUpon>201712151622596_ee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712151708371_e1.cs" />
-    <Compile Include="Migrations\201712151708371_e1.Designer.cs">
-      <DependentUpon>201712151708371_e1.cs</DependentUpon>
+    <Compile Include="Migrations\201712171837487_f.cs" />
+    <Compile Include="Migrations\201712171837487_f.Designer.cs">
+      <DependentUpon>201712171837487_f.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1823,8 +1811,22 @@
     <Content Include="Views\Home\ViewItem.cshtml" />
     <Content Include="Views\Home\ItemPerPage.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
-    <Content Include="Views\ITEM\Translate.cshtml" />
     <Content Include="Views\Shared\_Language.cshtml" />
+    <Content Include="Views\Category_lang\Create.cshtml" />
+    <Content Include="Views\Category_lang\Delete.cshtml" />
+    <Content Include="Views\Category_lang\Details.cshtml" />
+    <Content Include="Views\Category_lang\Edit.cshtml" />
+    <Content Include="Views\Category_lang\Index.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Delete.cshtml" />
+    <Content Include="Views\Language\Details.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\item_lang\Create.cshtml" />
+    <Content Include="Views\item_lang\Delete.cshtml" />
+    <Content Include="Views\item_lang\Details.cshtml" />
+    <Content Include="Views\item_lang\Edit.cshtml" />
+    <Content Include="Views\item_lang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1835,23 +1837,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712132120040_x.resx">
-      <DependentUpon>201712132120040_x.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712161829052_rt.resx">
+      <DependentUpon>201712161829052_rt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712132303274_Missingtemp.resx">
-      <DependentUpon>201712132303274_Missingtemp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712171131418_kk.resx">
+      <DependentUpon>201712171131418_kk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712140029460_toto.resx">
-      <DependentUpon>201712140029460_toto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712151213110_aa.resx">
-      <DependentUpon>201712151213110_aa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712151622596_ee.resx">
-      <DependentUpon>201712151622596_ee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712151708371_e1.resx">
-      <DependentUpon>201712151708371_e1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712171837487_f.resx">
+      <DependentUpon>201712171837487_f.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
