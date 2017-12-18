@@ -51,6 +51,13 @@ namespace CMS_Project.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (language.Default == true)
+                {
+                    Language lang = db.Language.Where(x => x.Default == true).SingleOrDefault();
+                    lang.Default = false;
+                    db.Entry(lang).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 db.Language.Add(language);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -81,6 +88,13 @@ namespace CMS_Project.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (language.Default == true)
+                {
+                    Language lang = db.Language.Where(x=>x.Default==true).SingleOrDefault();
+                    lang.Default = false;
+                    db.Entry(lang).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 db.Entry(language).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

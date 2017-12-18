@@ -130,8 +130,8 @@
     <Compile Include="Controllers\Category_langController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
-    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\item_langController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1805,6 +1805,11 @@
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
     <Content Include="Views\Shared\_Language.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Language\Details.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
