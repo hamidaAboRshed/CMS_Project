@@ -1,7 +1,7 @@
 ﻿@model CMS_Project.Models.Category_lang
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Category";
 }
 
 @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -10,38 +10,37 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Category</legend> 
+        <div class="col-md-4">
+            @Html.HiddenFor(model => model.ID)
 
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image)
-        </div>
+            </div>
 
-        <div class="editor-field">
-            <input type="file" name="ImageFile" required />
-        </div>
+            <br/>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.temp, ViewBag.parentlist as SelectList, "Select Parent", new { @class = "form-control" })
+            </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+            <br />
+
+            <div class="form-control">
+                <input type="file" name="ImageFile" id="ImageFile">
+            </div>
+
+            <br />
+
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control", style = "height:150px" })
+            <br />
+
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Save" />
+            </p>
+        </div>
+</fieldset>
 }
 
 <div>

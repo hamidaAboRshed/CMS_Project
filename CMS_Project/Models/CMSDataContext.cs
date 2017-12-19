@@ -32,7 +32,7 @@ namespace CMS_Project.Models
             modelBuilder.Entity<ITEM>()
             .HasRequired<Category>(s => s.CurrentCategory)
             .WithMany(g => g.ItemsList)
-            .HasForeignKey<int>(s => s.Cat_ID); 
+            .HasForeignKey(s => s.Cat_ID); 
            // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
          
             ////////////////////////

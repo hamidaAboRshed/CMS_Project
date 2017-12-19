@@ -16,7 +16,7 @@ namespace CMS_Project.Models
         }
         public int ID { set; get; }
           
-        public int Cat_ID { get; set; }
+        public int? Cat_ID { get; set; }
 
         public virtual Category CurrentCategory { get; set; }
         public List<item_lang> ItemLanguageList { set; get; }

@@ -23,6 +23,14 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Default)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Default)
+            @Html.ValidationMessageFor(model => model.Default)
+        </div>
+
         <p>
             <input type="submit" value="Save" />
         </p>
