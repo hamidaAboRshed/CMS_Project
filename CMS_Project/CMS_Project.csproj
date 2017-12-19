@@ -128,6 +128,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\Category_langController.cs" />
+    <Compile Include="Controllers\CustomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -137,12 +138,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712191832484_custom.cs" />
+    <Compile Include="Migrations\201712191832484_custom.Designer.cs">
+      <DependentUpon>201712191832484_custom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
     <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\Field.cs" />
+    <Compile Include="Models\FieldType.cs" />
     <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\item_lang.cs" />
     <Compile Include="Models\Language.cs" />
@@ -1801,14 +1807,40 @@
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
     <Content Include="Views\Shared\_Language.cshtml" />
+    <Content Include="Views\Custom\Index.cshtml" />
+    <Content Include="Views\Custom\Details.cshtml" />
+    <Content Include="Views\Custom\Create.cshtml" />
+    <Content Include="Views\Custom\Edit.cshtml" />
+    <Content Include="Views\Custom\Delete.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Delete.cshtml" />
+    <Content Include="Views\Language\Details.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\item_lang\Create.cshtml" />
+    <Content Include="Views\item_lang\Delete.cshtml" />
+    <Content Include="Views\item_lang\Details.cshtml" />
+    <Content Include="Views\item_lang\Edit.cshtml" />
+    <Content Include="Views\item_lang\Index.cshtml" />
+    <Content Include="Views\Category_lang\Create.cshtml" />
+    <Content Include="Views\Category_lang\Delete.cshtml" />
+    <Content Include="Views\Category_lang\Details.cshtml" />
+    <Content Include="Views\Category_lang\Edit.cshtml" />
+    <Content Include="Views\Category_lang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\Cat\" />
     <Folder Include="Content\images\Item\" />
+    <Folder Include="Views\MenuItem_lang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712191832484_custom.resx">
+      <DependentUpon>201712191832484_custom.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

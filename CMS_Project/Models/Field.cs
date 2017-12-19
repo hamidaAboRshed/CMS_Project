@@ -11,5 +11,7 @@ namespace CMS_Project.Models
         public string FieldVal { set; get; }
         public item_lang ItemLang { set; get; }
         public int? ItemId { set; get; }
+        public Custom CustomField { set; get; }
+        public int? CustomFieldId { set; get; }
     }
 }

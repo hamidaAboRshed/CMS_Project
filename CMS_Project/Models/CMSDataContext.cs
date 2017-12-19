@@ -101,15 +101,15 @@ namespace CMS_Project.Models
             WithMany().
             HasForeignKey(m => m.ItemId);
 
-            modelBuilder.Entity<Custom>().
-            HasOptional(e => e.CategoryLang).
+            modelBuilder.Entity<Field>().
+            HasOptional(e => e.CustomField).
             WithMany().
-            HasForeignKey(m => m.Cat_ID);
+            HasForeignKey(m => m.CustomFieldId);
 
             modelBuilder.Entity<Custom>().
-            HasOptional(e => e.Field).
+            HasOptional(e => e.Category).
             WithMany().
-            HasForeignKey(m => m.Field_ID);
+            HasForeignKey(m => m.Cat_ID);
 
 
             modelBuilder.Entity<Role_Per>().

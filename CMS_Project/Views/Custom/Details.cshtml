@@ -1,0 +1,43 @@
+﻿@model CMS_Project.Models.Custom
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<fieldset>
+    <legend>Custom</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cust_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cust_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.ID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Cust_Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cust_Type)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Requierd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Requierd)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
