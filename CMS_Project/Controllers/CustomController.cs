@@ -19,7 +19,7 @@ namespace CMS_Project.Controllers
         public ActionResult Index(int id)
         {
             ViewBag.CatId = id;
-            return View();
+            return View(db.Custom_Cat.Where(x=>x.Cat_ID==id).ToList());
         }
 
         //
@@ -55,7 +55,7 @@ namespace CMS_Project.Controllers
             {
                 db.Custom_Cat.Add(custom);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Custom", new { id = custom.Cat_ID });
             }
 
             //ViewBag.Cat_ID = new SelectList(db.Categories, "ID", "ID", custom.Cat_ID);
@@ -89,7 +89,7 @@ namespace CMS_Project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Cat_ID = new SelectList(db.Categories, "ID", "ID", custom.Cat_ID);
+            ViewBag.CatID =  custom.Cat_ID;
             return View(custom);
         }
 
@@ -116,7 +116,7 @@ namespace CMS_Project.Controllers
             Custom custom = db.Custom_Cat.Find(id);
             db.Custom_Cat.Remove(custom);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = custom.Cat_ID });
         }
 
         protected override void Dispose(bool disposing)

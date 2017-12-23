@@ -138,9 +138,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712191832484_custom.cs" />
-    <Compile Include="Migrations\201712191832484_custom.Designer.cs">
-      <DependentUpon>201712191832484_custom.cs</DependentUpon>
+    <Compile Include="Migrations\201712221339249_new2.cs" />
+    <Compile Include="Migrations\201712221339249_new2.Designer.cs">
+      <DependentUpon>201712221339249_new2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1827,6 +1827,7 @@
     <Content Include="Views\Category_lang\Details.cshtml" />
     <Content Include="Views\Category_lang\Edit.cshtml" />
     <Content Include="Views\Category_lang\Index.cshtml" />
+    <Content Include="Views\ITEM\_CutomField.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1838,8 +1839,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712191832484_custom.resx">
-      <DependentUpon>201712191832484_custom.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712221339249_new2.resx">
+      <DependentUpon>201712221339249_new2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

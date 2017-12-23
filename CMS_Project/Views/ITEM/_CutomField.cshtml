@@ -1,0 +1,43 @@
+﻿@using CMS_Project.Models
+@model List<CMS_Project.Models.Field>
+@{
+    
+    var fields = ViewBag.CustField;
+    int index = -1;
+    var val="";
+}
+
+@if (fields !=null)
+{
+    foreach (Custom cust in fields)
+    {
+        index = index + 1;
+        <div class="fosrm-group">
+           @cust.Cust_Name
+        </div>
+        <input name="FieldList[@index].CustomFieldId" type="hidden" value="@cust.ID" />
+        if(Model!=null){
+            val="value="+Model[index].FieldVal+"";
+        }
+        if (cust.Cust_Type == FieldType.Memo)
+        {
+            <div class="form-group">
+                <textarea class="form-control" @val placeholder="@cust.Cust_Name" name="FieldList[@index].FieldVal" @(cust.Requierd ? "required" : "")></textarea>
+                </div>
+        }
+        else
+            if (cust.Cust_Type == FieldType.datetime)
+            {
+                <div class="form-group">
+                    <input class="form-control" type="datetime-local" @val placeholder="@cust.Cust_Name" name="FieldList[@index].FieldVal" @(cust.Requierd ? "required" : "")>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input class="form-control" type="@cust.Cust_Type" @val placeholder="@cust.Cust_Name" name="FieldList[@index].FieldVal" @(cust.Requierd ? "required" : "")>
+                </div>
+                }
+                @(val="")
+                }
+                }

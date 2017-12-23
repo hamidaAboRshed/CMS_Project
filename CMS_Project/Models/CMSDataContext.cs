@@ -96,21 +96,25 @@ namespace CMS_Project.Models
             HasForeignKey(m => m.Parent_Id);
 
             /////////////////
-            modelBuilder.Entity<Field>().
-            HasOptional(e => e.ItemLang).
-            WithMany().
-            HasForeignKey(m => m.ItemId);
+            //modelBuilder.Entity<Field>().
+            //HasOptional(e => e.ItemLang).
+            //WithMany().
+            //HasForeignKey(m => m.ItemLangId);
 
             modelBuilder.Entity<Field>().
             HasOptional(e => e.CustomField).
             WithMany().
             HasForeignKey(m => m.CustomFieldId);
 
+            modelBuilder.Entity<Field>()
+            .HasRequired<item_lang>(s => s.ItemLang)
+            .WithMany(g => g.FieldList)
+            .HasForeignKey(s => s.ItemLangId); 
+
             modelBuilder.Entity<Custom>().
             HasOptional(e => e.Category).
             WithMany().
             HasForeignKey(m => m.Cat_ID);
-
 
             modelBuilder.Entity<Role_Per>().
             HasOptional(e => e.Role).

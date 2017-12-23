@@ -52,7 +52,8 @@
                                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                     @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
                                     @Html.ActionLink("Translate", "Index", "Category_lang", new { id = item.ID }, null) |
-                                    @Html.ActionLink("Items", "Index", "ITEM", new { id = item.category_ID }, null)
+                                    @Html.ActionLink("Items", "Index", "ITEM", new { id = item.category_ID }, null) |
+                                    @Html.ActionLink("Custom Fields", "Index", "Custom", new { id = item.category_ID }, null) 
                                 </td>
                             </tr>
                         }
