@@ -53,6 +53,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, CatId = ViewBag.CatId }, null) |
-    @Html.ActionLink("Back to List", "Index", "item_lang", new { id = Model.ID, CatId = ViewBag.CatId }, null)
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, CatId = ViewBag.CatId, catlang = ViewBag.itemlang }, null) |
+    @Html.ActionLink("Back to List", "Index", "item_lang", new { id = ViewBag.itemlang, CatId = ViewBag.CatId }, null)
 </p>

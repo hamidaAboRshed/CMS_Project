@@ -19,11 +19,13 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index(int id=0)
         {
+            Category_lang cat = db.Category_lang.Find(id);
+            int cat_ID = (int)cat.category_ID;
             List<Language> lang = db.Language.Where(x => x.Default == false).ToList();
             List<Category_lang> category = new List<Category_lang>();
             foreach (Language obj in lang)
             {
-                List<Category_lang> CatLang = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(obj.ID)).ToList();
+                List<Category_lang> CatLang = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(obj.ID) && x.category_ID == cat_ID).ToList();
                 category.AddRange(CatLang);
             }
             ViewBag.Cat_lang = id;
@@ -33,9 +35,10 @@ namespace CMS_Project.Controllers
         //
         // GET: /Category_lang/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int catlang = 0)
         {
             Category_lang category_lang = db.Category_lang.Find(id);
+            ViewBag.catlang = catlang;
             if (category_lang == null)
             {
                 return HttpNotFound();
@@ -50,8 +53,16 @@ namespace CMS_Project.Controllers
         {
             Category_lang category_lang = db.Category_lang.Find(id);
             ViewBag.CatID = category_lang.category_ID;
-            
-            ViewBag.Lang_ID = new SelectList(db.Language.Where(x=>x.Default==false), "ID", "Name");
+
+            List<Language> lang = db.Language.Where(x => x.Default == false).ToList();
+            List<Language> language = new List<Language>();
+            foreach (Language obj in lang)
+            {
+                Category_lang catLang = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(obj.ID) && x.category_ID == category_lang.category_ID).SingleOrDefault();
+                if (catLang == null)
+                    language.Add(obj);
+            }
+            ViewBag.Lang_ID = new SelectList(language, "ID", "Name");
             ViewBag.catlang = id;
             return View(category_lang);
         }

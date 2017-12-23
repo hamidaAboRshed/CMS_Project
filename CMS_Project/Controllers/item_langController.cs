@@ -19,12 +19,14 @@ namespace CMS_Project.Controllers
 
         public ActionResult Index(int id = 0, int CatId = 0)
         {
+            item_lang it = db.item_lang.Find(id);
+            int itemId = (int)it.item_ID;
             List<Language> lang = db.Language.Where(x => x.Default == false).ToList();
-            List<item_lang> item=new List<item_lang>();
+            List<item_lang> item = new List<item_lang>();
             foreach (Language obj in lang)
             {
-               List<item_lang> itemLang = db.item_lang.Where(x => x.item.Cat_ID == CatId && x.Lang_ID.Value.Equals(obj.ID)).ToList();
-               item.AddRange(itemLang);
+                List<item_lang> itemLang = db.item_lang.Where(x => x.item.Cat_ID == CatId && x.Lang_ID.Value.Equals(obj.ID) && x.item_ID == itemId).ToList();
+                item.AddRange(itemLang);
             }
             ViewBag.CatId = CatId;
             ViewBag.ItemId = id;
@@ -34,10 +36,11 @@ namespace CMS_Project.Controllers
         //
         // GET: /item_lang/Details/5
 
-        public ActionResult Details(int id = 0, int CatId = 0)
+        public ActionResult Details(int id = 0, int CatId = 0, int itemlang = 0)
         {
             item_lang item_lang = db.item_lang.Find(id);
             ViewBag.CatID = CatId;
+            ViewBag.itemlang = itemlang;
             if (item_lang == null)
             {
                 return HttpNotFound();
@@ -55,7 +58,15 @@ namespace CMS_Project.Controllers
             ViewBag.CatID = CatId;
             ViewBag.itemlang = id;
 
-            ViewBag.Lang_ID = new SelectList(db.Language.Where(x=>x.Default==false), "ID", "Name");
+            List<Language> lang = db.Language.Where(x => x.Default == false).ToList();
+            List<Language> language = new List<Language>();
+            foreach (Language obj in lang)
+            {
+                item_lang itemLang = db.item_lang.Where(x => x.Lang_ID.Value.Equals(obj.ID) && x.item_ID == item.item_ID).SingleOrDefault();
+                if (itemLang == null)
+                    language.Add(obj);
+            }
+            ViewBag.Lang_ID = new SelectList(language, "ID", "Name");
 
             return View(item);
         }

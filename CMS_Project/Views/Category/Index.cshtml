@@ -29,6 +29,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Description)
                                 </th>
+                                <th>
+                                    Lang_Name
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -46,6 +49,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Lang.Name)
                                 </td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

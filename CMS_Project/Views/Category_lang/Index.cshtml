@@ -28,6 +28,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Description)
                                 </th>
+                                <th>
+                                    Lang_Name
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -47,8 +50,11 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Lang.Name)
+                                </td>
+                                <td>
                                     @Html.ActionLink("Edit", "Edit", "Category_lang", new { id = item.ID, catlang = ViewBag.Cat_lang }, null) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID, catlang = ViewBag.Cat_lang }, null ) |
                                     @Html.ActionLink("Delete", "Delete", new { id = item.ID, catlang = ViewBag.Cat_lang })
                                 </td>
                             </tr>
