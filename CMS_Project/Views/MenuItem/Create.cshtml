@@ -1,90 +1,133 @@
-﻿@model CMS_Project.Models.MenuItem
-
-@{
-    ViewBag.Title = "Create";
+﻿@{
+    ViewBag.Title = "Create MenuItem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
 
     <fieldset>
         <div class="col-md-4">
             
-            <div class="form-group">
-                <input class="form-control" placeholder="Name" name="name" type="text" autofocus>
-            </div>
-            <div class="form-group">
-                <input class="form-control" placeholder="Order" name="Order" type="text" autofocus>
-            </div>
-            
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Type)
-            </div>
-
-            <div>
-                @Html.DropDownListFor(model => model.Type, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
-                    "Select Type",
-                    new { @style = "width: 175px;" })
-
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Parent)
-            </div>
             <div class="editor-field">
-                @Html.DropDownListFor(model => model.Parent_Id, ViewBag.parentlist as SelectList, "Select Parent", new { @style = "width: 175px;" })
+                @Html.DropDownList("Lang_ID", ViewBag.langlist as SelectList, "Select Language", new { @class = "form-control" })
             </div>
 
             <br />
-            <div>
-                <b>Select Cetegory</b>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Name" id="Name" type="text" autofocus>
             </div>
             <div class="form-group">
-                @Html.DropDownListFor(model => model.CatId, ViewBag.categorylist as SelectList, "Select Category", new { @style = "width: 175px;" })
+                <input class="form-control" placeholder="Order" id="Order" type="text" autofocus>
+            </div>
+
+            <div>
+                @Html.DropDownList("Type", new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
+                    "Select Type",
+             new { @class = "form-control" })
 
             </div>
 
-            <div>
-                <b>Select Items</b>
+            <br/>
+
+            <div class="editor-field">
+                @Html.DropDownList("Parent_Id", ViewBag.parentlist as SelectList, "Select Parent", new { @class = "form-control" })
             </div>
+
+            <br />
+      
             <div class="form-group">
-                @Html.DropDownListFor(model => model.ItemId, new SelectList(" "), "Select Item", new { @style = "width: 175px;" })
+                @Html.DropDownList("CatId", new SelectList(" "), "Select Category", new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.DropDownList("ItemId", new SelectList(" "), "Select Item", new { @class = "form-control" })
             </div>
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script>
                 $(document).ready(function () {
-                    $("#CatId").change(function () {
-                        $.get("/MenuItem/getItem", { categoryId: $("#CatId").val() }, function (data) {
-                            $("#ItemId").empty();
+                    $("#Lang_ID").change(function () {
+                        $.get("/MenuItem/getCat", { langId: $("#Lang_ID").val() }, function (data) {
+                            $("#CatId").empty();
                             $.each(data, function (index, row) {
-                                $("#ItemId").append("<option value='" + row.ID + "'>" + row.Title + "</option>")
+                                $("#CatId").append("<option value='" + row.category_ID + "'>" + row.Name + "</option>")
                             });
                         });
                     })
                 });
             </script>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Visible)
+            <script>
+                $(document).ready(function () {
+                    $("#CatId").change(function () {
+                        $.get("/MenuItem/getItem", { langId: $("#Lang_ID").val(), categoryId: $("#CatId").val() }, function (data) {
+                            $("#ItemId").empty();
+                            $.each(data, function (index, row) {
+                               
+                                $("#ItemId").append("<option value='" + row.item_ID + "'>" + row.Title + "</option>")
+                            });
+                        });
+                    })
+                });
+            </script>
+
+            <div>
+                Visible
             </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Visible)
-                @Html.ValidationMessageFor(model => model.Visible)
+            <div >
+                <input type="checkbox" id="Visible">
             </div>
+          
 
             <p>
-                <input class="btn btn-lg btn-success btn-block" type="submit" value="create" />
+                <input onclick="submit()" class="btn btn-lg btn-success btn-block" id="submit" type="submit" value="Create" />
             </p>
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
         </div>
 </fieldset>
-}
+
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        function submit() {
+            var LanItems = [];
+            LanItems.push({
+                Lang_ID: $('#Lang_ID').val().trim(),
+                Name: $('#Name').val()
+
+            });
+            var data = {
+                Order: $('#Order').val(),
+                Parent_Id: $('#Parent_Id').val().trim(),
+                Type: $('#Type').val().trim(),
+                CatId: $('#CatId').val().trim(),
+                ItemId: $('#ItemId').val().trim(),
+                Visible: $('#Visible').is(":checked"),
+                MenuItemLanguageList: LanItems
+            };
+          
+            $.ajax({
+                url: '/MenuItem/SaveMItem',
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "JSON",
+                contentType: "application/json",
+
+                success: function (d) {
+                    //check is successfully save to database
+                    if (d.status == true) {
+                        //will send status from server side
+                        alert('Successfully done.');
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                }
+            });
+        }
+    </script>
 }
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

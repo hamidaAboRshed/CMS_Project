@@ -1,14 +1,12 @@
-﻿@model CMS_Project.Models.MenuItem
+﻿@model CMS_Project.Models.MenuItem_lang
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "MenuItem Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--<h2>Details</h2>-->
 
-@*<fieldset>
-    <legend>MenuItem</legend>
+<fieldset>
 
     <div class="row">
         <div class="col-lg-12">
@@ -21,36 +19,56 @@
                                     @Html.DisplayNameFor(model => model.Name)
                                 </th>
                                 <th>
-        @Html.DisplayFor(model => model.Name)
+                                    @Html.DisplayFor(model => model.Name)
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Order)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Order)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Order)
+                                    @Html.DisplayFor(model => model.Menuitem.Order)
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Visible)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Type)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Visible)
+                                    @Html.DisplayFor(model => model.Menuitem.Type)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Parent_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.Parent_Id)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.ItemId)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.ItemId)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Visible)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.Visible)
                                 </th>
                             </tr>
                         </thead>
                     </table>
-    </div>
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Visible)
-    </div>
-    </div>
-
-</fieldset>*@
+                 </div>
+             </div>
+         </div>
+     </div>
+</fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
     @Html.ActionLink("Back to List", "Index")

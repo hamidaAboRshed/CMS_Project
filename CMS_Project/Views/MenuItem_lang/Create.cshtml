@@ -1,0 +1,38 @@
+﻿@model CMS_Project.Models.MenuItem_lang
+
+@{
+    ViewBag.Title = "Translate MenuItem";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-4">
+
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Lang_ID, ViewBag.Lang_ID as SelectList, "Select Language", new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Name" id="Name" name="Name" type="text" autofocus>
+            </div>
+
+            <br />
+
+            @Html.HiddenFor(model => model.Menuitem_ID, new { @Value = ViewBag.menID, name = "hiddenname" })
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Translate" />
+            </p>
+        </div>
+</fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

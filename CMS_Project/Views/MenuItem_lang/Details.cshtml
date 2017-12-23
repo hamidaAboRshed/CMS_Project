@@ -1,8 +1,9 @@
-﻿@model CMS_Project.Models.Category_lang
+﻿@model CMS_Project.Models.MenuItem_lang
 
 @{
-    ViewBag.Title = "Category Translate Details";
+    ViewBag.Title = "MenuItem Translate Details";
 }
+
 
 <fieldset>
 
@@ -22,18 +23,18 @@
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Image)
+                                    @Html.DisplayNameFor(model => model.Menuitem_ID)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Image)
+                                    @Html.DisplayFor(model => model.Menuitem_ID)
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Description)
+                                    @Html.DisplayNameFor(model => model.Lang_ID)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Description)
+                                    @Html.DisplayFor(model => model.Lang_ID)
                                 </th>
                             </tr>
                         </thead>
@@ -47,5 +48,5 @@
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index", new { id = Model.ID })
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Menuitem_ID })
 </p>

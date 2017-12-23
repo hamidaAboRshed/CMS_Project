@@ -1,7 +1,8 @@
-﻿@model IEnumerable<CMS_Project.Models.MenuItem>
+﻿@model IEnumerable<CMS_Project.Models.MenuItem_lang>
+
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "MenuItem Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,22 +25,24 @@
                         <thead>
                             <tr>
                                 <th>
-                                   @* @Html.DisplayNameFor(model => model.Name)*@
+                                    @Html.DisplayNameFor(model => model.Name)
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Order)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Order)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Type)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Type)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Parent)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Parent)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Visible)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Visible)
+                                    @Html.DisplayNameFor(model => model.Menuitem.ItemId)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.ItemId)
+                                   Lang_Name
                                 </th>
                                 <th></th>
                             </tr>
@@ -47,29 +50,34 @@
 
                         @foreach (var item in Model)
                         {
+                            
                             <tr class="odd gradeX">
                                 <td>
-                                  @*  @Html.DisplayFor(modelItem => item.Name)*@
+                                      @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Order)
+                                    @Html.DisplayFor(modelItem => item.Menuitem.Order)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Type)
+                                    @Html.DisplayFor(modelItem => item.Menuitem.Type)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Parent_Id)
+                                    @Html.DisplayFor(modelItem => item.Menuitem.Parent_Id)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Visible)
+                                    @Html.DisplayFor(modelItem => item.Menuitem.Visible)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ItemId)
+                                    @Html.DisplayFor(modelItem => item.Menuitem.ItemId)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.DisplayFor(modelItem => item.Lang.Name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID , MenuItem_Id=item.Menuitem_ID}) |
                                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
+                                    @Html.ActionLink("Translate", "Index", "MenuItem_lang", new { id = item.Menuitem_ID }, null) 
                                 </td>
                             </tr>
                         }

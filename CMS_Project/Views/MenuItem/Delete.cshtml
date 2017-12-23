@@ -1,12 +1,20 @@
-﻿@model CMS_Project.Models.MenuItem
+﻿@model CMS_Project.Models.MenuItem_lang
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete MenuItem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Are you sure you want to delete this?</h3>
-@*<fieldset>
+@{if (@ViewBag.error != null)
+{
+    <h3 style="color :red;">@ViewBag.error</h3>
+}
+else
+{
+    <h3>Are you sure you want to delete this?</h3>
+}
+}
+<fieldset>
     <!--<legend>MenuItem</legend>-->
 
     <legend></legend>
@@ -22,37 +30,63 @@
                                     @Html.DisplayNameFor(model => model.Name)
                                 </th>
                                 <th>
-        @Html.DisplayFor(model => model.Name)
+                                    @Html.DisplayFor(model => model.Name)
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Order)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Order)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Order)
+                                    @Html.DisplayFor(model => model.Menuitem.Order)
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Visible)
+                                    @Html.DisplayNameFor(model => model.Menuitem.Type)
                                 </th>
                                 <th>
-                                    @Html.DisplayFor(model => model.Visible)
+                                    @Html.DisplayFor(model => model.Menuitem.Type)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Parent_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.Parent_Id)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.ItemId)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.ItemId)
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Visible)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Menuitem.Visible)
                                 </th>
                             </tr>
                         </thead>
                     </table>
+                </div>
+             </div>
+          </div>
     </div>
-    </div>
-    </div>
-    </div>
-
-</fieldset>*@
+</fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
+        @if (ViewBag.flag == false)
+        {
+            <input type="submit" value="Delete" />
+        }
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
