@@ -1,0 +1,47 @@
+﻿@model CMS_Project.Models.Custom
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Custom</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cust_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cust_Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Cust_Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cust_Type)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Requierd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Requierd)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Cat_ID })
+    </p>
+}

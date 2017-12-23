@@ -42,6 +42,10 @@
                       rows="5"></textarea>
 
             <br />
+            @*<div class="form-group">
+                <input class="form-control" placeholder="Title" id="Title" name="FieldList[0].FieldVal" type="text" autofocus>
+            </div>*@
+            @Html.Partial("~/Views/ITEM/_CutomField.cshtml")
 
             @Html.HiddenFor(model => model.temp, new { @Value = ViewBag.CatID, name = "hiddenname" })
             <p>

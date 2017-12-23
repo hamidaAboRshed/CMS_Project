@@ -27,6 +27,9 @@ namespace CMS_Project.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Language.AddOrUpdate(
+                p => p.Name,
+              new Language { Name = "English", Default = true });
 
             context.Permession.AddOrUpdate(
                 p => p.Action,

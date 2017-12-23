@@ -36,7 +36,7 @@
 
             @Html.TextBoxFor(model => model.Description, new { @class = "form-control", style = "height:150px" })
             <br />
-
+            @Html.Partial("~/Views/ITEM/_CutomField.cshtml", Model.FieldList)    
             <p>
                 <input class="btn btn-lg btn-success btn-block" type="submit" value="Save" />
             </p>

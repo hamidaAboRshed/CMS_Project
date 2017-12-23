@@ -10,6 +10,10 @@ namespace CMS_Project.Models
 {
     public class item_lang 
     {
+        public item_lang()
+        {
+            FieldList = new List<Field>();
+        }
         public int ID { set; get; }
         public String Title { set; get; }
         [DataType(DataType.Html)]
@@ -25,6 +29,6 @@ namespace CMS_Project.Models
         public int? item_ID { set; get; }
         [NotMapped]
         public int? temp { set; get; }
-        
+        public List<Field> FieldList { set; get; }
     } 
 }
