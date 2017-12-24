@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CMS_Project.Models.ITEM>
+﻿@using CMS_Project.Models
 
 @{
     ViewBag.Title = "ViewPerPage";
@@ -19,76 +19,39 @@
             <div class="row margin-bottom-40">
                 <!-- BEGIN CONTENT -->
                 <div class="col-md-12 col-sm-12">
-                    <h1>Blog Page</h1>
+                    <!--start-->
                     <div class="content-page">
                         <div class="row">
                             <!-- BEGIN LEFT SIDEBAR -->
                             <div class="col-md-9 col-sm-9 blog-posts">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-4">
-                                        <!-- BEGIN CAROUSEL -->
-                                        <div class="front-carousel">
-                                            <div class="carousel slide" id="myCarousel">
-                                                <!-- Carousel items -->
-                                                <!-- Carousel nav -->
-                                                <a data-slide="prev" href="#myCarousel" class="carousel-control left">
-                                                    <i class="fa fa-angle-left"></i>
-                                                </a>
-                                                <a data-slide="next" href="#myCarousel" class="carousel-control right">
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- END CAROUSEL -->
-                                    </div>
-
-                                </div>
+                                
 @if (Model !=null)
 {
     foreach (var item in Model)
     {
-                                <hr class="blog-post-sep">
 
-                                <div class="row">
+    <div class="row">
                                  
-                                    <div class="col-md-4 col-sm-4">
-                                        <img class="img-responsive" alt="Image" src="@Url.Content(item.Image)">
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <h2><a href="blog-item.html">@item.Title</a></h2>
+        <div class="col-md-4 col-sm-4">
+            <img class="img-responsive" alt="Image" src="@Url.Content(item.Image)">
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <h2><a href="blog-item.html">@item.Title</a></h2>
                                         
-                                        <p>@item.Description</p>
-                                        <a href=@("http://localhost:4743/Home/ItemPerPage/"+item.ID) class="more">Read more <i class="icon-angle-right"></i></a>
-                                    </div>
+            <p>@item.Description</p>
+            <a href=@("http://localhost:4743/Home/ItemPerPage/" + item.item_ID) class="more">Read more <i class="icon-angle-right"></i></a>
+        </div>
                                         
                                           
                                       
-                                </div>
-                                      }
-                                  }
+    </div>
+    <hr class="blog-post-sep">
+    }
+}
                                     
 
 
-                                <hr class="blog-post-sep">
-                                <ul class="pagination">
-                                    <li><a href="javascript:;">Prev</a></li>
-                                    <li><a href="javascript:;">1</a></li>
-                                    <li><a href="javascript:;">2</a></li>
-                                    <li class="active"><a href="javascript:;">3</a></li>
-                                    <li><a href="javascript:;">4</a></li>
-                                    <li><a href="javascript:;">5</a></li>
-                                    <li><a href="javascript:;">Next</a></li>
-                                </ul>
-                            </div>
-                            <!-- END LEFT SIDEBAR -->
-                            <!-- BEGIN RIGHT SIDEBAR -->
-                            <div class="col-md-3 col-sm-3 blog-sidebar">
-                                <!-- CATEGORIES START -->
-                                <h2 class="no-top-space">Categories</h2>
-                                <ul class="nav sidebar-categories margin-bottom-40">
-                                    <li><a href="javascript:;">London (18)</a></li>
-                                    </ul>
-
+                               
                             </div>
                             <!-- END RIGHT SIDEBAR -->
                         </div>

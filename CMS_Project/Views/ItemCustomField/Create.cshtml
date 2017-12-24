@@ -1,0 +1,76 @@
+﻿@model CMS_Project.Models.ItemCustomField
+@using CMS_Project.Models
+@{
+    ViewBag.Title = "Create Item Custom Field";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-4">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldKey)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.FieldKey, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FieldKey)
+            </div>
+
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldType, "Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.FieldType, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.FieldType))),
+                    "Select Type",
+    new { @class = "form-control", @onchange = "ChangeType(this.value);" })
+
+
+                @Html.ValidationMessageFor(model => model.FieldType)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldValue)
+            </div>
+            <div id="fieldVal"></div>
+            @*<div class="editor-field">
+                @Html.EditorFor(model => model.FieldValue)
+                @Html.ValidationMessageFor(model => model.FieldValue)
+            </div>*@
+            @Html.HiddenFor(model => model.item_Id, new { @Value = ViewBag.item_Id, name = "hiddenname" })
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Create" />
+            </p>
+            </div>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id=ViewBag.item_Id })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    function ChangeType(val)
+    {
+        var element='';
+        if (val == "@(FieldType.Memo.ToString())")
+        {
+            element='<div class="form-group"><textarea class="form-control" name="FieldValue"></textarea></div>';
+        }
+        else
+            if (val == "@FieldType.datetime.ToString()")
+            {
+                element='<div class="form-group"><input class="form-control" type="datetime-local"  name="FieldValue"></div>';
+            }
+            else
+            {
+                element='<div class="form-group"><input class="form-control" type="'+val+'" name="FieldValue"></div>';
+    }
+                document.getElementById("fieldVal").innerHTML=element;
+}
+</script>
+}

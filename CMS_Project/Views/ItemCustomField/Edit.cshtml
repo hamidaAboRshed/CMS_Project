@@ -1,0 +1,71 @@
+﻿@model CMS_Project.Models.ItemCustomField
+@using CMS_Project.Models
+@{
+    ViewBag.Title = "Edit Item Custom Field";
+}
+<script>
+    function ChangeType(val,content) {
+        var element = '';
+        if (val == "@(FieldType.Memo.ToString())") {
+            element = '<div class="form-group"><textarea class="form-control" name="FieldValue" value="'+content+'"></textarea></div>';
+        }
+        else
+            if (val == "@FieldType.datetime.ToString()") {
+                element = '<div class="form-group"><input class="form-control" type="datetime-local"  name="FieldValue"  value="' + content + '"></div>';
+            }
+            else {
+                element = '<div class="form-group"><input class="form-control" type="' + val + '" name="FieldValue"  value="' + content + '"></div>';
+            }
+        document.getElementById("fieldVal").innerHTML = element;
+    }
+</script>
+
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-4">
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.item_Id)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldKey)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.FieldKey, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FieldKey)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldType, "Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.FieldType, new SelectList(Enum.GetValues(typeof(CMS_Project.Models.FieldType))),
+              "Select Type", new { @class = "form-control", @onchange = "ChangeType(this.value,'');" })
+
+
+                @Html.ValidationMessageFor(model => model.FieldType)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldValue)
+            </div>
+            <div id="fieldVal">
+                <script type="text/javascript">ChangeType("@Model.FieldType","@Model.FieldValue");</script>
+            </div>
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Save" />
+            </p>
+            </div>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.item_Id })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

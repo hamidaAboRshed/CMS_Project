@@ -48,6 +48,7 @@
                     $("#Lang_ID").change(function () {
                         $.get("/MenuItem/getCat", { langId: $("#Lang_ID").val() }, function (data) {
                             $("#CatId").empty();
+                            $("#CatId").append("<option value='-1'>Select Category</option>");
                             $.each(data, function (index, row) {
                                 $("#CatId").append("<option value='" + row.category_ID + "'>" + row.Name + "</option>")
                             });
@@ -61,6 +62,7 @@
                     $("#CatId").change(function () {
                         $.get("/MenuItem/getItem", { langId: $("#Lang_ID").val(), categoryId: $("#CatId").val() }, function (data) {
                             $("#ItemId").empty();
+                            $("#ItemId").append("<option value='-1'>Select Item</option>");
                             $.each(data, function (index, row) {
                                
                                 $("#ItemId").append("<option value='" + row.item_ID + "'>" + row.Title + "</option>")
@@ -118,7 +120,8 @@
                     //check is successfully save to database
                     if (d.status == true) {
                         //will send status from server side
-                        alert('Successfully done.');
+                        //alert('Successfully done.');
+                        location.href = "http://localhost:4743/MenuItem";
                     }
                     else {
                         alert('Failed');

@@ -3,7 +3,8 @@
     var db2 = new CMSDataContext();
     var db = new CMSDataContext();
     var Items = db.MenuItems.Where(x=>x.Visible==true).OrderBy(x=>x.Order).ToList();
-    var LangItem=db2.MenuItem_lang.Where(x=>x.Lang_ID==1).ToList();
+    int langID=Convert.ToInt32(Session["LanguageId"]);
+    var LangItem = db2.MenuItem_lang.Where(x => x.Lang_ID ==langID).ToList();
     //IList<MenuItem> Items=new List<MenuItem>();
     //if (db.MenuItems > 0 ) {
     //    Items = db.MenuItems.ToArray();
@@ -41,6 +42,11 @@
             {
                 int linkedItem = Items[i].CatId;
                 var miLang = LangItem.SingleOrDefault(x=>x.Menuitem_ID==Items[i].ID);
+                if (miLang == null)
+                {
+                    int id=Items[i].ID;
+                    miLang = db.MenuItem_lang.Where(x => x.Lang_ID == 1 && x.Menuitem_ID ==id ).SingleOrDefault();
+                }
                     //Items.SingleOrDefault(x => x.MenuItemLanguageList == 123);
                     //db.QuerySingle("SELECT * FROM PRODUCT WHERE Menuitem_ID = @0", Items[i].ID);
                     //db2.MenuItem_lang.Where(x => x.Menuitem_ID==Items[i].ID).SingleOrDefault();

@@ -131,6 +131,7 @@
     <Compile Include="Controllers\CustomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITEMController.cs" />
+    <Compile Include="Controllers\ItemCustomFieldController.cs" />
     <Compile Include="Controllers\item_langController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FieldType.cs" />
     <Compile Include="Models\ITEM.cs" />
+    <Compile Include="Models\ItemCustomField.cs" />
     <Compile Include="Models\item_lang.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\MenuItem.cs" />
@@ -1845,12 +1847,16 @@
     <Content Include="Views\Category_lang\Edit.cshtml" />
     <Content Include="Views\Category_lang\Index.cshtml" />
     <Content Include="Views\ITEM\_CutomField.cshtml" />
+    <Content Include="Views\ItemCustomField\Index.cshtml" />
+    <Content Include="Views\ItemCustomField\Details.cshtml" />
+    <Content Include="Views\ItemCustomField\Create.cshtml" />
+    <Content Include="Views\ItemCustomField\Edit.cshtml" />
+    <Content Include="Views\ItemCustomField\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\Cat\" />
     <Folder Include="Content\images\Item\" />
-    <Folder Include="Views\MenuItem_lang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

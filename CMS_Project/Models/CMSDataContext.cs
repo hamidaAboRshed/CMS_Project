@@ -24,6 +24,7 @@ namespace CMS_Project.Models
         public DbSet<MenuItem_lang> MenuItem_lang { get; set; }
         public DbSet<Field> Field { get; set; }
         public DbSet<Custom> Custom_Cat { get; set; }
+        public DbSet<ItemCustomField> Item_CustomField { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Permession> Permession { get; set; }
         public DbSet<Role_Per> Role_Per { get; set; }
@@ -115,6 +116,13 @@ namespace CMS_Project.Models
             HasOptional(e => e.Category).
             WithMany().
             HasForeignKey(m => m.Cat_ID);
+
+            ///////////////////////////////
+
+            modelBuilder.Entity<ItemCustomField>()
+            .HasRequired<ITEM>(s => s.CurrentItem)
+            .WithMany(g => g.ItemCustomFieldList)
+            .HasForeignKey(s => s.item_Id); 
 
             modelBuilder.Entity<Role_Per>().
             HasOptional(e => e.Role).

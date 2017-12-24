@@ -53,6 +53,7 @@ namespace CMS_Project.Controllers
             List<Language> langlist = db.Language.ToList();
             ViewBag.langlist = new SelectList(langlist, "ID", "Name");
             ViewBag.CustField = db.Custom_Cat.Where(x => x.Cat_ID == id).ToList();
+            ViewBag.ItemCustField = null;
             return View();
         }
 
@@ -105,6 +106,7 @@ namespace CMS_Project.Controllers
             item_lang item = db.item_lang.Find(id);
             item.FieldList = db.Field.Where(x => x.ItemLangId == item.ID).ToList();
             ViewBag.CustField = db.Custom_Cat.Where(x => x.Cat_ID == CatId).ToList();
+            ViewBag.ItemCustField = db.Item_CustomField.Where(x => x.item_Id == id);
             ViewBag.CatID = CatId;
             if (item == null)
             {

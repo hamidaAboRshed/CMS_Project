@@ -1,0 +1,40 @@
+﻿@model CMS_Project.Models.ItemCustomField
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>ItemCustomField</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FieldKey)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FieldKey)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FieldValue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FieldValue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CurrentItem.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrentItem.ID)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -22,10 +22,10 @@ namespace CMS_Project.Controllers
             return View();
         }
 
-        public void ChangeLanguage(int id)
+        public ActionResult ChangeLanguage(int id)
         {
             Session["LanguageId"] = id;
-            Index();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -33,13 +33,36 @@ namespace CMS_Project.Controllers
         {
            // Category cat = new Category();
             //cat = db.Categories.Where(x => x.ID == id).FirstOrDefault();
-            return View("CatView");
+            var cat = db.Categories.ToList();
+            List<Category_lang> CatLangList=new List<Category_lang>();
+            int langId=Convert.ToInt32(Session["LanguageId"]);
+            foreach (Category c in cat)
+            {
+                var temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == langId).SingleOrDefault();
+                if (temp == null)
+                {
+                    temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == 1).SingleOrDefault();
+                }
+                CatLangList.Add(temp);
+            }
+            return View("CatView", CatLangList);
         }
 
         public ActionResult ListOfItem(int id=0)
         {
             var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
-            return View("viewItem", item);
+            List<item_lang> ItemLangList = new List<item_lang>();
+            int langId = Convert.ToInt32(Session["LanguageId"]);
+            foreach (ITEM itm in item)
+            {
+                var temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == langId).SingleOrDefault();
+                if (temp == null)
+                {
+                    temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == 1).SingleOrDefault();
+                }
+                ItemLangList.Add(temp);
+            }
+            return View("viewItem", ItemLangList);
         }
            
        
@@ -47,14 +70,22 @@ namespace CMS_Project.Controllers
 
         public ActionResult ItemPerPage(int ID = 0)
         {
-
-
             ITEM item = db.ITEMs.Find(ID);
+            item_lang itemLang = new item_lang();
+            int langId = Convert.ToInt32(Session["LanguageId"]);
             if (item == null)
             {
                 return View("PageNotFound");
             }
-            return View(item);
+            else
+            {
+                itemLang = db.item_lang.SingleOrDefault(x => x.item_ID == ID && x.Lang_ID == langId);
+                if (itemLang == null)
+                {
+                    itemLang = db.item_lang.SingleOrDefault(x => x.item_ID == ID && x.Lang_ID == 1);
+                }
+            }
+            return View(itemLang);
         }
            
         

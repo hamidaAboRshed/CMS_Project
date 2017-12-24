@@ -2,8 +2,7 @@
 @{
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
-    var db = new CMSDataContext();
-    var cat = db.Category_lang.ToArray();
+    
 
 } 
 <div class="main">
@@ -16,30 +15,28 @@
                     <div class="filter-v1">
                         
                         <div class="row mix-grid thumbnails">
-
-                            @if (cat.Count() > 0)
+                            @if (Model != null)
                             {
-                                for (int i = 0; i < cat.Count(); i++)
+                                foreach (var cat in Model)
                                 {
                                     <div class="col-md-4 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
                                         <div class="mix-inner">
-
-                                            <!--<img src="Url.Content(cat[i].Image)" alt="Image" width="250px" height="250px" />-->
-
-                                            <img src="@Url.Content(cat[i].Image)"  class="img-responsive" >
+                                            <img src="@Url.Content(cat.Image)" class="img-responsive">
                                             <div class="mix-details">
-                                                <a href=@("http://localhost:4743/Home/ListOfItem/"+cat[i].ID)>@cat[i].Name </a>
-                                                    <p>@cat[i].Description</p>
-</div>
-                                            <!--<h4>Cascusamus et iusto odio</h4>-->
-                                            <!--<p>At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores.</p>-->
-                                            <a class="mix-link"><i class="fa fa-link"></i></a>
-                                            <a data-rel="fancybox-button" title="Project Name" href="@Url.Content(cat[i].Image)" class="mix-preview fancybox-button"><i class="fa fa-search"></i></a>
+                                                <h4>@cat.Name </h4>
+                                                <p>@cat.Description</p>
+                                                <a class="mix-link" href=@("http://localhost:4743/Home/ListOfItem/" + cat.category_ID)><i class="fa fa-link"></i></a>
+                                                <a data-rel="fancybox-button" title="@cat.Name" href="@Url.Content(cat.Image)" class="mix-preview fancybox-button"><i class="fa fa-search"></i></a>
+
+                                            </div>
                                         </div>
                                     </div>
+                                                        <!--<h4>Cascusamus et iusto odio</h4>-->
+                                            <!--<p>At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum deleniti atque corrupti quos dolores.</p>-->
+                                            
                                 }
-                            }
-                        </div>
+                                            }
+                                        </div>
                     </div>
                 </div>
             </div>

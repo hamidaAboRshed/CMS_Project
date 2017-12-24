@@ -1,0 +1,36 @@
+﻿@model CMS_Project.Models.ItemCustomField
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ItemCustomField</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FieldKey)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FieldKey)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FieldValue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FieldValue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CurrentItem.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrentItem.ID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.item_Id })
+</p>
