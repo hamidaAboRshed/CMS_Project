@@ -149,6 +149,7 @@
     <Compile Include="Models\Category_lang.cs" />
     <Compile Include="Models\CMSDataContext.cs" />
     <Compile Include="Models\Custom.cs" />
+    <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FieldType.cs" />
     <Compile Include="Models\ITEM.cs" />
@@ -1043,6 +1044,7 @@
     <Content Include="Content\WebSite\vendor\bootstrap\rtl\js\bootstrap-arabic.min.js" />
     <Content Include="Content\WebSite\vendor\jquery\jquery.js" />
     <Content Include="Content\WebSite\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\XMLfile\Arabic.xml" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\WebSite\vendor\bootstrap\rtl\css\bootstrap-arabic-theme.css.map" />
@@ -1852,6 +1854,7 @@
     <Content Include="Views\ItemCustomField\Create.cshtml" />
     <Content Include="Views\ItemCustomField\Edit.cshtml" />
     <Content Include="Views\ItemCustomField\Delete.cshtml" />
+    <Content Include="Views\Language\TranslateTerm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,7 @@ namespace CMS_Project.Models
         public string Image { set; get; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { set; get; }
+        public string alt { set; get; }
         public Language Lang { set; get; }
         public int? Lang_ID { set; get; }
         public Category category { set; get; }

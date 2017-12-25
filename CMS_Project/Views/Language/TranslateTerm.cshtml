@@ -1,0 +1,59 @@
+﻿@model CMS_Project.Models.Dictionary
+
+@{
+    ViewBag.Title = "Translate Terms";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-4">
+            @{TempData["Data"] = ViewBag.lang_Id;}
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Language)
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Language, new { @class = "form-control" })
+
+            </div>
+
+            <br/>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Readmore)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Readmore, new { @class = "form-control" })
+
+            </div>
+
+            <br/>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CopyRight)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CopyRight, new { @class = "form-control" })
+
+            </div>
+
+            <br/>
+            <p>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Translate" />
+            </p>
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,11 +1,21 @@
 ﻿@using CMS_Project.Models;
+@using System.Xml;
 @{
     var db = new CMSDataContext();
+    var db2 = new CMSDataContext();
     var lang = db.Language.ToList();
+    int langID = Convert.ToInt32(Session["LanguageId"]);
+    Language language = db2.Language.Find(langID);
+    string lang_name = language.Name;
+    XmlDocument doc = new XmlDocument();
+    string path = "~/Content/XMLfile/" + lang_name + ".xml";
+    doc.Load(Server.MapPath(path));
+    XmlNodeList elemList = doc.GetElementsByTagName("Language");
+    string lan = elemList[0].InnerXml;
 }
 <ul class="list-unstyled list-inline pull-right">
     <li class="dropdown-submenu">
-        Language <i class="fa fa-angle-right"></i>
+        @lan <i class="fa fa-angle-right"></i>
         <ul class="dropdown-menu" id="Lang">
             @if (lang != null)
             {

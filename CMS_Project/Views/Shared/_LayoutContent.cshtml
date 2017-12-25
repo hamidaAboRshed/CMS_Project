@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using CMS_Project.Models;
+@using System.Xml;
+@{
+    var db = new CMSDataContext();
+    int langID = Convert.ToInt32(Session["LanguageId"]);
+    Language language = db.Language.Find(langID);
+    string lang_name = language.Name;
+    XmlDocument doc = new XmlDocument();
+    string path = "~/Content/XMLfile/" + lang_name + ".xml";
+    doc.Load(Server.MapPath(path));
+    XmlNodeList elemList = doc.GetElementsByTagName("CopyRight");
+    string CopyRight = elemList[0].InnerXml;
+}
+<!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
 Version: 1.0.0
@@ -67,8 +80,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+963 934 534 657</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>hamida.aborshed@gmail.com</span></li>
+                        @*<li><i class="fa fa-phone"></i><span>+963 934 534 657</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>hamida.aborshed@gmail.com</span></li>*@
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
@@ -104,7 +117,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <div class="container">
             <div class="row">
                 <!-- BEGIN BOTTOM ABOUT BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
+             @*   <div class="col-md-4 col-sm-6 pre-footer-col">
                     <h2>About us</h2>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat.</p>
 
@@ -128,10 +141,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             <li><a href="javascript:;"><img alt="" src="~/Content/WebSite/assets/pages/img/works/img2.jpg"></a></li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
                 <!-- END BOTTOM ABOUT BLOCK -->
                 <!-- BEGIN BOTTOM CONTACTS -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
+              @*  <div class="col-md-4 col-sm-6 pre-footer-col">
                     <h2>Our Contacts</h2>
                     <address class="margin-bottom-40">
                         35, Lorem Lis Street, Park Ave<br>
@@ -154,13 +167,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             </div>
                         </form>
                     </div>
-                </div>
+                </div>*@
                 <!-- END BOTTOM CONTACTS -->
                 <!-- BEGIN TWITTER BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
+              @*  <div class="col-md-4 col-sm-6 pre-footer-col">
                     <h2 class="margin-bottom-0">Latest Tweets</h2>
                     <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by keenthemes...</a>
-                </div>
+                </div>*@
                 <!-- END TWITTER BLOCK -->
             </div>
         </div>
@@ -172,11 +185,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="row">
                 <!-- BEGIN COPYRIGHT -->
                 <div class="col-md-4 col-sm-4 padding-top-10">
-                    2015 © Keenthemes. ALL Rights Reserved. <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+                    @CopyRight
                 </div>
                 <!-- END COPYRIGHT -->
                 <!-- BEGIN PAYMENTS -->
-                <div class="col-md-4 col-sm-4">
+               @* <div class="col-md-4 col-sm-4">
                     <ul class="social-footer list-unstyled list-inline pull-right">
                         <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
@@ -188,12 +201,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <li><a href="javascript:;"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
                     </ul>
-                </div>
+                </div>*@
                 <!-- END PAYMENTS -->
                 <!-- BEGIN POWERED -->
-                <div class="col-md-4 col-sm-4 text-right">
+                @*<div class="col-md-4 col-sm-4 text-right">
                     <p class="powered">Powered by: <a href="#">KeenThemes.com</a></p>
-                </div>
+                </div>*@
                 <!-- END POWERED -->
             </div>
         </div>

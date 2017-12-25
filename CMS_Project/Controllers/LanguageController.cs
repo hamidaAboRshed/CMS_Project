@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 using CMS_Project.Models;
 
 namespace CMS_Project.Controllers
@@ -128,6 +129,58 @@ namespace CMS_Project.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult TranslateTerm(int id = 0)
+        {
+            ViewBag.lang_Id = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TranslateTerm(Dictionary Dic)
+        {
+            if (ModelState.IsValid)
+            {
+                int langId = Convert.ToInt32(TempData["Data"]);
+                Dic.ID = langId;
+                Language lang = db.Language.Find(langId);
+                string lang_name = lang.Name;
+                string xmlFilePath = "~/Content/XMLfile/"+lang_name+".xml";
+                CreateXmlFile(xmlFilePath, Dic);
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+        public void CreateXmlFile(string filepath, Dictionary Dic)
+        {
+            try
+            {
+                using (XmlWriter xmlwriter = XmlWriter.Create(Server.MapPath(filepath)))
+                {
+                    xmlwriter.WriteStartDocument();
+                    xmlwriter.WriteStartElement("Dictionary");
+                   // foreach (CustomerModel i in xmldata)
+                   // {
+                    Language lang = db.Language.Find(Dic.ID);
+                    string lang_name = lang.Name;
+                    xmlwriter.WriteStartElement(lang_name);
+                        xmlwriter.WriteElementString("ID", Dic.ID.ToString());
+                        xmlwriter.WriteElementString("Language", Dic.Language);
+                        xmlwriter.WriteElementString("Readmore", Dic.Readmore);
+                        xmlwriter.WriteElementString("CopyRight", Dic.CopyRight);
+                        xmlwriter.WriteEndElement();
+                   // }
+                    xmlwriter.WriteEndElement();
+                    xmlwriter.WriteEndDocument();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Msg = "Exception of type: " + ex + " occured please try again";
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

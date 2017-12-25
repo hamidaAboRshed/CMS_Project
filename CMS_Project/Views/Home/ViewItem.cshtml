@@ -1,9 +1,20 @@
 ﻿@using CMS_Project.Models
+@using System.Xml;
 
 @{
     ViewBag.Title = "ViewPerPage";
 
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
+
+    var db = new CMSDataContext();
+    int langID = Convert.ToInt32(Session["LanguageId"]);
+    Language language = db.Language.Find(langID);
+    string lang_name = language.Name;
+    XmlDocument doc = new XmlDocument();
+    string path = "~/Content/XMLfile/" + lang_name + ".xml";
+    doc.Load(Server.MapPath(path));
+    XmlNodeList elemList = doc.GetElementsByTagName("Readmore");
+    string Readmore = elemList[0].InnerXml;
 }
 <section class="corporate">
     <!-- BEGIN STYLE CUSTOMIZER -->
@@ -39,7 +50,7 @@
             <h2><a href="blog-item.html">@item.Title</a></h2>
                                         
             <p>@item.Description</p>
-            <a href=@("http://localhost:4743/Home/ItemPerPage/" + item.item_ID) class="more">Read more <i class="icon-angle-right"></i></a>
+            <a href=@("http://localhost:4743/Home/ItemPerPage/" + item.item_ID) class="more">@Readmore <i class="icon-angle-right"></i></a>
         </div>
                                         
                                           
