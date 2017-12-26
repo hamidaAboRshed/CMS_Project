@@ -85,6 +85,11 @@ namespace CMS_Project.Controllers
                     itemLang = db.item_lang.SingleOrDefault(x => x.item_ID == ID && x.Lang_ID == 1);
                 }
             }
+            int itemID=itemLang.ID;
+            int catID=(int)item.Cat_ID;
+            itemLang.ItemCustomFieldList = db.Item_CustomField.Where(x => x.item_Id == itemID).ToList();
+            itemLang.FieldList = db.Field.Where(x => x.ItemLangId == itemID).ToList();
+            ViewBag.customField = db.Custom_Cat.Where(x => x.Cat_ID == catID).ToList();
             return View(itemLang);
         }
            

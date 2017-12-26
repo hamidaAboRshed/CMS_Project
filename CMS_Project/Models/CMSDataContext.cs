@@ -120,7 +120,7 @@ namespace CMS_Project.Models
             ///////////////////////////////
 
             modelBuilder.Entity<ItemCustomField>()
-            .HasRequired<ITEM>(s => s.CurrentItem)
+            .HasRequired<item_lang>(s => s.CurrentItem)
             .WithMany(g => g.ItemCustomFieldList)
             .HasForeignKey(s => s.item_Id); 
 

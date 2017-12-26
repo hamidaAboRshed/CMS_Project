@@ -29,7 +29,7 @@
             <br />
 
             <div class="editor-field">
-                @Html.DropDownList("Type", new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType))),
+                @Html.DropDownList("Type", new SelectList(Enum.GetValues(typeof(CMS_Project.Models.MenuItemType)),Model.Menuitem.Type),
                     "Select Type",
                  new { @class = "form-control" })
             </div>
@@ -49,25 +49,37 @@
             <br />
 
             <div class="editor-field">
-                @Html.DropDownList("ItemId", new SelectList(" "), "Select Item", new { @class = "form-control" })
+                @Html.DropDownList("ItemId", new SelectList(" "), "Select Item", new { @class = "form-control", @selectedIndex = @Model.Menuitem.ItemId })
             </div>
 
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            
             <script>
-                $(document).ready(function () {
-                    $("#CatId").change(function () {
-                        $.get("/MenuItem/getItem", { langId: $("#Lang_ID").val(), categoryId: $("#CatId").val() }, function (data) {
-                            $("#ItemId").empty();
-                            $.each(data, function (index, row) {
-                                $("#ItemId").append("<option value='" + row.item_ID + "'>" + row.Title + "</option>")
-                            });
-                        });
-                    })
+    $(document).ready(function () {
+        function categoryChange() {
+            $.get("/MenuItem/getItem", { langId: $("#Lang_ID").val(), categoryId: $("#CatId").val() }, function (data) {
+                $("#ItemId").empty();
+                var s="";
+                $.each(data, function (index, row) {
+                    debugger;
+                    if (row.item_ID == '@Model.Menuitem.ItemId') {
+                        s = 'selected="selected"';
+                    }
+                    else
+                        s = "";
+                    $("#ItemId").append("<option value='" + row.item_ID + "' "+s+">" + row.Title + "</option>")
                 });
-            </script>
+            });
+        }
+        categoryChange();
+        $("#CatId").change(categoryChange());
+
+
+    });
+</script>
 
             <div>
-                <input type="checkbox" id="Visible">
+                <input type="checkbox" id="Visible" checked="@Model.Menuitem.Visible">
             </div>
 
             <p>

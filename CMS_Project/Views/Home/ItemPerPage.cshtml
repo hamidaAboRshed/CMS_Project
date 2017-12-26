@@ -4,8 +4,8 @@
 @{
 
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
-    
-    
+    var customField = ViewBag.customField;
+    int index = -1;
 }
 
 <section class="corporate">
@@ -44,6 +44,42 @@
                 <li><i class="fa fa-user"></i> By admin</li>
 
             </ul>*@
+                                @if (customField != null)
+                                {
+                                    <table class="blog-info">
+                                        @foreach (Custom cust in customField)
+                                        {
+                                            index++;
+                                            <tr>
+                                                <td style="font-weight: bold;">
+                                                    @cust.Cust_Name :
+                                                </td>
+                                                <td style="padding:5px;">
+                                                    @Model.FieldList[index].FieldVal
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr></tr>
+                                    </table>
+                                }
+                                @if (Model.ItemCustomFieldList != null)
+                                {
+                                    index = -1;
+                                    <table class="blog-info">
+                                        @foreach (ItemCustomField cust in Model.ItemCustomFieldList)
+                                        {
+                                            <tr>
+                                                <td style="font-weight: bold;">
+                                                    @cust.FieldKey :
+                                                </td>
+                                                <td style="padding:5px;">
+                                                    @cust.FieldValue
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr></tr>
+                                    </table>
+                                }
 
                             </div>
  

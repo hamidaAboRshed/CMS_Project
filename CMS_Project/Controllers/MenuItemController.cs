@@ -107,10 +107,10 @@ namespace CMS_Project.Controllers
 
             var lang = db.Language.Single(x => x.Default == true);
             List<MenuItem_lang> parentlist = db.MenuItem_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
-            ViewBag.parentlist = new SelectList(parentlist, "Menuitem_ID", "Name");
+            ViewBag.parentlist = new SelectList(parentlist, "Menuitem_ID", "Name",menuitem_lang.Menuitem.Parent_Id);
 
             List<Category_lang> categorylist = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
-            ViewBag.categorylist = new SelectList(categorylist, "category_ID", "Name");
+            ViewBag.categorylist = new SelectList(categorylist, "category_ID", "Name", menuitem_lang.Menuitem.CatId);
             ViewBag.lang_Id = lang.ID;
             ViewBag.menuItem_Id = MenuItem_Id;
             ViewBag.Id = id;

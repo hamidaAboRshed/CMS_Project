@@ -11,7 +11,7 @@ namespace CMS_Project.Models
         public string FieldKey { set; get; }
         public FieldType FieldType { set; get; }
         public string FieldValue { set; get; }
-        public ITEM CurrentItem { set; get; }
+        public item_lang CurrentItem { set; get; }
         public int? item_Id { set; get; }
     }
 }

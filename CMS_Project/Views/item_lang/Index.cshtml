@@ -58,7 +58,8 @@
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.ID, CatId = ViewBag.CatId, itemlang = ViewBag.ItemId }, null) |
                                     @Html.ActionLink("Details", "Details", new { id = item.ID, CatId = ViewBag.CatId, itemlang = ViewBag.ItemId }, null) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID, CatId = ViewBag.CatId ,itemlang = ViewBag.ItemId}, null)
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID, CatId = ViewBag.CatId ,itemlang = ViewBag.ItemId}, null) |
+                                    @Html.ActionLink("Custom Fields", "Index", "ItemCustomField", new { id = item.ID}, null)
                                 </td>
                             </tr>
                         }

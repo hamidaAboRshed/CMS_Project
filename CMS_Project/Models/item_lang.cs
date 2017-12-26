@@ -13,6 +13,7 @@ namespace CMS_Project.Models
         public item_lang()
         {
             FieldList = new List<Field>();
+            ItemCustomFieldList = new List<ItemCustomField>();
         }
         public int ID { set; get; }
         public String Title { set; get; }
@@ -30,5 +31,6 @@ namespace CMS_Project.Models
         [NotMapped]
         public int? temp { set; get; }
         public List<Field> FieldList { set; get; }
+        public List<ItemCustomField> ItemCustomFieldList { set; get; } 
     } 
 }
