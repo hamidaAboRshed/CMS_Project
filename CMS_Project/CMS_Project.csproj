@@ -140,17 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712221339249_new2.cs" />
-    <Compile Include="Migrations\201712221339249_new2.Designer.cs">
-      <DependentUpon>201712221339249_new2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712270143109_toto.cs" />
-    <Compile Include="Migrations\201712270143109_toto.Designer.cs">
-      <DependentUpon>201712270143109_toto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712270220293_f.cs" />
-    <Compile Include="Migrations\201712270220293_f.Designer.cs">
-      <DependentUpon>201712270220293_f.cs</DependentUpon>
+    <Compile Include="Migrations\201712270410580_roula.cs" />
+    <Compile Include="Migrations\201712270410580_roula.Designer.cs">
+      <DependentUpon>201712270410580_roula.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -175,6 +167,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CMS_DB.mdf" />
+    <Content Include="App_Data\CMS_DB_log.ldf">
+      <DependentUpon>CMS_DB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Admin\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\Admin\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
@@ -1869,7 +1865,6 @@
     <Content Include="Views\Home\ItemPerPage2.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\images\Cat\" />
     <Folder Include="Content\images\Item\" />
   </ItemGroup>
@@ -1877,14 +1872,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712221339249_new2.resx">
-      <DependentUpon>201712221339249_new2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712270143109_toto.resx">
-      <DependentUpon>201712270143109_toto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712270220293_f.resx">
-      <DependentUpon>201712270220293_f.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712270410580_roula.resx">
+      <DependentUpon>201712270410580_roula.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

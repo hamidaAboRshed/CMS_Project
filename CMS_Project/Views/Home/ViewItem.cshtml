@@ -4,13 +4,14 @@
 @{
     var db2 = new CMSDataContext();
     int Cat_Id =ViewBag.Cat_Id;
-    Category_lang cat = db2.Category_lang.Where(x => x.category_ID == Cat_Id).SingleOrDefault();
+    int langID = Convert.ToInt32(Session["LanguageId"]);
+    Category_lang cat = db2.Category_lang.Where(x => x.category_ID == Cat_Id && x.Lang_ID==langID).SingleOrDefault();
     ViewBag.Title = cat.Name;
     ViewBag.Description = "ListOfItem_"+cat.Name;
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 
     var db = new CMSDataContext();
-    int langID = Convert.ToInt32(Session["LanguageId"]);
+    //int langID = Convert.ToInt32(Session["LanguageId"]);
     Language language = db.Language.Find(langID);
     string lang_name = language.Name;
     XmlDocument doc = new XmlDocument();
