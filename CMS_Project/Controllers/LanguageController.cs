@@ -167,6 +167,7 @@ namespace CMS_Project.Controllers
                     string lang_name = lang.Name;
                     xmlwriter.WriteStartElement(lang_name);
                         xmlwriter.WriteElementString("ID", Dic.ID.ToString());
+                        xmlwriter.WriteElementString("SiteName", Dic.SiteName);
                         xmlwriter.WriteElementString("Language", Dic.Language);
                         xmlwriter.WriteElementString("Readmore", Dic.Readmore);
                         xmlwriter.WriteElementString("CopyRight", Dic.CopyRight);

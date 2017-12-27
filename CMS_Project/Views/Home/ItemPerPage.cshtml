@@ -2,7 +2,8 @@
 @model  CMS_Project.Models.item_lang
       
 @{
-
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
     var customField = ViewBag.customField;
     int index = -1;

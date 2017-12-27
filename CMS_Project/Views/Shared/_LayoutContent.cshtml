@@ -10,6 +10,8 @@
     doc.Load(Server.MapPath(path));
     XmlNodeList elemList = doc.GetElementsByTagName("CopyRight");
     string CopyRight = elemList[0].InnerXml;
+    XmlNodeList elemList2 = doc.GetElementsByTagName("SiteName");
+    string SiteName = elemList2[0].InnerXml;
 }
 <!DOCTYPE html>
 <!--
@@ -30,7 +32,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <title>@ViewBag.Title</title>
+    <title>@SiteName - @ViewBag.Title</title>
+    <meta content=@ViewBag.Description name="description">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

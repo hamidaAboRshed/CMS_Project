@@ -11,5 +11,6 @@ namespace CMS_Project.Models
         public string Language { set; get; }
         public string Readmore { set; get; }
         public string CopyRight { set; get; }
+        public string SiteName { set; get; }
     }
 }
