@@ -83,7 +83,8 @@
                                     @Html.ActionLink("Edit", "Edit", new { id = item.ID , MenuItem_Id=item.Menuitem_ID}) |
                                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                     @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
-                                    @Html.ActionLink("Translate", "Index", "MenuItem_lang", new { id = item.Menuitem_ID }, null) 
+                                    @Html.ActionLink("Translate", "Index", "MenuItem_lang", new { id = item.Menuitem_ID }, null) |
+                                    @Html.ActionLink("View Item", "Details", "ITEM", new { id = item.Menuitem.ItemId, CatId = item.Menuitem.CatId }, null)
                                 </td>
                             </tr>
                         }
