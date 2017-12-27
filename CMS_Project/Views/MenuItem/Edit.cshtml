@@ -51,7 +51,9 @@
             <div class="editor-field">
                 @Html.DropDownList("ItemId", new SelectList(" "), "Select Item", new { @class = "form-control", @selectedIndex = @Model.Menuitem.ItemId })
             </div>
-
+            <div class="form-group">
+                @Html.DropDownList("Template", ViewBag.templates as SelectList, "Select Template", new { @class = "form-control" })
+            </div>
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             
             <script>
@@ -71,6 +73,14 @@
                 });
             });
         }
+        $("#Type").change(function () {
+            $.get("/MenuItem/getTemplate", { type: $("#Type").val() }, function (data) {
+                $("#Template").empty();
+                $("#Template").append("<option value='-1'>Select Template</option>");
+                $.each(data, function (index, row) {
+                    $("#Template").append("<option value='" + row.ID + "'>" + row.Name + "</option>")
+                });
+            });
         categoryChange();
         $("#CatId").change(categoryChange());
 
@@ -110,6 +120,7 @@
                 CatId: $('#CatId').val().trim(),
                 ItemId: $('#ItemId').val().trim(),
                 Visible: $('#Visible').is(":checked"),
+                Template_Id: $('#Template').val(),
                 MenuItemLanguageList: LanItems
             };
 

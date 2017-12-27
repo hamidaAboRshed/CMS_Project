@@ -29,51 +29,68 @@ namespace CMS_Project.Controllers
         }
 
         [HttpGet]
-        public ActionResult ListOfCategory(int id=0)
+        public ActionResult ListOfCategory(int id = 0, int TempId = 0)
         {
            // Category cat = new Category();
             //cat = db.Categories.Where(x => x.ID == id).FirstOrDefault();
             var cat = db.Categories.ToList();
             List<Category_lang> CatLangList=new List<Category_lang>();
-            int langId=Convert.ToInt32(Session["LanguageId"]);
-            foreach (Category c in cat)
+            PageTemplate pageTemp = db.PageTemp.Find(TempId);
+            if (pageTemp == null)
             {
-                var temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == langId).SingleOrDefault();
-                if (temp == null)
-                {
-                    temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == 1).SingleOrDefault();
-                }
-                CatLangList.Add(temp);
+                return View("PageNotFound");
             }
-            return View("CatView", CatLangList);
+            else
+            {
+                int langId = Convert.ToInt32(Session["LanguageId"]);
+                foreach (Category c in cat)
+                {
+                    var temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == langId).SingleOrDefault();
+                    if (temp == null)
+                    {
+                        temp = db.Category_lang.Where(x => x.category_ID == c.ID && x.Lang_ID == 1).SingleOrDefault();
+                    }
+                    CatLangList.Add(temp);
+                }
+                return View(pageTemp.PageName, CatLangList);
+            }
         }
 
-        public ActionResult ListOfItem(int id=0)
+        public ActionResult ListOfItem(int id = 0, int TempId = 0)
         {
             var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
             List<item_lang> ItemLangList = new List<item_lang>();
-            int langId = Convert.ToInt32(Session["LanguageId"]);
-            foreach (ITEM itm in item)
+            PageTemplate pageTemp = db.PageTemp.Find(TempId);
+            if (item == null || pageTemp == null)
             {
-                var temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == langId).SingleOrDefault();
-                if (temp == null)
-                {
-                    temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == 1).SingleOrDefault();
-                }
-                ItemLangList.Add(temp);
+                return View("PageNotFound");
             }
-            return View("viewItem", ItemLangList);
+            else
+            {
+                int langId = Convert.ToInt32(Session["LanguageId"]);
+                foreach (ITEM itm in item)
+                {
+                    var temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == langId).SingleOrDefault();
+                    if (temp == null)
+                    {
+                        temp = db.item_lang.Where(x => x.item_ID == itm.ID && x.Lang_ID == 1).SingleOrDefault();
+                    }
+                    ItemLangList.Add(temp);
+                }
+                return View(pageTemp.PageName, ItemLangList);
+            }
         }
            
        
 
 
-        public ActionResult ItemPerPage(int ID = 0)
+        public ActionResult ItemPerPage(int ID = 0,int TempId=0)
         {
             ITEM item = db.ITEMs.Find(ID);
             item_lang itemLang = new item_lang();
+            PageTemplate pageTemp = db.PageTemp.Find(TempId);
             int langId = Convert.ToInt32(Session["LanguageId"]);
-            if (item == null)
+            if (item == null || pageTemp==null)
             {
                 return View("PageNotFound");
             }
@@ -90,7 +107,7 @@ namespace CMS_Project.Controllers
             itemLang.ItemCustomFieldList = db.Item_CustomField.Where(x => x.item_Id == itemID).ToList();
             itemLang.FieldList = db.Field.Where(x => x.ItemLangId == itemID).ToList();
             ViewBag.customField = db.Custom_Cat.Where(x => x.Cat_ID == catID).ToList();
-            return View(itemLang);
+            return View(pageTemp.PageName, itemLang);
         }
            
         

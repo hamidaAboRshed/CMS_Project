@@ -36,6 +36,9 @@
                                     @Html.DisplayNameFor(model => model.Menuitem.Parent)
                                 </th>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Menuitem.Template)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.Menuitem.Visible)
                                 </th>
                                 <th>
@@ -63,6 +66,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Menuitem.Parent_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Menuitem.Template.Name)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Menuitem.Visible)

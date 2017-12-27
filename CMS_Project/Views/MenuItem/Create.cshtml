@@ -42,6 +42,9 @@
             <div class="form-group">
                 @Html.DropDownList("ItemId", new SelectList(" "), "Select Item", new { @class = "form-control" })
             </div>
+            <div class="form-group">
+                @Html.DropDownList("Template", ViewBag.templates as SelectList, "Select Template", new { @class = "form-control" })
+            </div>
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script>
                 $(document).ready(function () {
@@ -51,6 +54,15 @@
                             $("#CatId").append("<option value='-1'>Select Category</option>");
                             $.each(data, function (index, row) {
                                 $("#CatId").append("<option value='" + row.category_ID + "'>" + row.Name + "</option>")
+                            });
+                        });
+                    });
+                    $("#Type").change(function () {
+                        $.get("/MenuItem/getTemplate", { type: $("#Type").val() }, function (data) {
+                            $("#Template").empty();
+                            $("#Template").append("<option value='-1'>Select Template</option>");
+                            $.each(data, function (index, row) {
+                                $("#Template").append("<option value='" + row.ID + "'>" + row.Name + "</option>")
                             });
                         });
                     })
@@ -106,6 +118,7 @@
                 CatId: $('#CatId').val().trim(),
                 ItemId: $('#ItemId').val().trim(),
                 Visible: $('#Visible').is(":checked"),
+                Template_Id: $('#Template').val(),
                 MenuItemLanguageList: LanItems
             };
           

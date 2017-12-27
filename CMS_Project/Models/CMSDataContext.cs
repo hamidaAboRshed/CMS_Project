@@ -28,12 +28,14 @@ namespace CMS_Project.Models
         public DbSet<Role> Role { get; set; }
         public DbSet<Permession> Permession { get; set; }
         public DbSet<Role_Per> Role_Per { get; set; }
+        public DbSet<PageTemplate> PageTemp { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ITEM>()
             .HasRequired<Category>(s => s.CurrentCategory)
             .WithMany(g => g.ItemsList)
             .HasForeignKey(s => s.Cat_ID); 
+            
            // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
          
             ////////////////////////
@@ -90,6 +92,11 @@ namespace CMS_Project.Models
             HasOptional(e => e.Parent).
             WithMany().
             HasForeignKey(m => m.Parent_Id);
+
+            modelBuilder.Entity<MenuItem>()
+                .HasRequired<PageTemplate>(bc => bc.Template)
+                .WithMany()
+                .HasForeignKey(bc => bc.Template_Id);
 
             modelBuilder.Entity<Category>().
             HasOptional(e => e.Parent).

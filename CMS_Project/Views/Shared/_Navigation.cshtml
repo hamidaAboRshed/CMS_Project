@@ -60,7 +60,7 @@
                     if (Items[i].Parent == null)
                     {
                         <li class="" id="itm_@Items[i].ID">
-                            <a class="dropdown-toggle" href="@Url.Action(Items[i].Type.ToString(), "Home", new { id = linkedItem })">
+                            <a class="dropdown-toggle" href="@Url.Action(Items[i].Type.ToString(), "Home", new { id = linkedItem, TempId = Items[i].Template_Id })">
                                 @miLang.Name
                             </a>
                         </li>

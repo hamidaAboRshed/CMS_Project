@@ -1,0 +1,84 @@
+﻿@using CMS_Project.Models;
+@model  CMS_Project.Models.item_lang
+
+@{
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    var customField = ViewBag.customField;
+    int index = -1;
+}
+
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>@Model.Title</h1>
+                <div class="content-page">
+                    <div class="row margin-bottom-30">
+                        <!-- BEGIN CAROUSEL -->
+                        <div class="col-md-5 front-carousel">
+                            <div class="carousel slide" id="myCarousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img alt="@Model.alt" src="@Url.Content(Model.Image)">
+                                        <div class="carousel-caption">
+                                            <p>@Model.alt</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CAROUSEL -->
+                        <!-- BEGIN PORTFOLIO DESCRIPTION -->
+                        <div class="col-md-7">
+                            @Html.DisplayTextFor(modelItem => Model.Content)
+                            <br>
+                            @if (customField != null)
+                            {
+                                <table class="blog-info">
+                                    @foreach (Custom cust in customField)
+                                    {
+                                        index++;
+                                        <tr>
+                                            <td style="font-weight: bold;">
+                                                @cust.Cust_Name :
+                                            </td>
+                                            <td style="padding:5px;">
+                                                @Model.FieldList[index].FieldVal
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr></tr>
+                                </table>
+                            }
+                            @if (Model.ItemCustomFieldList != null)
+                            {
+                                index = -1;
+                                <table class="blog-info">
+                                    @foreach (ItemCustomField cust in Model.ItemCustomFieldList)
+                                    {
+                                        <tr>
+                                            <td style="font-weight: bold;">
+                                                @cust.FieldKey :
+                                            </td>
+                                            <td style="padding:5px;">
+                                                @cust.FieldValue
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr></tr>
+                                </table>
+                            }
+                        </div>
+                        <!-- END PORTFOLIO DESCRIPTION -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+    </div>
+</div>

@@ -48,6 +48,9 @@ namespace CMS_Project.Controllers
 
             List<Language> languagelist = db.Language.ToList();
             ViewBag.langlist = new SelectList(languagelist, "ID", "Name");
+
+            List<PageTemplate> templatelist = db.PageTemp.ToList();
+            ViewBag.templates = new SelectList(templatelist, "ID", "Name");
             return View();
         }
 
@@ -65,6 +68,14 @@ namespace CMS_Project.Controllers
             return Json(listitem, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult getTemplate(MenuItemType type)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<PageTemplate> listTemp = db.PageTemp.Where(x => x.Type ==  type).ToList();
+            return Json(listTemp, JsonRequestBehavior.AllowGet);
+        }
+        
+
         [HttpPost]
         public JsonResult SaveMItem(MenuItem mi)
         {
@@ -72,6 +83,7 @@ namespace CMS_Project.Controllers
 
             if (ModelState.IsValid)
             {
+                PageTemplate p = db.PageTemp.Find(mi.Template_Id);
                 MenuItem MenuItm = new MenuItem
                 {
                     Order = mi.Order,
@@ -79,7 +91,8 @@ namespace CMS_Project.Controllers
                     ItemId = mi.ItemId,
                     Parent_Id = mi.Parent_Id,
                     Visible = mi.Visible,
-                    Type = mi.Type
+                    Type = mi.Type,
+                    Template=p
                 };
                 foreach (var i in mi.MenuItemLanguageList)
                 {
@@ -107,7 +120,11 @@ namespace CMS_Project.Controllers
 
             var lang = db.Language.Single(x => x.Default == true);
             List<MenuItem_lang> parentlist = db.MenuItem_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
+
             ViewBag.parentlist = new SelectList(parentlist, "Menuitem_ID", "Name",menuitem_lang.Menuitem.Parent_Id);
+
+            List<PageTemplate> templatelist = db.PageTemp.ToList();
+            ViewBag.templates = new SelectList(templatelist, "ID", "Name",menuitem_lang.Menuitem.Template.ID);
 
             List<Category_lang> categorylist = db.Category_lang.Where(x => x.Lang_ID.Value.Equals(lang.ID)).ToList();
             ViewBag.categorylist = new SelectList(categorylist, "category_ID", "Name", menuitem_lang.Menuitem.CatId);

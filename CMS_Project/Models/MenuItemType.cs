@@ -7,8 +7,8 @@ namespace CMS_Project.Models
 {
     public enum MenuItemType
     {
-        ItemPerPage,
-        ListOfItem,
-        ListOfCategory
+        ItemPerPage=0,
+        ListOfItem=1,
+        ListOfCategory=2
     }
 }

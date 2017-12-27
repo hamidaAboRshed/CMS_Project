@@ -27,6 +27,15 @@ namespace CMS_Project.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.PageTemp.AddOrUpdate(
+                p => p.Name,
+              new PageTemplate { Name = "CatTemp1", PageName="CatView1",Type=MenuItemType.ListOfCategory,Image="" },
+              new PageTemplate { Name = "CatTemp2", PageName="CatView2",Type=MenuItemType.ListOfCategory,Image="" },
+              new PageTemplate { Name = "ItemListTemp1", PageName="ViewItem",Type=MenuItemType.ListOfItem,Image="" },
+              new PageTemplate { Name = "ItemPerPageTemp1" , PageName = "ItemPerPage1", Type = MenuItemType.ItemPerPage, Image = "" },
+              new PageTemplate { Name = "ItemPerPageTemp2", PageName = "ItemPerPage2", Type = MenuItemType.ItemPerPage, Image = "" }
+              );
+
             context.Language.AddOrUpdate(
                 p => p.Name,
               new Language { Name = "English", Default = true });

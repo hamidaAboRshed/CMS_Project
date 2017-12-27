@@ -144,6 +144,14 @@
     <Compile Include="Migrations\201712221339249_new2.Designer.cs">
       <DependentUpon>201712221339249_new2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712270143109_toto.cs" />
+    <Compile Include="Migrations\201712270143109_toto.Designer.cs">
+      <DependentUpon>201712270143109_toto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712270220293_f.cs" />
+    <Compile Include="Migrations\201712270220293_f.Designer.cs">
+      <DependentUpon>201712270220293_f.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Category_lang.cs" />
@@ -159,6 +167,7 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemType.cs" />
     <Compile Include="Models\MenuItem_lang.cs" />
+    <Compile Include="Models\PageTemplate.cs" />
     <Compile Include="Models\Permession.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Role_Per.cs" />
@@ -1795,7 +1804,7 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\ContentSite\Category.cshtml" />
-    <Content Include="Views\Home\CatView.cshtml" />
+    <Content Include="Views\Home\CatView1.cshtml" />
     <Content Include="Views\ITEM\Index.cshtml" />
     <Content Include="Views\ITEM\Details.cshtml" />
     <Content Include="Views\ITEM\Create.cshtml" />
@@ -1808,7 +1817,7 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\Home\ViewItem.cshtml" />
-    <Content Include="Views\Home\ItemPerPage.cshtml" />
+    <Content Include="Views\Home\ItemPerPage1.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\ITEM\Translate.cshtml" />
     <Content Include="Views\Shared\_Language.cshtml" />
@@ -1855,6 +1864,8 @@
     <Content Include="Views\ItemCustomField\Edit.cshtml" />
     <Content Include="Views\ItemCustomField\Delete.cshtml" />
     <Content Include="Views\Language\TranslateTerm.cshtml" />
+    <Content Include="Views\Home\CatView2.cshtml" />
+    <Content Include="Views\Home\ItemPerPage2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1867,6 +1878,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712221339249_new2.resx">
       <DependentUpon>201712221339249_new2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712270143109_toto.resx">
+      <DependentUpon>201712270143109_toto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712270220293_f.resx">
+      <DependentUpon>201712270220293_f.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
