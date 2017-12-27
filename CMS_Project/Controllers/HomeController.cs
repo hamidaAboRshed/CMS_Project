@@ -36,11 +36,11 @@ namespace CMS_Project.Controllers
             var cat = db.Categories.ToList();
             List<Category_lang> CatLangList=new List<Category_lang>();
             PageTemplate pageTemp = db.PageTemp.Find(TempId);
-            if (pageTemp == null)
+            if (TempId == 0)
             {
-                return View("PageNotFound");
+                pageTemp = new PageTemplate();
+                pageTemp.PageName = "ViewItem";
             }
-            else
             {
                 int langId = Convert.ToInt32(Session["LanguageId"]);
                 foreach (Category c in cat)
@@ -62,7 +62,12 @@ namespace CMS_Project.Controllers
             var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
             List<item_lang> ItemLangList = new List<item_lang>();
             PageTemplate pageTemp = db.PageTemp.Find(TempId);
-            if (item == null || pageTemp == null)
+            if (TempId == 0)
+            {
+                pageTemp = new PageTemplate();
+                pageTemp.PageName = "ViewItem";
+            }
+            if (item == null )
             {
                 return View("PageNotFound");
             }
@@ -91,7 +96,12 @@ namespace CMS_Project.Controllers
             item_lang itemLang = new item_lang();
             PageTemplate pageTemp = db.PageTemp.Find(TempId);
             int langId = Convert.ToInt32(Session["LanguageId"]);
-            if (item == null || pageTemp==null)
+            if (TempId == 0)
+            {
+                pageTemp = new PageTemplate();
+                pageTemp.PageName = "ItemPerPage2";
+            }
+            if (item == null)
             {
                 return View("PageNotFound");
             }
