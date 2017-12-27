@@ -14,6 +14,17 @@
         <div class="col-md-4">
             @{TempData["Data"] = ViewBag.lang_Id;}
             <div class="editor-label">
+                @Html.LabelFor(model => model.SiteName)
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.SiteName, new { @class = "form-control" })
+
+            </div>
+
+            <br />
+
+            <div class="editor-label">
                 @Html.LabelFor(model => model.Language)
             </div>
 

@@ -1,6 +1,7 @@
 ﻿@using CMS_Project.Models;
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Categories";
+    ViewBag.Description = "ListOfCategory";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
     
 
@@ -21,7 +22,7 @@
                                 {
                                     <div class="col-md-4 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
                                         <div class="mix-inner">
-                                            <img src="@Url.Content(cat.Image)" class="img-responsive">
+                                            <img src="@Url.Content(cat.Image)" alt=@cat.alt class="img-responsive">
                                             <div class="mix-details">
                                                 <h4>@cat.Name </h4>
                                                 <p>@cat.Description</p>

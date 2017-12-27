@@ -58,6 +58,7 @@ namespace CMS_Project.Controllers
 
         public ActionResult ListOfItem(int id = 0, int TempId = 0)
         {
+            ViewBag.Cat_Id = id;
             var item = db.ITEMs.Where(x => x.Cat_ID == id).ToList();
             List<item_lang> ItemLangList = new List<item_lang>();
             PageTemplate pageTemp = db.PageTemp.Find(TempId);

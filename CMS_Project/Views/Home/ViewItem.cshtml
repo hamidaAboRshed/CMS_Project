@@ -2,8 +2,11 @@
 @using System.Xml;
 
 @{
-    ViewBag.Title = "ViewPerPage";
-
+    var db2 = new CMSDataContext();
+    int Cat_Id =ViewBag.Cat_Id;
+    Category_lang cat = db2.Category_lang.Where(x => x.category_ID == Cat_Id).SingleOrDefault();
+    ViewBag.Title = cat.Name;
+    ViewBag.Description = "ListOfItem_"+cat.Name;
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 
     var db = new CMSDataContext();
@@ -40,11 +43,10 @@
 {
     foreach (var item in Model)
     {
-
     <div class="row">
                                  
         <div class="col-md-4 col-sm-4">
-            <img class="img-responsive" alt="Image" src="@Url.Content(item.Image)">
+            <img class="img-responsive" alt=@item.alt src="@Url.Content(item.Image)">
         </div>
         <div class="col-md-8 col-sm-8">
             <h2><a href="blog-item.html">@item.Title</a></h2>
